@@ -37,6 +37,10 @@ dependencies:
   local_auth: ^1.1.8
   shared_preferences: ^2.0.8
   storage_wrapper: ^2.0.0
+  pin_code_fields: ^7.3.0
+  dotted_border: ^2.0.0+1
+  loading_indicator: ^3.0.2
+  file_picker: ^4.1.6
 
 dev_dependencies:
   flutter_test:
@@ -98,6 +102,15 @@ flutter:
         - asset: fonts/Poppins/Poppins-BoldItalic.ttf
           style: italic
           weight: 700
+
+    - family: Public Sans
+      fonts:
+        - asset: fonts/public_sans/PublicSans-Regular.ttf
+        - asset: fonts/public_sans/PublicSans-SemiBold.ttf
+        - asset: fonts/public_sans/PublicSans-Bold.ttf
+
+
+
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
