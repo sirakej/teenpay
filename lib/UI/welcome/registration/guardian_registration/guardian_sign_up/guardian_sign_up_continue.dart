@@ -210,7 +210,7 @@ class _GuardianSignUpContinueState extends State<GuardianSignUpContinue> {
                     textInputAction: TextInputAction.next,
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'Enter your ebvn';
+                        return 'Enter your bvn';
                       }
                       return null;
                     },

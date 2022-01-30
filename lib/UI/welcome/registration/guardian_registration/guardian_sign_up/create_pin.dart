@@ -156,7 +156,7 @@ class _CreatePinState extends State<CreatePin> {
                     textInputAction: TextInputAction.next,
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'Enter your password';
+                        return 'Enter your pin';
                       }
                       return null;
                     },
@@ -219,7 +219,7 @@ class _CreatePinState extends State<CreatePin> {
                     textInputAction: TextInputAction.next,
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'Enter your password';
+                        return 'Enter your Confirm pin';
                       }
                       return null;
                     },
