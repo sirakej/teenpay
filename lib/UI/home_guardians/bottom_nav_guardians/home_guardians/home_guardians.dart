@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/home_guardians/services/my_dependants.dart';
+import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/home_guardians/services/transactions.dart';
+import 'services/my_dependants/my_dependants.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
 
 class HomeGuardians extends StatefulWidget {
@@ -207,7 +208,9 @@ class _HomeGuardiansState extends State<HomeGuardians> {
                             ),
                           ),
                            TextButton(
-                               onPressed: (){},
+                               onPressed: (){
+                                 Navigator.pushNamed(context, Transactions.id);
+                               },
                                child: const Text(
                                  'View all',
                                  style:

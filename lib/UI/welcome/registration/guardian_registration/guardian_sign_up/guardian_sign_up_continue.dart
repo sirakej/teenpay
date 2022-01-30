@@ -89,7 +89,9 @@ class _GuardianSignUpContinueState extends State<GuardianSignUpContinue> {
                                 ),
                                 child: ElevatedButton(
                                   onPressed: () {
-                                    Navigator.pushNamed(context, OTP.id);
+                                    if (_formKey.currentState!.validate()) {
+                                      Navigator.pushNamed(context, OTP.id);
+                                    }
                                   },
                                   child: const Text(
                                     'Continue',

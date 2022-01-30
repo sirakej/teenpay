@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
+import '../transactions.dart';
+import 'add_dependent.dart';
 
 class MyDependants extends StatefulWidget {
   static const String id = 'MyDependants';
@@ -36,23 +38,28 @@ class _MyDependantsState extends State<MyDependants> {
                   const Padding(
                     padding: EdgeInsets.only(left: 16),
                     child: Text(
-                      'Identification',
+                      'Dependants',
                       style: TextStyle(
                           fontSize: 24,
-                          fontFamily: 'Public Sans',
-                          fontWeight: FontWeight.w600
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w700,
+                          color: Color(0xFF161616)
                       ),
                     ),
                   ),
                   PopupMenuButton(
                       itemBuilder:(context) => [
-                        const PopupMenuItem(
-                          child: Text("First"),
+                        PopupMenuItem(
+                          onTap:(){},
+                          child: const Text("Manage Activities"),
                           value: 1,
                         ),
-                        const PopupMenuItem(
-                          child: Text("Second"),
-                          value: 2,
+                        PopupMenuItem(
+                          onTap: (){
+                            Navigator.pushNamed(context, Transactions.id);
+                          },
+
+                          child: const Text("Transactions"),
                         )
                       ]
                   )
@@ -100,7 +107,9 @@ class _MyDependantsState extends State<MyDependants> {
           size: 16,
           color: Colors.white,
         ),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, AddDependants.id);
+        },
       ),
     );
   }

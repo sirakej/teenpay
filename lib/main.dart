@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/home_guardians/services/my_dependants.dart';
+import 'UI/home_guardians/bottom_nav_guardians/home_guardians/services/my_dependants/add_dependant_continue.dart';
+import 'UI/home_guardians/bottom_nav_guardians/home_guardians/services/my_dependants/add_dependent.dart';
+import 'UI/home_guardians/bottom_nav_guardians/home_guardians/services/my_dependants/my_dependants.dart';
 import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/wallet_guardian/fund_wallet.dart';
 import 'package:stripling_wallet/UI/home_guardians/index_guardian.dart';
 import 'package:stripling_wallet/UI/welcome/onboarding.dart';
 import 'package:stripling_wallet/UI/welcome/registration/forgot_password/sent_instructions.dart';
 import 'package:stripling_wallet/UI/welcome/registration/login.dart';
 import 'package:stripling_wallet/utils/themes.dart';
+import 'UI/home_guardians/bottom_nav_guardians/home_guardians/services/transactions.dart';
 import 'UI/welcome/registration/dependats_registration/authentication.dart';
 import 'UI/welcome/identification.dart';
 import 'UI/welcome/registration/forgot_password/create_new_password.dart';
@@ -56,6 +59,9 @@ class MyApp extends StatelessWidget {
         IndexGuardian.id:(context) => const IndexGuardian(),
         FundsWallet.id:(context)=> const FundsWallet(),
         MyDependants.id:(context)=> const MyDependants(),
+        AddDependants.id:(context)=> const AddDependants(),
+        AddDependantsContinue.id:(context)=> const AddDependantsContinue(),
+        Transactions.id:(context)=> const Transactions(),
       },
     );
   }

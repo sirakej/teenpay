@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/home_guardians/services/transactions.dart';
 import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/wallet_guardian/fund_wallet.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
 
@@ -169,7 +170,9 @@ class _WalletGuardiansState extends State<WalletGuardians> {
                     ),
                   ),
                   TextButton(
-                    onPressed: (){},
+                    onPressed: (){
+                      Navigator.pushNamed(context, Transactions.id);
+                    },
                     child: const Text(
                       'View all',
                       style:

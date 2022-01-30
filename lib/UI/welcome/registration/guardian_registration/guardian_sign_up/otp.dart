@@ -101,7 +101,9 @@ class _OTPState extends State<OTP> {
                             ),
                             child: ElevatedButton(
                               onPressed: () {
-                                Navigator.pushNamed(context, CreatePin.id);
+                                if (formKey.currentState!.validate()) {
+                                  Navigator.pushNamed(context, CreatePin.id);
+                                }
                               },
                               child: const Text(
                                 'Verify & Proceed',
@@ -167,13 +169,13 @@ class _OTPState extends State<OTP> {
           obscuringCharacter: '●',
           blinkWhenObscuring: true,
           animationType: AnimationType.fade,
-          // validator: (v) {
-          //   if (v!.length < 3) {
-          //     return 'I'm from validator';
-          //   } else {
-          //     return null;
-          //   }
-          // },
+           validator: (v) {
+             if (v!.length < 3) {
+               return "must not be less than 3";
+             } else {
+               return null;
+             }
+           },
           pinTheme: PinTheme(
             shape: PinCodeFieldShape.underline,
             borderRadius: BorderRadius.zero,

@@ -354,7 +354,9 @@ class _CreatePinState extends State<CreatePin> {
                     const SizedBox(height: 38,),
                     InkWell(
                       onTap:(){
-                        Navigator.pushNamed(context, Login.id);
+                        if (_formKey.currentState!.validate()) {
+                          Navigator.pushNamed(context, Login.id);
+                        }
                       },
                       child:Container(
                         width: 151,

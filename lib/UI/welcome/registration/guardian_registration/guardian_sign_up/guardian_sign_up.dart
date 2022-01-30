@@ -93,7 +93,9 @@ class _GuardianSignUpState extends State<GuardianSignUp> {
                               ),
                               child: ElevatedButton(
                                 onPressed: () {
-                                  Navigator.pushNamed(context, GuardianSignUpContinue.id);
+                                  if (_formKey.currentState!.validate()) {
+                                    Navigator.pushNamed(context, GuardianSignUpContinue.id);
+                                  }
                                 },
                                 child: const Text(
                                   'Next',

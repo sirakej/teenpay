@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stripling_wallet/utils/size_config.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -23,28 +24,10 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset('images/Stripling wallet icon jpg-100.jpg', scale: 3),
-              const SizedBox(width: 10.0),
-              const Text(
-                'Stripling Wallet',
-                style: TextStyle(
-                  fontSize: 36,
-                  fontWeight: FontWeight.w700,
-                  color: Color(0xFF3068A4),
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
+      body: Center(child: Image.asset('images/splash_log.png',width:362, height:88, fit: BoxFit.contain,)),
     );
   }
 }
