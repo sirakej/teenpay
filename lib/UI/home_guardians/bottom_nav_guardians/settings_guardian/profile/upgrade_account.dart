@@ -1,19 +1,18 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/wallet_guardian/add_wallet/add_ussd.dart';
-import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/wallet_guardian/debit_card.dart';
+import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/settings_guardian/profile/id_document.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
 
-import 'add_wallet/add_bank_transfer.dart';
 
-class FundsWallet extends StatefulWidget {
-  static const String id = 'FundsWallet';
-  const FundsWallet({Key? key}) : super(key: key);
+class UpgradeAccount extends StatefulWidget {
+  static const String id = 'UpgradeAccount';
+  const UpgradeAccount({Key? key}) : super(key: key);
 
   @override
-  _FundsWalletState createState() => _FundsWalletState();
+  _UpgradeAccountState createState() => _UpgradeAccountState();
 }
 
-class _FundsWalletState extends State<FundsWallet> {
+class _UpgradeAccountState extends State<UpgradeAccount> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -38,12 +37,12 @@ class _FundsWalletState extends State<FundsWallet> {
               const Padding(
                 padding: EdgeInsets.only(left: 16,right: 16),
                 child: Text(
-                  'Fund Wallet',
+                  'Upgrade Account',
                   style:
                   TextStyle(
                       color: Color(0xFF161616),
-                      fontFamily: 'Public sans',
-                      fontWeight: FontWeight.w600,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w700,
                       fontSize: 24
                   ),
                 ),
@@ -55,25 +54,32 @@ class _FundsWalletState extends State<FundsWallet> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const SizedBox(height: 65,),
+                      const SizedBox(height: 33,),
                       InkWell(
-                        onTap: _ShowModalSheet,
-                        child: fundsContainer("images/debit.png", "Debit Cards", "Fund your Stripling Wallet using Debit card")
+                          onTap: (){},
+                          child: buttonContainer("images/bank.png", "BVN", true)
                       ),
                       const SizedBox(height: 33,),
                       InkWell(
-                        onTap: (){
-                          Navigator.pushNamed(context, AddBankTransfer.id);
-                        },
-                        child: fundsContainer("images/bank.png", "Bank Trasfers", "Fund your Stripling Wallet using bank transfer"),
+                          onTap:_ShowModalSheet,
+                          child: buttonContainer("images/terms.png", "ID Documents",false)
                       ),
                       const SizedBox(height: 33,),
                       InkWell(
-                        onTap: (){
-                          Navigator.pushNamed(context, AddUssd.id);
-                        },
-                        child: fundsContainer("images/ussd.png", "USSD", "Fund your Stripling Wallet using USSD"),
-                      )
+                          onTap: (){},
+                          child: buttonContainer("images/home_icon.png", "Residential Address", false)
+                      ),
+                      const SizedBox(height: 33,),
+                      InkWell(
+                          onTap: (){},
+                          child: buttonContainer("images/Frame.png", "Utility Bill", false)
+                      ),
+                      const SizedBox(height: 33,),
+                      InkWell(
+                          onTap: (){},
+                          child: buttonContainer("images/camera.png", "Selfie",false)
+                      ),
+
                     ],
                   ),
                 ),
@@ -84,7 +90,8 @@ class _FundsWalletState extends State<FundsWallet> {
       ),
     );
   }
-  fundsContainer(String image, String name, String explain){
+  // ignore: non_constant_identifier_names
+  buttonContainer(String image, String name,bool ads){
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -106,17 +113,26 @@ class _FundsWalletState extends State<FundsWallet> {
                   ),
                 ),
                 const SizedBox(height: 9,),
-                Text(
-                  explain,
-                  style:
-                  TextStyle(
-                      fontFamily: 'Public Sans',
-                      fontWeight: FontWeight.w400,
-                      fontSize: 10,
-                      color: const Color(0xFF161616).withOpacity(0.5)
+                ads == true ? Container(
+                  width: 43,
+                  height: 19,
+                  decoration: BoxDecoration(
+                      color: const Color(0xFF18873D).withOpacity(0.5),
+                      borderRadius: const BorderRadius.all(Radius.circular(8))
                   ),
-                ),
-
+                  child: const Center(
+                    child: Text(
+                      "Done",
+                      style:
+                      TextStyle(
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w600,
+                          fontSize: 10,
+                          color: Color(0xFF161616)
+                      ),
+                    ),
+                  ),
+                ):Container()
               ],
             ),
           ],
@@ -126,6 +142,7 @@ class _FundsWalletState extends State<FundsWallet> {
       ],
     );
   }
+
   // ignore: non_constant_identifier_names
   _ShowModalSheet(){
     showModalBottomSheet(
@@ -167,13 +184,13 @@ class _FundsWalletState extends State<FundsWallet> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 22,right:22 ),
+                  padding: const EdgeInsets.only(left: 10),
                   child: Center(
                     child: Column(
                       children: [
                         const SizedBox(height: 2.73,),
                         const Text(
-                          'Debit Cards',
+                          'ID Document requirements',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 18,
@@ -183,83 +200,13 @@ class _FundsWalletState extends State<FundsWallet> {
                           ),
                         ),
                         const SizedBox(height:45,),
-                        Text(
-                          'You can add add money into your account with local\nand foreign bank cards. Adding money with a Naira\ncard is free up to a total sum of N100,000.00',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 12,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w400,
-                            color: const Color(0xFF151920).withOpacity(0.8),
-                          ),
-                        ),
-                        const SizedBox(height: 22,),
-                        Text(
-                          'You will be charged immediately for adding money\nwith a foreign card',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 12,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w400,
-                            color: const Color(0xFF151920).withOpacity(0.8),
-                          ),
-                        ),
-                        const SizedBox(height: 38,),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: const [
-                            Text(
-                              'Naira Card',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w400,
-                                color: Color(0xFF161616),
-                              ),
-                            ),
-                            Text(
-                              'N100.00 +  1.5%  of Amount',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w400,
-                                color: Color(0xFF161616),
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 30,),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: const [
-                            Text(
-                              'Foreign Card',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w400,
-                                color: Color(0xFF161616),
-                              ),
-                            ),
-                            Text(
-                              'N100.00 +  4.0%  of Amount',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w400,
-                                color: Color(0xFF161616),
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 30,),
+                        modalContainer("images/document.png", "Have your documents ready", "Before you proceed, get the documents you need ready\nsuch as Driver’s Licence International passport, NIN slip,\nVoter’s Card"),
+                        const SizedBox(height:24),
+                        modalContainer("images/light.png", "Stay in  a well light environment", "To take a very good real time picture of yourself, you need to\nbe somewhere with good illumination so that it captures\nyour face well"),
+                        const SizedBox(height:40),
                         MaterialButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, DebitCard.id);
+                            Navigator.pushNamed(context, IdDocument.id);
                           },
                           child: Container(
                             width: SizeConfig.screenWidth,
@@ -284,15 +231,58 @@ class _FundsWalletState extends State<FundsWallet> {
                           ),
                         ),
                         const SizedBox(height:10)
-                      ],
-                    ),
-                  ),
-                ),
+              ],
+            ),
+          ),
+          ),
 
               ],
             ),
           );
         }
+    );
+  }
+
+  modalContainer(String image, String name,String explain){
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Image.asset(image,width: 39,height: 39,fit: BoxFit.contain,),
+            const SizedBox(width: 13,),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  name,
+                  style:
+                  const TextStyle(
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w600,
+                      fontSize: 14,
+                      color: Color(0xFF161616)
+                  ),
+                ),
+                const SizedBox(height: 4,),
+                Text(
+                  explain,
+                  style:
+                  TextStyle(
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w400,
+                      fontSize: 10,
+                      color: const Color(0xFF161616).withOpacity(0.5)
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ],
     );
   }
 }

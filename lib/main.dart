@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'UI/home_guardians/bottom_nav_guardians/home_guardians/services/funds_dependant/funds_dependant.dart';
+import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/settings_guardian/customization.dart';
+import 'UI/home_guardians/bottom_nav_guardians/home_guardians/services/funds_dependant/one_time_payment.dart';
 import 'UI/home_guardians/bottom_nav_guardians/home_guardians/services/my_dependants/add_dependant_continue.dart';
 import 'UI/home_guardians/bottom_nav_guardians/home_guardians/services/my_dependants/add_dependent.dart';
 import 'UI/home_guardians/bottom_nav_guardians/home_guardians/services/my_dependants/my_dependants.dart';
@@ -10,6 +13,14 @@ import 'package:stripling_wallet/UI/welcome/registration/forgot_password/sent_in
 import 'package:stripling_wallet/UI/welcome/registration/login.dart';
 import 'package:stripling_wallet/utils/themes.dart';
 import 'UI/home_guardians/bottom_nav_guardians/home_guardians/services/transactions.dart';
+import 'UI/home_guardians/bottom_nav_guardians/settings_guardian/legal.dart';
+import 'UI/home_guardians/bottom_nav_guardians/settings_guardian/profile/id_document.dart';
+import 'UI/home_guardians/bottom_nav_guardians/settings_guardian/profile/upgrade_account.dart';
+import 'UI/home_guardians/bottom_nav_guardians/settings_guardian/security.dart';
+import 'UI/home_guardians/bottom_nav_guardians/wallet_guardian/add_wallet/add_bank_transfer.dart';
+import 'UI/home_guardians/bottom_nav_guardians/wallet_guardian/add_wallet/add_debit_card.dart';
+import 'UI/home_guardians/bottom_nav_guardians/wallet_guardian/add_wallet/add_ussd.dart';
+import 'UI/home_guardians/bottom_nav_guardians/wallet_guardian/debit_card.dart';
 import 'UI/welcome/registration/dependats_registration/authentication.dart';
 import 'UI/welcome/identification.dart';
 import 'UI/welcome/registration/forgot_password/create_new_password.dart';
@@ -42,7 +53,7 @@ class MyApp extends StatelessWidget {
       title: 'Stripling Wallet',
       theme: MyThemes.lightTheme,
       // home: const SplashScreen(),
-      initialRoute: '/',
+      initialRoute: IndexGuardian.id,
       routes: {
         '/': (context) => const SplashScreen(),
         '/OnBoarding': (context) => const OnBoarding(),
@@ -62,6 +73,17 @@ class MyApp extends StatelessWidget {
         AddDependants.id:(context)=> const AddDependants(),
         AddDependantsContinue.id:(context)=> const AddDependantsContinue(),
         Transactions.id:(context)=> const Transactions(),
+        DebitCard.id:(context)=> const DebitCard(),
+        AddDebitCard.id:(context)=> const AddDebitCard(),
+        AddBankTransfer.id:(context)=> const AddBankTransfer(),
+        AddUssd.id:(context)=> const AddUssd(),
+        Legal.id:(context)=> const Legal(),
+        Security.id:(context)=> const Security(),
+        Customization.id:(context)=> const Customization(),
+        UpgradeAccount.id:(context)=> const UpgradeAccount(),
+        IdDocument.id:(context)=> const IdDocument(),
+        FundsDependant.id:(context)=> const FundsDependant(),
+        OneTimeDependants.id:(context)=> const OneTimeDependants(),
       },
     );
   }

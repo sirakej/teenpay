@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/settings_guardian.dart';
+import 'bottom_nav_guardians/settings_guardian/settings_guardian.dart';
 import 'bottom_nav_guardians/wallet_guardian/wallet_guardians.dart';
 
 import 'bottom_nav_guardians/home_guardians/home_guardians.dart';

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'services/funds_dependant/funds_dependant.dart';
 import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/home_guardians/services/transactions.dart';
 import 'services/my_dependants/my_dependants.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
@@ -182,7 +183,12 @@ class _HomeGuardiansState extends State<HomeGuardians> {
                               )
                           ),
                           const SizedBox(width: 32,),
-                          Expanded(child: homeContainer(const Color(0xFFE4EDFF), "images/funds.png","Fund\nDependants",false))
+                          Expanded(child: InkWell(
+                            onTap: (){
+                              Navigator.pushNamed(context, FundsDependant.id);
+                            },
+                            child: homeContainer(const Color(0xFFE4EDFF), "images/funds.png","Fund\nDependants",false),
+                          ))
                         ],
                       ),
                       const SizedBox(height: 24,),

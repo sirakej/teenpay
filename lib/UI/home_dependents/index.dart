@@ -17,21 +17,19 @@ class _IndexState extends State<Index> {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          margin: EdgeInsets.fromLTRB(20, 20, 20, 0),
+          margin: const EdgeInsets.fromLTRB(20, 20, 20, 0),
           child: Column(
             children: [
               Expanded(
                 flex: 1,
                 child: Column(
                   children: [
-                    Container(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Identifier(name: 'Jane Adebola'),
-                          Icon(Icons.notifications_outlined),
-                        ],
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        Identifier(name: 'Jane Adebola'),
+                        Icon(Icons.notifications_outlined),
+                      ],
                     ),
                   ],
                 ),

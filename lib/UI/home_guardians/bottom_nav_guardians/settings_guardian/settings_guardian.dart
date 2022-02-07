@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/settings_guardian/security.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
+
+import 'legal.dart';
 
 class SettingsGuardians extends StatefulWidget {
   const SettingsGuardians({Key? key}) : super(key: key);
@@ -30,7 +33,7 @@ class _SettingsGuardiansState extends State<SettingsGuardians> {
                 TextStyle(
                     color: Color(0xFF161616),
                     fontFamily: 'Public sans',
-                    fontWeight: FontWeight.w600,
+                    fontWeight: FontWeight.w700,
                     fontSize: 24
                 ),
               ),
@@ -41,7 +44,12 @@ class _SettingsGuardiansState extends State<SettingsGuardians> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const SizedBox(height: 65,),
-                      settingsContainer("images/security.png", "Security", "Your Password account"),
+                      InkWell(
+                        onTap: (){
+                          Navigator.pushNamed(context, Security.id);
+                        },
+                        child: settingsContainer("images/security.png", "Security", "Your Password account"),
+                      ),
                       const SizedBox(height: 33,),
                       settingsContainer("images/limit.png", "Account Limit", "see the limits your accounts can have"),
                       const SizedBox(height: 33,),
@@ -49,7 +57,12 @@ class _SettingsGuardiansState extends State<SettingsGuardians> {
                       const SizedBox(height: 33,),
                       settingsContainer("images/help.png", "Help and support", "Get help and support here"),
                       const SizedBox(height: 33,),
-                      settingsContainer("images/legal.png", "Legal", "Terms and other legal documents"),
+                      InkWell(
+                        onTap: (){
+                          Navigator.pushNamed(context,Legal.id);
+                        },
+                        child: settingsContainer("images/legal.png", "Legal", "Terms and other legal documents"),
+                      ),
                       const SizedBox(height: 33,),
                       settingsContainer("images/customize.png", "Customization", "Customize to your own look and feel"),
                       const SizedBox(height: 50,),
