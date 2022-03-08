@@ -20,12 +20,10 @@ class _ExpensesState extends State<Expenses> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: SizedBox(
-          width: SizeConfig.screenWidth,
-          child:Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SingleChildScrollView(
+        child: Column(
+          children: [
+            Expanded(
+              child: SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
                 padding: const EdgeInsets.only(left: 16,right: 16),
                 child: Column(
@@ -89,9 +87,9 @@ class _ExpensesState extends State<Expenses> {
                     transactionContainer("Successful","Kolade Awaye", "09:45 AM","Today", "N50,000.00"),
                   ],
                 ),
-              )
-            ],
-          ),
+              ),
+            ),
+          ],
         ),
       ),
     );

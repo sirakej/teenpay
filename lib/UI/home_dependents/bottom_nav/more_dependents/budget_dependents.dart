@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:stripling_wallet/UI/home_dependents/bottom_nav/home_dependents/services/save_money/save_money_select.dart';
 import 'package:stripling_wallet/UI/home_dependents/bottom_nav/home_dependents/services/save_money/savings_select/savings_select.dart';
 import 'package:stripling_wallet/UI/home_dependents/bottom_nav/more_dependents/add_budget_depedndents.dart';
+import 'package:stripling_wallet/UI/home_dependents/bottom_nav/more_dependents/budget_money_container.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
 
 class BudgetDependents extends StatefulWidget {
@@ -80,7 +81,7 @@ class _BudgetDependentsState extends State<BudgetDependents> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children:[
-                    Image.asset("images/savings.png",width: 128,height: 128,fit: BoxFit.contain,),
+                    Image.asset("images/empty_budget.png",width: 128,height: 128,fit: BoxFit.contain,),
                     const SizedBox(height: 35.99,),
                     Text(
                       'No budget has been created so far',
@@ -126,7 +127,7 @@ class _BudgetDependentsState extends State<BudgetDependents> {
   budgetMoneyContainer(){
     return GestureDetector(
       onTap: (){
-        Navigator.pushNamed(context, SaveMoneySelect.id);
+        Navigator.pushNamed(context, BudgetMoneyContainer.id);
       },
       child: Container(
         width: SizeConfig.screenWidth,
