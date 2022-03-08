@@ -3,6 +3,7 @@ import 'package:stripling_wallet/utils/colors.dart';
 import 'package:stripling_wallet/utils/constants.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
 
+import '../../login.dart';
 import 'guardian_sign_up_continue.dart';
 
 
@@ -124,7 +125,9 @@ class _GuardianSignUpState extends State<GuardianSignUp> {
                               ),
                               // Spacer(),
                               TextButton(
-                                onPressed: () {  },
+                                onPressed: () {
+                                  Navigator.pushNamed(context,Login.id);
+                                },
                                 child: Text(
                                   'Login',
                                   style: Theme.of(context)

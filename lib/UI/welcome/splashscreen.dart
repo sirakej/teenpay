@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stripling_wallet/UI/welcome/new_onboarding.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -14,7 +15,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(
       const Duration(seconds: 4),
       () async {
-        Navigator.pushReplacementNamed(context, '/OnBoarding');
+        Navigator.pushNamed(context, NewBoarding.id);
         // Navigator.pushReplacement(context,
         //     MaterialPageRoute(builder: (context) => const Onboarding()));
       },

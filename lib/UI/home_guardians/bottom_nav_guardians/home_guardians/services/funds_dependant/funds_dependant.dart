@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/home_guardians/services/funds_dependant/automated_payment.dart';
 import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/home_guardians/services/funds_dependant/one_time_payment.dart';
+import 'package:stripling_wallet/UI/home_guardians/index_guardian.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
 
 
@@ -25,7 +27,9 @@ class _FundsDependantState extends State<FundsDependant> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               IconButton(
-                  onPressed: (){},
+                  onPressed: (){
+                    Navigator.pushNamed(context, IndexGuardian.id);
+                  },
                   icon: const Icon(
                     Icons.chevron_left,
                     color: Color(0xFF161616),
@@ -56,13 +60,15 @@ class _FundsDependantState extends State<FundsDependant> {
                       const SizedBox(height: 33,),
                       InkWell(
                           onTap: (){
-                            Navigator.pushNamed(context, OneTimeDependants.id);
+                            Navigator.pushNamed(context, OneTimePayment.id);
                           },
                           child: buttonContainer("images/one_time.png", "One-time Payment", "One-time regular payment to dependants")
                       ),
                       const SizedBox(height: 30,),
                       InkWell(
-                          onTap: (){},
+                          onTap: (){
+                            Navigator.pushNamed(context, AutomatedPayment.id);
+                          },
                           child: buttonContainer("images/payment.png", "Automated Payment", "Automate payment such as monthly allowance")
                       ),
 

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/home_guardians/services/dependants_request.dart';
+import 'notifications.dart';
 import 'services/funds_dependant/funds_dependant.dart';
 import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/home_guardians/services/transactions.dart';
 import 'services/my_dependants/my_dependants.dart';
@@ -64,7 +66,8 @@ class _HomeGuardiansState extends State<HomeGuardians> {
                     ),
                     MaterialButton(
                       onPressed: () {
-                      },
+                        Navigator.pushNamed(context, Notifications.id);
+                        },
                       child: Image.asset("images/notification.png",width:20,height:21.5,fit: BoxFit.contain,),
                     )
                   ],
@@ -194,7 +197,14 @@ class _HomeGuardiansState extends State<HomeGuardians> {
                       const SizedBox(height: 24,),
                       Row(
                         children: [
-                          Expanded(child: homeContainer(const Color(0xFFE3FFEE), "images/request.png","Dependants\nRequests",false)),
+                          Expanded(
+                            child: InkWell(
+                              onTap: (){
+                                Navigator.pushNamed(context, DependantsRequest.id);
+                              },
+                              child: homeContainer(const Color(0xFFE3FFEE), "images/request.png","Dependants\nRequests",false),
+                            ),
+                          ),
                           const SizedBox(width: 32,),
                           Expanded(child: homeContainer(const Color(0xFFEDE4FE), "images/investments.png","Savings&\nInvestments",true))
                         ],

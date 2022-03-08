@@ -1,5 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/settings_guardian/customization.dart';
+import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/settings_guardian/profile/profile.dart';
 import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/settings_guardian/security.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
 
@@ -51,7 +52,12 @@ class _SettingsGuardiansState extends State<SettingsGuardians> {
                         child: settingsContainer("images/security.png", "Security", "Your Password account"),
                       ),
                       const SizedBox(height: 33,),
-                      settingsContainer("images/limit.png", "Account Limit", "see the limits your accounts can have"),
+                      InkWell(
+                        onTap: (){
+                          Navigator.pushNamed(context, AccountLimit.id);
+                        },
+                        child: settingsContainer("images/limit.png", "Account Limit", "see the limits your accounts can have"),
+                      ),
                       const SizedBox(height: 33,),
                       settingsContainer("images/friends.png", "Invite Friends", "Invite friends to start using this app"),
                       const SizedBox(height: 33,),
@@ -64,7 +70,12 @@ class _SettingsGuardiansState extends State<SettingsGuardians> {
                         child: settingsContainer("images/legal.png", "Legal", "Terms and other legal documents"),
                       ),
                       const SizedBox(height: 33,),
-                      settingsContainer("images/customize.png", "Customization", "Customize to your own look and feel"),
+                      InkWell(
+                        onTap: (){
+                          Navigator.pushNamed(context,Customization.id);
+                        },
+                        child: settingsContainer("images/customize.png", "Customization", "Customize to your own look and feel"),
+                      ),
                       const SizedBox(height: 50,),
                       const Text(
                         'Follow Us',

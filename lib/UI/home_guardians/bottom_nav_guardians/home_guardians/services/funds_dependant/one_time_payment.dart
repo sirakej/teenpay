@@ -1,20 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/home_guardians/services/my_dependants/add_dependant_continue.dart';
 import 'package:stripling_wallet/utils/constants.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
 
-class OneTimeDependants extends StatefulWidget {
-  static const String id = 'OneTimeDependants';
-  const OneTimeDependants({Key? key}) : super(key: key);
+
+class OneTimePayment extends StatefulWidget {
+  static const String id = 'OneTimePayment';
+  const OneTimePayment({Key? key}) : super(key: key);
 
   @override
-  _OneTimeDependantsState createState() => _OneTimeDependantsState();
+  _OneTimePaymentState createState() => _OneTimePaymentState();
 }
 
-class _OneTimeDependantsState extends State<OneTimeDependants> {
+class _OneTimePaymentState extends State<OneTimePayment> {
   /// A [GlobalKey] to hold the form state of my form widget for form validation
   final _formKey = GlobalKey<FormState>();
+
+  /// A [TextEditingController] to control the input text for the user's email
+  final TextEditingController _nameController = TextEditingController();
 
   /// A [TextEditingController] to control the input text for the user's email
   final TextEditingController _amountController = TextEditingController();
@@ -27,7 +30,6 @@ class _OneTimeDependantsState extends State<OneTimeDependants> {
 
   void change(String given){
     setState((){placeHolder =given;});
-    print(placeHolder);
   }
   @override
   Widget build(BuildContext context) {
@@ -83,32 +85,28 @@ class _OneTimeDependantsState extends State<OneTimeDependants> {
                     children: [
                       _buildForm(),
                       const SizedBox(height: 30,),
-                      InkWell(
-                        onTap:(){
-                          //Navigator.pushNamed(context, Login.id);
-                          Navigator.pushNamed(context, AddDependantsContinue.id);
+                      MaterialButton(
+                        onPressed: () {
+                          //Navigator.pushNamed(context, DebitCard.id);
                         },
-                        child:Container(
-                          width: SizeConfig.screenWidth!-20,
+                        child: Container(
+                          width: 302,
                           height: 50,
                           decoration:BoxDecoration(
-                              color: Colors.transparent,
-                              border:Border.all(
-                                  color: const Color(0xFF335491),
-                                  width: 1
+                              gradient:LinearGradient(
+                                begin: Alignment.topRight,
+                                end: Alignment.bottomLeft,
+                                colors: [
+                                  const Color(0XFF1F8BB6).withOpacity(1),
+                                  const Color(0xFF335491).withOpacity(1),
+                                ],
                               ),
                               borderRadius: const BorderRadius.all(Radius.circular(8))
                           ),
                           child: const Center(
                             child: Text(
-                              'Continue',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontFamily: 'Public Sans',
-                                fontWeight: FontWeight.w600,
-                                color: Color(0xFF335491),
-                              ),
+                              'Send Money',
+                              style: TextStyle(fontWeight: FontWeight.w600,color: Colors.white),
                             ),
                           ),
                         ),
@@ -129,7 +127,55 @@ class _OneTimeDependantsState extends State<OneTimeDependants> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          // full name
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                "Name",
+                textAlign: TextAlign.start,
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontFamily: 'Public Sans',
+                  fontSize: 14,
+                  color: Color(0xFF161616),
+                ),
+              ),
+              const SizedBox(height: 10),
+              SizedBox(
+                width: SizeConfig.screenWidth,
+                child: TextFormField(
+                    controller: _amountController,
+                    keyboardType: TextInputType.name,
+                    textInputAction: TextInputAction.next,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Enter your full name';
+                      }
+                      return null;
+                    },
+                    style: const TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      fontFamily: 'Public Sans',
+                      color: Color(0xFF161616),
+                    ),
+                    decoration:MyConstants.formInputDecoration
+                ),
+              ),
+              const SizedBox(height: 1,),
+              Text(
+                "Amount you need from your parent/guardian",
+                textAlign: TextAlign.start,
+                style: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontFamily: 'Poppins',
+                  fontSize: 10,
+                  color: const Color(0xFF161616).withOpacity(0.6),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 24),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -184,7 +230,7 @@ class _OneTimeDependantsState extends State<OneTimeDependants> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                'Choose ID Type',
+                'Select Child(ren)',
                 style:
                 TextStyle(
                     color: Color(0xFF161616),
@@ -231,6 +277,69 @@ class _OneTimeDependantsState extends State<OneTimeDependants> {
                         ),
                       ],
                     )
+                ),
+              ),
+              const SizedBox(height: 1,),
+              Text(
+                "Send money to a child or more",
+                textAlign: TextAlign.start,
+                style: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontFamily: 'Poppins',
+                  fontSize: 10,
+                  color: const Color(0xFF161616).withOpacity(0.6),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 24),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                "Description",
+                textAlign: TextAlign.start,
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontFamily: 'Public Sans',
+                  fontSize: 14,
+                  color: Color(0xFF161616),
+                ),
+              ),
+              const SizedBox(height: 10),
+              SizedBox(
+                width: SizeConfig.screenWidth,
+                child: TextFormField(
+                    controller: _amountController,
+                    keyboardType: TextInputType.multiline,
+                    textInputAction: TextInputAction.next,
+                    maxLines: null,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Enter your full name';
+                      }
+                      return null;
+                    },
+                    style: const TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      fontFamily: 'Public Sans',
+                      color: Color(0xFF161616),
+                    ),
+                    decoration:MyConstants.kTextBigFieldDecoration.copyWith(
+
+                    )
+                ),
+              ),
+              const SizedBox(height: 1,),
+              Text(
+                "Use a description that makes your parent understand your needs",
+                textAlign: TextAlign.start,
+                style: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontFamily: 'Poppins',
+                  fontSize: 10,
+                  color: const Color(0xFF161616).withOpacity(0.6),
                 ),
               ),
             ],

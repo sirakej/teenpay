@@ -8,6 +8,8 @@ import 'package:stripling_wallet/utils/colors.dart';
 import 'package:stripling_wallet/utils/constants.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
 
+import 'dependents_id.dart';
+
 class AddDependantsContinue extends StatefulWidget{
   static const String id = 'AddDependantsContinue';
   const AddDependantsContinue({Key? key}) : super(key: key);
@@ -497,7 +499,9 @@ class _AddDependantsContinueState extends State<AddDependantsContinue> with Sing
                       ),
                       const SizedBox(height: 38,),
                       InkWell(
-                        onTap:(){},
+                        onTap:(){
+                          Navigator.pushNamed(context, DependantsId.id);
+                        },
                         child:Container(
                           width: 151,
                           height: 50,

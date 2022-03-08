@@ -12,8 +12,8 @@ class Customization extends StatefulWidget {
 }
 
 class _CustomizationState extends State<Customization> {
-  late bool darkMode;
-  late bool deviceSettings;
+   bool darkMode = false;
+   bool deviceSettings = false;
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -58,12 +58,12 @@ class _CustomizationState extends State<Customization> {
                       const SizedBox(height: 33,),
                       InkWell(
                           onTap: (){},
-                          child: buttonContainer("images/dark_mode.png", "Terms and conditions", "View, update  your informations",darkMode)
+                          child: buttonContainer("images/dark_mode.png", "Dark Mode", "View, update  your informations",darkMode)
                       ),
                       const SizedBox(height: 30,),
                       InkWell(
                           onTap: (){},
-                          child: buttonContainer("images/device_settings.png", "Terms and conditions", "View, update  your informations",deviceSettings)
+                          child: buttonContainer("images/device_settings.png", "Dark Settings", "View, update  your informations",deviceSettings)
                       ),
                     ],
                   ),

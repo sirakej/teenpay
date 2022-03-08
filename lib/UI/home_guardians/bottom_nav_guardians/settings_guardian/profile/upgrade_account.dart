@@ -26,7 +26,9 @@ class _UpgradeAccountState extends State<UpgradeAccount> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               IconButton(
-                  onPressed: (){},
+                  onPressed: (){
+                    Navigator.pop(context);
+                  },
                   icon: const Icon(
                     Icons.chevron_left,
                     color: Color(0xFF161616),

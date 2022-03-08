@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:stripling_wallet/UI/welcome/registration/login.dart';
 import 'package:stripling_wallet/utils/colors.dart';
 import 'package:stripling_wallet/utils/constants.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
@@ -120,7 +121,9 @@ class _GuardianSignUpContinueState extends State<GuardianSignUpContinue> {
                                 ),
                                 // Spacer(),
                                 TextButton(
-                                  onPressed: () {  },
+                                  onPressed: () {
+                                    Navigator.pushNamed(context,Login.id);
+                                  },
                                   child: Text(
                                     'Login',
                                     style: Theme.of(context)

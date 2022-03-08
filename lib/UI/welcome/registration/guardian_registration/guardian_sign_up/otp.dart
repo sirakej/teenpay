@@ -101,9 +101,7 @@ class _OTPState extends State<OTP> {
                             ),
                             child: ElevatedButton(
                               onPressed: () {
-                                if (formKey.currentState!.validate()) {
                                   Navigator.pushNamed(context, CreatePin.id);
-                                }
                               },
                               child: const Text(
                                 'Verify & Proceed',

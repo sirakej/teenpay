@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stripling_wallet/UI/home_dependents/index.dart';
 import 'package:stripling_wallet/UI/welcome/registration/guardian_registration/guardian_sign_up/guardian_sign_up.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
 import 'components/identity.dart';
@@ -10,6 +11,7 @@ class Identification extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: SizedBox(
           width: SizeConfig.screenWidth,
@@ -81,7 +83,7 @@ class Identification extends StatelessWidget {
                         ),
                         TextButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, '/authentication');
+                            Navigator.pushNamed(context, Index.id);
                           },
                           child: const Identity(
                             identifier: 'Dependant',

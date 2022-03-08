@@ -1,12 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/home_guardians/services/my_dependants/dependants_details.dart';
+import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/manage_activities/manage_activities.dart';
+import 'package:stripling_wallet/UI/home_guardians/index_guardian.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
 import '../transactions.dart';
 import 'add_dependent.dart';
 
 class MyDependants extends StatefulWidget {
+
   static const String id = 'MyDependants';
-  const MyDependants({Key? key}) : super(key: key);
+  final bool collect;
+  const MyDependants({
+    Key? key,
+    required this.collect,
+  }) : super(key: key);
 
   @override
   _MyDependantsState createState() => _MyDependantsState();
@@ -25,7 +33,9 @@ class _MyDependantsState extends State<MyDependants> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               IconButton(
-                  onPressed: (){},
+                  onPressed: (){
+                    Navigator.pushNamed(context, IndexGuardian.id);
+                  },
                   icon: const Icon(
                     Icons.chevron_left,
                     color: Color(0xFF161616),
@@ -49,24 +59,79 @@ class _MyDependantsState extends State<MyDependants> {
                   ),
                   PopupMenuButton(
                       itemBuilder:(context) => [
-                        PopupMenuItem(
-                          onTap:(){},
-                          child: const Text("Manage Activities"),
+                        const PopupMenuItem(
+                          child: Text("Manage Activities"),
                           value: 1,
                         ),
-                        PopupMenuItem(
-                          onTap: (){
-                            Navigator.pushNamed(context, Transactions.id);
-                          },
-
-                          child: const Text("Transactions"),
+                        const PopupMenuItem(
+                          child: Text("Transactions"),
+                          value: 2,
                         )
-                      ]
-                  )
+                      ],
+                    onSelected: (value) {
+                        if(value == 1){
+                          Navigator.push(context, MaterialPageRoute(builder:(context) {
+                            return const ManageActivities();}));
+                        }else{
+                          Navigator.push(context, MaterialPageRoute(builder:(context) {
+                            return const Transactions();}));
+                        }
+                    },
+
+                  ),
+
                 ],
               ),
-              SizedBox(height: SizeConfig.screenHeight!/5,),
-              Center(
+              widget.collect == true? const SizedBox(height: 10,):SizedBox(height: SizeConfig.screenHeight!/5,),
+              widget.collect == true?
+                  Expanded(
+                    child: SingleChildScrollView(
+                      physics: const BouncingScrollPhysics(),
+                      padding: const EdgeInsets.only(left: 16,right: 16),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          GestureDetector(
+                            onTap: (){
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder:(context) {
+                                return const DependantsDetails(dependantsName: "Tobi Tijani", currentBalance: "N412,029.00");
+                                  }
+                                  )
+                              );
+                            },
+                            child: fullDependantsContainer(const Color(0xFFFEEAEA), "Tobi Tijani", "N412,029.00"),
+                          ),
+                          const SizedBox(height: 24,),
+                          GestureDetector(
+                            onTap: (){
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder:(context) {
+                                    return const DependantsDetails(dependantsName: "Hassan Tijani", currentBalance: "N112,029.00");
+                                  }
+                                  )
+                              );
+                            },
+                            child: fullDependantsContainer(const Color(0xFFE4EDFF), "Hassan Tijani", "N112,029.00"),
+                          ),
+                          const SizedBox(height: 24,),
+                          GestureDetector(
+                            onTap: (){
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder:(context) {
+                                    return const DependantsDetails(dependantsName:"Titilope James", currentBalance: "N112,029.00");
+                                  }
+                                  )
+                              );
+                            },
+                            child:  fullDependantsContainer(const Color(0xFFE3FFEE), "Titilope James", "N112,029.00"),
+                          ),
+
+                        ],
+                      ),
+                    ),
+                  )
+                  :Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -95,7 +160,7 @@ class _MyDependantsState extends State<MyDependants> {
                     ),
                   ],
                 ),
-              ),
+              )
             ],
           ),
         ),
@@ -110,6 +175,51 @@ class _MyDependantsState extends State<MyDependants> {
         onPressed: () {
           Navigator.pushNamed(context, AddDependants.id);
         },
+      ),
+    );
+  }
+
+  fullDependantsContainer(Color color,String name, String currentBalance){
+    return Container(
+      padding: const EdgeInsets.only(top: 23,bottom: 13),
+      width: SizeConfig.screenWidth,
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: const BorderRadius.all(Radius.circular(8))
+      ),
+      child: Column(
+        children: [
+          Image.asset("images/profile_image.png",width:29,height:29 ,fit: BoxFit.contain,),
+          Text(
+            name,
+            style:const TextStyle(
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w600,
+                fontSize: 18,
+                color: Color(0xFF161616)
+            ),
+          ),
+          const SizedBox(height: 24,),
+          Text(
+            "current balance",
+            style:TextStyle(
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w400,
+                fontSize: 10,
+                color: const Color(0xFF161616).withOpacity(0.5)
+            ),
+          ),
+          const SizedBox(height: 2,),
+          Text(
+            currentBalance,
+            style:const TextStyle(
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w700,
+                fontSize: 24,
+                color: Color(0xFF161616)
+            ),
+          ),
+        ],
       ),
     );
   }

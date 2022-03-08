@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/manage_activities/manage_activities.dart';
+import 'bottom_nav_guardians/more.dart';
 import 'bottom_nav_guardians/settings_guardian/settings_guardian.dart';
 import 'bottom_nav_guardians/wallet_guardian/wallet_guardians.dart';
 
@@ -34,7 +36,7 @@ class _IndexGuardianState extends State<IndexGuardian> {
         return  const SettingsGuardians();
         break;
       case 4:
-        return  Container();
+        return const More();
         break;
       default:
         return const HomeGuardians();
