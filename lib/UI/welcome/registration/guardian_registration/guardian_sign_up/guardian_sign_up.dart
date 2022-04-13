@@ -84,31 +84,31 @@ class _GuardianSignUpState extends State<GuardianSignUp> {
                             child: _buildSignIn(),
                           ),
                           const SizedBox(height: 46,),
-                          SizedBox(
-                            width: 302,
-                            height: 50,
-                            child: DecoratedBox(
-                              decoration: BoxDecoration(
-                                borderRadius: MyConstants.primaryBorderRadius,
-                                gradient: MyColors.primaryLinearGradient,
-                              ),
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  if (_formKey.currentState!.validate()) {
-                                    Navigator.pushNamed(context, GuardianSignUpContinue.id);
-                                  }
-                                },
-                                child: const Text(
-                                  'Next',
-                                  style:
-                                  TextStyle(
-                                    fontFamily: 'Public Sans',
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 14
+                          MaterialButton(
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                Navigator.pushNamed(context, GuardianSignUpContinue.id);
+                              }
+                            },
+                            child: Container(
+                              width: 302,
+                              height: 50,
+                              decoration:BoxDecoration(
+                                  gradient:LinearGradient(
+                                    begin: Alignment.topRight,
+                                    end: Alignment.bottomLeft,
+                                    colors: [
+                                      const Color(0XFF1F8BB6).withOpacity(1),
+                                      const Color(0xFF335491).withOpacity(1),
+                                    ],
                                   ),
+                                  borderRadius: const BorderRadius.all(Radius.circular(8))
+                              ),
+                              child: const Center(
+                                child: Text(
+                                  'Next',
+                                  style: TextStyle(fontWeight: FontWeight.w600,color: Colors.white),
                                 ),
-                                style: ElevatedButton.styleFrom(
-                                    primary: Colors.transparent, elevation: 10),
                               ),
                             ),
                           ),

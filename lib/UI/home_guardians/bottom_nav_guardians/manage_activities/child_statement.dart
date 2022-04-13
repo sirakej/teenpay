@@ -132,6 +132,7 @@ class _ChildStatementState extends State<ChildStatement> {
               const SizedBox(height: 4),
               SizedBox(
                 width: SizeConfig.screenWidth,
+                height: 50,
                 child: TextFormField(
                     controller: _startDateController,
                     keyboardType: TextInputType.datetime,
@@ -171,6 +172,7 @@ class _ChildStatementState extends State<ChildStatement> {
               const SizedBox(height: 4),
               SizedBox(
                 width: SizeConfig.screenWidth,
+                height: 50,
                 child: TextFormField(
                     controller: _endDateController,
                     keyboardType: TextInputType.datetime,

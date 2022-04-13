@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:stripling_wallet/utils/constants.dart';
 
 class Savings extends StatefulWidget {
   const Savings({Key? key}) : super(key: key);
@@ -113,11 +115,11 @@ class _SavingsState extends State<Savings> {
                 Text(
                   name,
                   style:
-                  const TextStyle(
+                  TextStyle(
                       fontFamily: 'Public Sans',
                       fontWeight: FontWeight.w600,
                       fontSize: 12,
-                      color: Color(0xFF161616)
+                      color:Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                   ),
                 ),
                 const SizedBox(height: 9,),
@@ -144,11 +146,11 @@ class _SavingsState extends State<Savings> {
               Text(
                 money,
                 style:
-                const TextStyle(
+               TextStyle(
                     fontFamily: 'Public Sans',
                     fontWeight: FontWeight.w600,
                     fontSize: 12,
-                    color: Color(0xFF161616)
+                    color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                 ),
               ),
               const SizedBox(height: 9,),

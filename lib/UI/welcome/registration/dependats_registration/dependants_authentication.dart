@@ -1,31 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:stripling_wallet/UI/home_guardians/index_guardian.dart';
-import 'package:stripling_wallet/UI/welcome/registration/forgot_password/reset_password.dart';
+import 'package:stripling_wallet/UI/welcome/registration/dependats_registration/dependants_pin.dart';
 import 'package:stripling_wallet/utils/constants.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
 
-class Login extends StatefulWidget {
-  static const String id = 'Login';
-  const Login({Key? key}) : super(key: key);
+class DependantsAuthentication extends StatefulWidget {
+  static const String id = 'DependantsAuthentication';
+  const DependantsAuthentication({Key? key}) : super(key: key);
 
   @override
-  _LoginState createState() => _LoginState();
+  _DependantsAuthenticationState createState() => _DependantsAuthenticationState();
 }
 
-class _LoginState extends State<Login> {
+class _DependantsAuthenticationState extends State<DependantsAuthentication> {
   /// A [GlobalKey] to hold the form state of my form widget for form validation
   final _formKey = GlobalKey<FormState>();
 
   /// A [TextEditingController] to control the input text for the user's password
-  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _childIdController = TextEditingController();
 
   /// A [TextEditingController] to control the input text for the user's password
-  final TextEditingController _confirmPinController = TextEditingController();
-
-  /// A boolean variable to hold whether the password should be shown or hidden
-  bool _obscureTextLogin = true;
-
-  String currentText = '';
+  final TextEditingController _phoneNumberController = TextEditingController();
 
   final formKey = GlobalKey<FormState>();
   @override
@@ -55,11 +49,11 @@ class _LoginState extends State<Login> {
                       size: 39,
                     )
                 ),
-                Center(child: Image.asset("images/logo.png",width: 59.05,height:55.46 ,fit: BoxFit.contain,)),
                 const SizedBox(height: 24.54),
-                const Center(
-                  child:Text(
-                    'Login to TeenPay',
+                const Padding(
+                  padding: EdgeInsets.only(left: 16,right: 16),
+                  child: Text(
+                    'Authentication',
                     style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.w700,
@@ -80,7 +74,7 @@ class _LoginState extends State<Login> {
                         const SizedBox(height: 20),
                         MaterialButton(
                           onPressed:(){
-                            Navigator.pushNamed(context, IndexGuardian.id);
+                            Navigator.pushNamed(context, DependantsPin.id);
                           },
                           child: Container(
                             width: 302,
@@ -98,26 +92,48 @@ class _LoginState extends State<Login> {
                             ),
                             child: const Center(
                               child: Text(
-                                'Login',
-                                style: TextStyle(fontWeight: FontWeight.w600,color: Colors.white),
+                                'Submit',
+                                style: TextStyle(
+                                    fontFamily: 'Public Sans',
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white
+                                ),
                               ),
                             ),
                           ),
                         ),
                         const SizedBox(height: 14,),
-                        TextButton(
-                          onPressed: (){
-                            Navigator.pushNamed(context, ResetPassword.id);
-                          },
-                          child: const Text(
-                            'Forgot Password',
-                            style:
-                            TextStyle(
-                                fontWeight: FontWeight.w700,
-                                fontSize: 14,
-                                fontFamily: 'Public Sans',
-                              color:Color(0xFF161616),
-                            ),
+                        Center(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text(
+                                "Don’t have an ID?",
+                                textAlign: TextAlign.start,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontFamily: 'Public Sans',
+                                  fontSize: 12,
+                                  color: Color(0xFF161616),
+                                ),
+                              ),
+                              TextButton(
+                                onPressed: (){
+                                  //Navigator.pushNamed(context, ResetPassword.id);
+                                },
+                                child: const Text(
+                                  'Invite Parent',
+                                  style:
+                                  TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 14,
+                                    fontFamily: 'Public Sans',
+                                    color:Color(0xFF1F8BB6),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         )
                       ],
@@ -142,7 +158,7 @@ class _LoginState extends State<Login> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                "Email",
+                "Enter Child’s ID ",
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
@@ -155,22 +171,30 @@ class _LoginState extends State<Login> {
               SizedBox(
                 width: SizeConfig.screenWidth,
                 child: TextFormField(
-                    controller: _emailController,
-                    keyboardType: TextInputType.emailAddress,
-                    textInputAction: TextInputAction.next,
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return 'Enter your email';
-                      }
-                      return null;
-                    },
-                    style: const TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
+                  controller: _childIdController,
+                  keyboardType: TextInputType.number,
+                  textInputAction: TextInputAction.next,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Enter child\'s id ';
+                    }
+                    return null;
+                  },
+                  style: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    fontFamily: 'Public Sans',
+                    color: Color(0xFF161616),
+                  ),
+                  decoration: MyConstants.formInputDecoration.copyWith(
+                    hintText: "12345qwerty",
+                    hintStyle:  TextStyle(
+                      fontWeight: FontWeight.w400,
                       fontFamily: 'Public Sans',
-                      color: Color(0xFF161616),
+                      fontSize: 14,
+                      color: const Color(0xFF151920).withOpacity(0.8),
                     ),
-                  decoration: MyConstants.formInputDecoration,
+                  ),
                 ),
               ),
             ],
@@ -180,7 +204,7 @@ class _LoginState extends State<Login> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                "Password",
+                "Phone Number",
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
@@ -193,13 +217,11 @@ class _LoginState extends State<Login> {
               SizedBox(
                 width: SizeConfig.screenWidth,
                 child: TextFormField(
-                    obscureText: _obscureTextLogin,
-                    controller: _confirmPinController,
-                    keyboardType: TextInputType.visiblePassword,
+                    keyboardType: TextInputType.number,
                     textInputAction: TextInputAction.next,
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'Enter your password';
+                        return 'Enter phone number';
                       }
                       return null;
                     },
@@ -209,31 +231,7 @@ class _LoginState extends State<Login> {
                       fontFamily: 'Public Sans',
                       color: Color(0xFF161616),
                     ),
-                    decoration:MyConstants.formInputDecoration.copyWith(
-                        suffixIcon: TextButton(
-                          onPressed:_toggleLogin,
-                          child:_obscureTextLogin ?
-                          const Text(
-                            "show",
-                            textAlign: TextAlign.start,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontFamily: 'Public Sans',
-                              fontSize: 14,
-                              color: Color(0xFF042538),
-                            ),
-                          ): const Text(
-                            "Hide",
-                            textAlign: TextAlign.start,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontFamily: 'Public Sans',
-                              fontSize: 14,
-                              color: Color(0xFF042538),
-                            ),
-                          ),
-                        )
-                    )
+                    decoration:MyConstants.formInputDecoration
                 ),
               ),
             ],
@@ -242,11 +240,5 @@ class _LoginState extends State<Login> {
       ),
     );
   }
-  /// A function to toggle if to show the password or not by
-  /// changing [_obscureTextLogin] value
-  void _toggleLogin() {
-    setState(() {
-      _obscureTextLogin = !_obscureTextLogin;
-    });
-  }
+
 }

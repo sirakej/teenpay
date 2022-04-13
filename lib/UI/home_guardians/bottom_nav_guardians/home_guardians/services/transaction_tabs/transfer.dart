@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:stripling_wallet/utils/constants.dart';
 
 class Transfer extends StatefulWidget {
   const Transfer({Key? key}) : super(key: key);
@@ -113,11 +115,11 @@ class _TransferState extends State<Transfer> {
                 Text(
                   name,
                   style:
-                  const TextStyle(
-                      fontFamily: 'Public Sans',
-                      fontWeight: FontWeight.w600,
-                      fontSize: 12,
-                      color: Color(0xFF161616)
+                  TextStyle(
+                    fontFamily: 'Public Sans',
+                    fontWeight: FontWeight.w600,
+                    fontSize: 12,
+                    color:Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                   ),
                 ),
                 const SizedBox(height: 9,),
@@ -144,11 +146,11 @@ class _TransferState extends State<Transfer> {
               Text(
                 money,
                 style:
-                const TextStyle(
-                    fontFamily: 'Public Sans',
-                    fontWeight: FontWeight.w600,
-                    fontSize: 12,
-                    color: Color(0xFF161616)
+                TextStyle(
+                  fontFamily: 'Public Sans',
+                  fontWeight: FontWeight.w600,
+                  fontSize: 12,
+                  color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                 ),
               ),
               const SizedBox(height: 9,),

@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:stripling_wallet/UI/welcome/registration/login.dart';
-import 'package:stripling_wallet/utils/colors.dart';
 import 'package:stripling_wallet/utils/constants.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
 
-class CreatePin extends StatefulWidget {
-  static const String id = 'CreatePin';
-  const CreatePin({Key? key}) : super(key: key);
+class LogInPin extends StatefulWidget {
+  static const String id = 'LogInPin';
+  const LogInPin({Key? key}) : super(key: key);
 
   @override
-  _CreatePinState createState() => _CreatePinState();
+  _LogInPinState createState() => _LogInPinState();
 }
 
-class _CreatePinState extends State<CreatePin> {
+class _LogInPinState extends State<LogInPin> {
   /// A [GlobalKey] to hold the form state of my form widget for form validation
   final _formKey = GlobalKey<FormState>();
 
@@ -39,6 +38,7 @@ class _CreatePinState extends State<CreatePin> {
         }
       },
       child: Scaffold(
+        backgroundColor: Colors.white,
         body: SafeArea(
           child: SizedBox(
             width: SizeConfig.screenWidth,
@@ -58,7 +58,7 @@ class _CreatePinState extends State<CreatePin> {
                 const Padding(
                   padding: EdgeInsets.only(left: 16,right: 16),
                   child: Text(
-                    'Create Transactional PIN',
+                    'Set Login PIN',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 24,
@@ -272,124 +272,124 @@ class _CreatePinState extends State<CreatePin> {
   // ignore: non_constant_identifier_names
   _ShowModalSheet(){
     showModalBottomSheet(
-      backgroundColor: Colors.transparent,
-      isScrollControlled:true,
-      isDismissible: false,
-      context: context,
-      builder: (context){
-        return Container(
-          width: SizeConfig.screenWidth,
-          decoration: const BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(topLeft: Radius.circular(20),topRight:Radius.circular(20) ),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const SizedBox(height: 22,),
-              Center(
-                child: Container(
-                  height: 6,
-                  width: 100,
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF000000).withOpacity(0.62),
-                    borderRadius: const BorderRadius.all(Radius.circular(20)),
+        backgroundColor: Colors.transparent,
+        isScrollControlled:true,
+        isDismissible: false,
+        context: context,
+        builder: (context){
+          return Container(
+            width: SizeConfig.screenWidth,
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(topLeft: Radius.circular(20),topRight:Radius.circular(20) ),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const SizedBox(height: 22,),
+                Center(
+                  child: Container(
+                    height: 6,
+                    width: 100,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF000000).withOpacity(0.62),
+                      borderRadius: const BorderRadius.all(Radius.circular(20)),
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 2,),
-              Padding(
-                padding: const EdgeInsets.only(right: 30),
-                child: InkWell(
-                  onTap: (){
-                    Navigator.pop(context);
-                  },
-                    child: Image.asset("images/X.png",width:24 ,height: 24,fit: BoxFit.contain,)
+                const SizedBox(height: 2,),
+                Padding(
+                  padding: const EdgeInsets.only(right: 30),
+                  child: InkWell(
+                      onTap: (){
+                        Navigator.pop(context);
+                      },
+                      child: Image.asset("images/X.png",width:24 ,height: 24,fit: BoxFit.contain,)
+                  ),
                 ),
-              ),
-              Center(
-                child: Column(
-                  children: [
-                    const SizedBox(height: 28,),
-                    const Text(
-                      'Creation Completed',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontFamily: 'Public Sans',
-                        fontWeight: FontWeight.w600,
-                        color: Color(0xFF161616),
-                      ),
-                    ),
-                    const SizedBox(height:45,),
-                    Container(
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                        color: const Color(0xFF18873D).withOpacity(0.2),
-                        shape: BoxShape.circle,
-                      ),
-                      child: const Center(
-                        child: Icon(
-                          Icons.check,
-                          size: 22,
-                          color: Color(0xFF18873D),
+                Center(
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 28,),
+                      const Text(
+                        'Creation Completed',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontFamily: 'Public Sans',
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xFF161616),
                         ),
                       ),
-                    ),
-                    const SizedBox(height: 28,),
-                    Text(
-                      'Account successfuly created Keep your\ndetails safe always',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontFamily: 'Public Sans',
-                        fontWeight: FontWeight.w600,
-                        color: const Color(0xFF151920).withOpacity(0.8),
-                      ),
-                    ),
-                    const SizedBox(height: 38,),
-                    InkWell(
-                      onTap:(){
-                          Navigator.pushNamed(context, Login.id);
-
-                      },
-                      child:Container(
-                        width: 151,
+                      const SizedBox(height:45,),
+                      Container(
                         height: 50,
-                        decoration:BoxDecoration(
-                            color: Colors.transparent,
-                            border:Border.all(
-                                color: const Color(0xFF335491),
-                                width: 1
-                            ),
-                            borderRadius: const BorderRadius.all(Radius.circular(8))
+                        width: 50,
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF18873D).withOpacity(0.2),
+                          shape: BoxShape.circle,
                         ),
                         child: const Center(
-                          child: Text(
-                            'Login',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontFamily: 'Public Sans',
-                              fontWeight: FontWeight.w600,
-                              color: Color(0xFF335491),
+                          child: Icon(
+                            Icons.check,
+                            size: 22,
+                            color: Color(0xFF18873D),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 28,),
+                      Text(
+                        'Account successfuly created Keep your\ndetails safe always',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontFamily: 'Public Sans',
+                          fontWeight: FontWeight.w600,
+                          color: const Color(0xFF151920).withOpacity(0.8),
+                        ),
+                      ),
+                      const SizedBox(height: 38,),
+                      InkWell(
+                        onTap:(){
+                          Navigator.pushNamed(context, Login.id);
+
+                        },
+                        child:Container(
+                          width: 151,
+                          height: 50,
+                          decoration:BoxDecoration(
+                              color: Colors.transparent,
+                              border:Border.all(
+                                  color: const Color(0xFF335491),
+                                  width: 1
+                              ),
+                              borderRadius: const BorderRadius.all(Radius.circular(8))
+                          ),
+                          child: const Center(
+                            child: Text(
+                              'Done',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontFamily: 'Public Sans',
+                                fontWeight: FontWeight.w600,
+                                color: Color(0xFF335491),
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                    const SizedBox(height:82)
-                  ],
+                      const SizedBox(height:82)
+                    ],
+                  ),
                 ),
-              ),
 
-            ],
-          ),
-        );
-      }
+              ],
+            ),
+          );
+        }
     );
   }
 }

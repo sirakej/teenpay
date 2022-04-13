@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:stripling_wallet/utils/constants.dart';
 
 class Identity extends StatelessWidget {
   const Identity({Key? key, required this.identifier, required this.imageroute})
@@ -14,6 +16,7 @@ class Identity extends StatelessWidget {
           height: 94,
           width: 102,
           child: Card(
+            color: Get.isDarkMode?const Color(0xFF211F32):const Color(0xFFFFFFFF),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20.0),
             ),
@@ -26,8 +29,8 @@ class Identity extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 8.0),
           child: Text(
             identifier,
-            style: const TextStyle(
-                color: Color(0xFF161616),
+            style:TextStyle(
+                color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                 fontWeight: FontWeight.w600,
                 fontFamily: 'Public Sans',
                 fontSize: 16

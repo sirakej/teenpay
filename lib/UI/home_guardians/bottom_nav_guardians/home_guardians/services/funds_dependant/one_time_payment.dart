@@ -143,6 +143,7 @@ class _OneTimePaymentState extends State<OneTimePayment> {
               const SizedBox(height: 10),
               SizedBox(
                 width: SizeConfig.screenWidth,
+                height: 50,
                 child: TextFormField(
                     controller: _amountController,
                     keyboardType: TextInputType.name,
@@ -192,6 +193,7 @@ class _OneTimePaymentState extends State<OneTimePayment> {
               const SizedBox(height: 10),
               SizedBox(
                 width: SizeConfig.screenWidth,
+                height: 50,
                 child: TextFormField(
                     controller: _amountController,
                     keyboardType: TextInputType.name,
@@ -309,6 +311,7 @@ class _OneTimePaymentState extends State<OneTimePayment> {
               const SizedBox(height: 10),
               SizedBox(
                 width: SizeConfig.screenWidth,
+                height: 50,
                 child: TextFormField(
                     controller: _amountController,
                     keyboardType: TextInputType.multiline,

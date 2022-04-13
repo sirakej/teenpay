@@ -143,6 +143,7 @@ class _TargetSavingsState extends State<TargetSavings> {
               ),
               const SizedBox(height: 10),
               SizedBox(
+                height: 50,
                 width: SizeConfig.screenWidth,
                 child: TextFormField(
                   controller: _targetTitleController,
@@ -180,7 +181,6 @@ class _TargetSavingsState extends State<TargetSavings> {
                 ),
               ),
               const SizedBox(height: 4,),
-
               InkWell(
                 highlightColor: Colors.transparent,
                 onTap: (){},
@@ -240,6 +240,7 @@ class _TargetSavingsState extends State<TargetSavings> {
               const SizedBox(height: 10),
               SizedBox(
                 width: SizeConfig.screenWidth,
+                height: 50,
                 child: TextFormField(
                     controller: _overallAmountController,
                     keyboardType: TextInputType.number,
@@ -324,5 +325,4 @@ class _TargetSavingsState extends State<TargetSavings> {
       ),
     );
   }
-
 }

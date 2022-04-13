@@ -256,6 +256,7 @@ class _AccountLimitState extends State<AccountLimit> {
               const SizedBox(height: 10),
               SizedBox(
                 width: SizeConfig.screenWidth,
+                height: 50,
                 child: TextFormField(
                     controller: _userIdController,
                     keyboardType: TextInputType.number,
@@ -304,6 +305,7 @@ class _AccountLimitState extends State<AccountLimit> {
               const SizedBox(height: 10),
               SizedBox(
                 width: SizeConfig.screenWidth,
+                height: 50,
                 child: TextFormField(
                     controller: _fullNameController,
                     keyboardType: TextInputType.name,
@@ -352,6 +354,7 @@ class _AccountLimitState extends State<AccountLimit> {
               const SizedBox(height: 10),
               SizedBox(
                 width: SizeConfig.screenWidth,
+                height: 50,
                 child: TextFormField(
                     controller: _phoneNumberController,
                     keyboardType: TextInputType.phone,
@@ -400,6 +403,7 @@ class _AccountLimitState extends State<AccountLimit> {
               const SizedBox(height: 10),
               SizedBox(
                 width: SizeConfig.screenWidth,
+                height: 50,
                 child: TextFormField(
                     controller: _emailAddressController,
                     keyboardType: TextInputType.emailAddress,
@@ -448,6 +452,7 @@ class _AccountLimitState extends State<AccountLimit> {
               const SizedBox(height: 10),
               SizedBox(
                 width: SizeConfig.screenWidth,
+                height: 50,
                 child: TextFormField(
                     controller: _dateOfBirthController,
                     keyboardType: TextInputType.name,

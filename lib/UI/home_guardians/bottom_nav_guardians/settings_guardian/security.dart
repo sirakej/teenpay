@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:stripling_wallet/utils/constants.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
 
 
@@ -25,20 +27,20 @@ class _SecurityState extends State<Security> {
             children: [
               IconButton(
                   onPressed: (){},
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.chevron_left,
-                    color: Color(0xFF161616),
+                    color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                     size: 39,
                   )
               ),
               const SizedBox(height: 5,),
-              const Padding(
-                padding: EdgeInsets.only(left: 16,right: 16),
+              Padding(
+                padding: const EdgeInsets.only(left: 16,right: 16),
                 child: Text(
                   'Security',
                   style:
                   TextStyle(
-                      color: Color(0xFF161616),
+                      color:Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                       fontFamily: 'Public sans',
                       fontWeight: FontWeight.w600,
                       fontSize: 24
@@ -88,11 +90,11 @@ class _SecurityState extends State<Security> {
                 Text(
                   name,
                   style:
-                  const TextStyle(
+                  TextStyle(
                       fontFamily: 'Public Sans',
                       fontWeight: FontWeight.w600,
                       fontSize: 14,
-                      color: Color(0xFF161616)
+                      color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                   ),
                 ),
                 const SizedBox(height: 9,),

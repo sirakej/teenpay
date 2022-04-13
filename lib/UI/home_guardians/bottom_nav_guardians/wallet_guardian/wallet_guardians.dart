@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/home_guardians/services/transactions.dart';
 import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/wallet_guardian/fund_wallet.dart';
+import 'package:stripling_wallet/utils/constants.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
 
 class WalletGuardians extends StatefulWidget {
@@ -17,7 +19,7 @@ class _WalletGuardiansState extends State<WalletGuardians> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Get.isDarkMode?AppColors.darkBackground:AppColors.lightBackground,
       body: SafeArea(
         child: Container(
           width: SizeConfig.screenWidth,
@@ -28,11 +30,11 @@ class _WalletGuardiansState extends State<WalletGuardians> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text(
+                   Text(
                     'Wallet',
                     style:
                     TextStyle(
-                        color: Color(0xFF161616),
+                        color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w600,
                         fontSize: 18
@@ -159,14 +161,14 @@ class _WalletGuardiansState extends State<WalletGuardians> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children:[
-                  const Text(
+                  Text(
                     'Transactions',
                     style:
                     TextStyle(
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w600,
                         fontSize: 18,
-                        color: Color(0xFF161616)
+                        color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                     ),
                   ),
                   TextButton(
@@ -249,11 +251,11 @@ class _WalletGuardiansState extends State<WalletGuardians> {
                 Text(
                   name,
                   style:
-                  const TextStyle(
+                  TextStyle(
                       fontFamily: 'Public Sans',
                       fontWeight: FontWeight.w600,
                       fontSize: 12,
-                      color: Color(0xFF161616)
+                      color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                   ),
                 ),
                 const SizedBox(height: 9,),
@@ -280,11 +282,11 @@ class _WalletGuardiansState extends State<WalletGuardians> {
               Text(
                 money,
                 style:
-                const TextStyle(
+                 TextStyle(
                     fontFamily: 'Public Sans',
                     fontWeight: FontWeight.w600,
                     fontSize: 12,
-                    color: Color(0xFF161616)
+                    color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                 ),
               ),
               const SizedBox(height: 9,),

@@ -133,6 +133,7 @@ class _SpendLimitState extends State<SpendLimit> {
               const SizedBox(height: 4),
               SizedBox(
                 width: SizeConfig.screenWidth,
+                height: 50,
                 child: TextFormField(
                     controller: _dailyLimitController,
                     keyboardType: TextInputType.number,
@@ -172,6 +173,7 @@ class _SpendLimitState extends State<SpendLimit> {
               const SizedBox(height: 4),
               SizedBox(
                 width: SizeConfig.screenWidth,
+                height: 50,
                 child: TextFormField(
                     controller: _monthlyLimitController,
                     keyboardType: TextInputType.number,

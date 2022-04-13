@@ -146,6 +146,7 @@ class _AddBudgetDependentsState extends State<AddBudgetDependents> {
               const SizedBox(height: 10),
               SizedBox(
                 width: SizeConfig.screenWidth,
+                height: 50,
                 child: TextFormField(
                     controller: _budgetTitleController,
                     keyboardType:TextInputType.name ,
@@ -184,6 +185,7 @@ class _AddBudgetDependentsState extends State<AddBudgetDependents> {
               const SizedBox(height: 10),
               SizedBox(
                 width: SizeConfig.screenWidth,
+                height: 50,
                 child: TextFormField(
                     controller: _totalExpensesController,
                     keyboardType: TextInputType.number,

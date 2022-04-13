@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:stripling_wallet/UI/home_dependents/bottom_nav/more_dependents/budget_dependents.dart';
 import 'package:stripling_wallet/UI/home_dependents/bottom_nav/more_dependents/budget_money_container.dart';
 import 'package:stripling_wallet/utils/constants.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
@@ -164,6 +163,7 @@ class _AddTransactionState extends State<AddTransaction> {
               const SizedBox(height: 10),
               SizedBox(
                 width: SizeConfig.screenWidth,
+                height: 50,
                 child: TextFormField(
                     controller: _transactionTitleController,
                     keyboardType:TextInputType.name ,
@@ -202,6 +202,7 @@ class _AddTransactionState extends State<AddTransaction> {
               const SizedBox(height: 10),
               SizedBox(
                 width: SizeConfig.screenWidth,
+                height: 50,
                 child: TextFormField(
                     controller: _transactionAmountController,
                     keyboardType: TextInputType.number,

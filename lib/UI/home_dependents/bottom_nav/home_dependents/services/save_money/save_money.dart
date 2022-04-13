@@ -63,9 +63,11 @@ class _SaveMoneyState extends State<SaveMoney> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children:[
-                    saveMoneyContainer(),
-                    saveMoneyContainer(),
-                    saveMoneyContainer(),
+                      saveMoneyContainer(),
+                      const SizedBox(height: 24,),
+                      saveMoneyContainer(),
+                      const SizedBox(height: 24,),
+                      saveMoneyContainer(),
 
                     ],
                   ),
@@ -118,83 +120,101 @@ class _SaveMoneyState extends State<SaveMoney> {
       child: Container(
         width: SizeConfig.screenWidth,
         height: 164,
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.all(Radius.circular(10))
+          borderRadius: const BorderRadius.all(Radius.circular(10)),
+          boxShadow: [
+            BoxShadow(
+              spreadRadius: 4,
+              blurRadius: 20,
+              offset: const Offset(0,8),
+              color: const Color(0xFFAFAFAF).withOpacity(0.1)
+            )
+          ]
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text(
-                  'Money for new phone',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: 14,
-                      fontFamily: 'Public Sans',
-                      fontWeight: FontWeight.w600,
-                      color: Color(0xFF161616)
-                  ),
-                ),
-                PopupMenuButton(
-                  color: const Color(0xFF444444),
-                  itemBuilder:(context) => [
-                    const PopupMenuItem(
-                      child: Text("Manage Activities"),
-                      value: 1,
+            Padding(
+              padding: const EdgeInsets.only(left: 25),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    'Money for new phone',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 14,
+                        fontFamily: 'Public Sans',
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xFF161616)
                     ),
-                    const PopupMenuItem(
-                      child: Text("Transactions"),
-                      value: 2,
-                    )
-                  ],
+                  ),
+                  PopupMenuButton(
+                    itemBuilder:(context) => [
+                      const PopupMenuItem(
+                        child: Text("Manage Activities"),
+                        value: 1,
+                      ),
+                      const PopupMenuItem(
+                        child: Text("Transactions"),
+                        value: 2,
+                      )
+                    ],
 
-                ),
-              ],
-            ),
-            const Text(
-              'N10,000.00',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  fontSize: 18,
-                  fontFamily: 'Public Sans',
-                  fontWeight: FontWeight.w700,
-                  color: Color(0xFF161616)
+                  ),
+                ],
               ),
             ),
-            const SizedBox(height: 24,),
-            LinearProgressIndicator(
-              value: 10,
-              color: const Color(0xFF18873D),
-              backgroundColor: const Color(0xFF000000).withOpacity(0.2),
-            ),
-            const SizedBox(height: 4,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  '23.12.2021',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: 10,
-                      fontFamily: 'Public Sans',
-                      fontWeight: FontWeight.w500,
-                      color: const Color(0xFF151920).withOpacity(0.8)
+            Padding(
+              padding: const EdgeInsets.only(left: 25,right: 25),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'N10,000.00',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontFamily: 'Public Sans',
+                        fontWeight: FontWeight.w700,
+                        color: Color(0xFF161616)
+                    ),
                   ),
-                ),
-                Text(
-                  '40%',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: 10,
-                      fontFamily: 'Public Sans',
-                      fontWeight: FontWeight.w500,
-                      color: const Color(0xFF151920).withOpacity(0.8)
+                  const SizedBox(height: 24,),
+                  LinearProgressIndicator(
+                    value: 10,
+                    color: const Color(0xFF18873D),
+                    backgroundColor: const Color(0xFF000000).withOpacity(0.2),
                   ),
-                ),
-              ],
+                  const SizedBox(height: 4,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        '23.12.2021',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 10,
+                            fontFamily: 'Public Sans',
+                            fontWeight: FontWeight.w500,
+                            color: const Color(0xFF151920).withOpacity(0.8)
+                        ),
+                      ),
+                      Text(
+                        '40%',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 10,
+                            fontFamily: 'Public Sans',
+                            fontWeight: FontWeight.w500,
+                            color: const Color(0xFF151920).withOpacity(0.8)
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             )
           ],
         ),

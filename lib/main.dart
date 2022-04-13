@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:stripling_wallet/UI/home_dependents/bottom_nav/more_dependents/add_transaction.dart';
 import 'package:stripling_wallet/UI/home_dependents/bottom_nav/more_dependents/budget_dependents.dart';
 import 'package:stripling_wallet/UI/home_dependents/bottom_nav/more_dependents/budget_money_container.dart';
@@ -46,7 +48,6 @@ import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/wallet_g
 import 'package:stripling_wallet/UI/home_guardians/index_guardian.dart';
 import 'package:stripling_wallet/UI/welcome/registration/forgot_password/sent_instructions.dart';
 import 'package:stripling_wallet/UI/welcome/registration/login.dart';
-import 'package:stripling_wallet/utils/themes.dart';
 import 'UI/home_guardians/bottom_nav_guardians/home_guardians/services/transactions.dart';
 import 'UI/home_guardians/bottom_nav_guardians/manage_activities/physical_card.dart';
 import 'UI/home_guardians/bottom_nav_guardians/settings_guardian/legal.dart';
@@ -58,8 +59,10 @@ import 'UI/home_guardians/bottom_nav_guardians/wallet_guardian/add_wallet/add_ba
 import 'UI/home_guardians/bottom_nav_guardians/wallet_guardian/add_wallet/add_debit_card.dart';
 import 'UI/home_guardians/bottom_nav_guardians/wallet_guardian/add_wallet/add_ussd.dart';
 import 'UI/home_guardians/bottom_nav_guardians/wallet_guardian/debit_card.dart';
-import 'UI/welcome/registration/dependats_registration/authentication.dart';
+import 'UI/welcome/registration/dependats_registration/dependants_authentication.dart';
 import 'UI/welcome/identification.dart';
+import 'UI/welcome/registration/dependats_registration/dependants_pin.dart';
+import 'UI/welcome/registration/dependats_registration/log_in_pin.dart';
 import 'UI/welcome/registration/forgot_password/create_new_password.dart';
 import 'UI/welcome/registration/forgot_password/reset_password.dart';
 import 'UI/welcome/registration/guardian_registration/guardian_sign_up/create_pin.dart';
@@ -67,34 +70,38 @@ import 'UI/welcome/registration/guardian_registration/guardian_sign_up/guardian_
 import 'UI/welcome/registration/guardian_registration/guardian_sign_up/guardian_sign_up_continue.dart';
 import 'UI/welcome/registration/guardian_registration/guardian_sign_up/otp.dart';
 import 'UI/welcome/splashscreen.dart';
+import 'controller/app_theme.dart';
+import 'controller/theme_controller.dart';
 
-void main() {
+void main() async {
   // Make application portrait only
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
-  runApp(const MyApp());
+  await GetStorage.init();
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
+  MyApp({Key? key}) : super(key: key);
+  final themeController = Get.put(ThemeController());
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-
+    return GetMaterialApp(
+      theme: Themes.lightTheme,
+      darkTheme: Themes.darkTheme,
+      themeMode: themeController.theme,
       debugShowCheckedModeBanner: false,
       title: 'Stripling Wallet',
-      theme: MyThemes.lightTheme,
       // home: const SplashScreen(),
       initialRoute: '/',
       routes: {
         '/': (context) => const SplashScreen(),
         NewBoarding.id:(context)=> const NewBoarding(),
-        '/authentication': (context) => const Authentication(),
+        DependantsAuthentication.id:(context)=> const DependantsAuthentication(),
         '/identification': (context) => const Identification(),
         Login.id:(context) => const Login(),
         GuardianSignUp.id:(context) => const GuardianSignUp(),
@@ -106,7 +113,7 @@ class MyApp extends StatelessWidget {
         CreateNewPassword.id:(context) => const CreateNewPassword(),
         //ParentInterface
         IndexGuardian.id:(context) => const IndexGuardian(),
-        FundsWallet.id:(context)=> const FundsWallet(),
+        FundsWallet.id:(context)=> const FundsWallet(), //
         MyDependants.id:(context)=> const MyDependants(collect: false,),
         AddDependants.id:(context)=> const AddDependants(),
         AddDependantsContinue.id:(context)=> const AddDependantsContinue(),
@@ -117,7 +124,7 @@ class MyApp extends StatelessWidget {
         AddUssd.id:(context)=> const AddUssd(),
         Legal.id:(context)=> const Legal(),
         Security.id:(context)=> const Security(),
-        Customization.id:(context)=> const Customization(),
+        Customization.id:(context)=> Customization(),
         UpgradeAccount.id:(context)=> const UpgradeAccount(),
         IdDocument.id:(context)=> const IdDocument(),
         FundsDependant.id:(context)=> const FundsDependant(),
@@ -133,6 +140,7 @@ class MyApp extends StatelessWidget {
         DependantsRequest.id:(context)=> const DependantsRequest(),
         Notifications.id:(context)=> const Notifications(),
         AcceptConfirmation.id:(context)=> const AcceptConfirmation(),
+
         //ChildInterface
         Index.id:(context) => const Index(),
         AirtimeAndData.id:(context)=> const AirtimeAndData(),
@@ -143,7 +151,7 @@ class MyApp extends StatelessWidget {
         FixedSavings.id:(context)=> const FixedSavings(),
         CreateFixedSavings.id:(context)=> const CreateFixedSavings(),
         SavingsSelect.id:(context)=> const SavingsSelect(),
-        TargetSavings.id:(context)=> const TargetSavings(),
+        TargetSavings.id:(context)=> const TargetSavings(), //1
         TargetSavingsTwo.id:(context)=> const TargetSavingsTwo(),
         TargetConfirmation.id:(context)=> const TargetConfirmation(),
         SendMoney.id:(context)=> const SendMoney(),
@@ -159,7 +167,9 @@ class MyApp extends StatelessWidget {
         BudgetDependents.id:(context)=> const BudgetDependents(populate: false),
         AddBudgetDependents.id:(context)=> const AddBudgetDependents(),
         BudgetMoneyContainer.id:(context)=> const BudgetMoneyContainer(),
-        AddTransaction.id:(context)=> const AddTransaction()
+        AddTransaction.id:(context)=> const AddTransaction(),
+        DependantsPin.id:(context)=> const DependantsPin(),
+        LogInPin.id:(context)=> const LogInPin(),
       },
     );
   }

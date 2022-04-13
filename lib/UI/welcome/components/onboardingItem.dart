@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import 'package:stripling_wallet/utils/constants.dart';
 
 class OnBoardingItem extends StatelessWidget{
   final String lottiePath;
@@ -39,11 +41,11 @@ class OnBoardingItem extends StatelessWidget{
         Text(
           body,
           textAlign: TextAlign.center,
-          style:const TextStyle(
+          style:TextStyle(
               fontFamily: 'Public Sans',
               fontWeight: FontWeight.w400,
               fontSize: 14,
-              color: Color(0xFF161616)
+              color:Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
           ),
         ),
       ],

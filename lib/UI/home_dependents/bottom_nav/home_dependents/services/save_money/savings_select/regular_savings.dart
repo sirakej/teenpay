@@ -144,6 +144,7 @@ class _RegularSavingsState extends State<RegularSavings> {
               const SizedBox(height: 10),
               SizedBox(
                 width: SizeConfig.screenWidth,
+                height: 50,
                 child: TextFormField(
                     keyboardType:TextInputType.text,
                     controller: _commentController,
@@ -182,6 +183,7 @@ class _RegularSavingsState extends State<RegularSavings> {
               const SizedBox(height: 10),
               SizedBox(
                 width: SizeConfig.screenWidth,
+                height: 50,
                 child: TextFormField(
                   keyboardType:TextInputType.number,
                     controller: _amountController,

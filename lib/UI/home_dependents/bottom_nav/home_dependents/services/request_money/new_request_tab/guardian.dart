@@ -102,6 +102,7 @@ class _GuardianState extends State<Guardian> {
               const SizedBox(height: 10),
               SizedBox(
                 width: SizeConfig.screenWidth,
+                height: 50,
                 child: TextFormField(
                     keyboardType:TextInputType.text,
                     controller: _requestTitleController,
@@ -151,6 +152,7 @@ class _GuardianState extends State<Guardian> {
               const SizedBox(height: 10),
               SizedBox(
                 width: SizeConfig.screenWidth,
+                height: 50,
                 child: TextFormField(
                     keyboardType:TextInputType.number,
                     controller: _amountController,
@@ -200,6 +202,7 @@ class _GuardianState extends State<Guardian> {
               const SizedBox(height: 10),
               SizedBox(
                 width: SizeConfig.screenWidth,
+                height: 50,
                 child: TextFormField(
                     controller: _descriptionController,
                     keyboardType: TextInputType.multiline,

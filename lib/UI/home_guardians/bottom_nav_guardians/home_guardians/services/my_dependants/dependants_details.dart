@@ -43,38 +43,17 @@ class _DependantsDetailsState extends State<DependantsDetails> {
                     size: 39,
                   )
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children:[
-                  Padding(
-                    padding: const EdgeInsets.only(left: 16),
-                    child: Text(
-                      widget.dependantsName,
-                      style: const TextStyle(
-                          fontSize: 24,
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w700,
-                          color: Color(0xFF161616)
-                      ),
-                    ),
+              Padding(
+                padding: const EdgeInsets.only(left: 16),
+                child: Text(
+                  widget.dependantsName,
+                  style: const TextStyle(
+                      fontSize: 24,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w700,
+                      color: Color(0xFF161616)
                   ),
-                  PopupMenuButton(
-                      itemBuilder:(context) => [
-                        PopupMenuItem(
-                          onTap:(){},
-                          child: const Text("Manage Activities"),
-                          value: 1,
-                        ),
-                        PopupMenuItem(
-                          onTap: (){
-                            Navigator.pushNamed(context, Transactions.id);
-                          },
-
-                          child: const Text("Transactions"),
-                        )
-                      ]
-                  )
-                ],
+                ),
               ),
               Expanded(
                 child: SingleChildScrollView(

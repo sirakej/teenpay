@@ -72,7 +72,7 @@ class _PendingState extends State<Pending> {
                             fontSize: 14,
                             fontFamily: 'Public Sans',
                             fontWeight: FontWeight.w900,
-                            color: Color(0xFF3068A4)
+                            color: Color(0xFF161616)
                         ),
                       ),
               const SizedBox(height: 7,),

@@ -1,24 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/settings_guardian/customization.dart';
 import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/settings_guardian/profile/profile.dart';
 import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/settings_guardian/security.dart';
+import 'package:stripling_wallet/controller/theme_controller.dart';
+import 'package:stripling_wallet/utils/constants.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
 
 import 'legal.dart';
 
-class SettingsGuardians extends StatefulWidget {
-  const SettingsGuardians({Key? key}) : super(key: key);
+class SettingsGuardians extends GetView<ThemeController> {
 
-  @override
-  _SettingsGuardiansState createState() => _SettingsGuardiansState();
-}
-
-class _SettingsGuardiansState extends State<SettingsGuardians> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Get.isDarkMode?AppColors.darkBackground:AppColors.lightBackground,
       body: SafeArea(
         child: Container(
           width: SizeConfig.screenWidth,
@@ -28,11 +25,11 @@ class _SettingsGuardiansState extends State<SettingsGuardians> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 5,),
-              const Text(
+             Text(
                 'Settings',
                 style:
                 TextStyle(
-                    color: Color(0xFF161616),
+                    color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                     fontFamily: 'Public sans',
                     fontWeight: FontWeight.w700,
                     fontSize: 24
@@ -155,11 +152,11 @@ class _SettingsGuardiansState extends State<SettingsGuardians> {
                 Text(
                   name,
                   style:
-                  const TextStyle(
+                 TextStyle(
                       fontFamily: 'Public Sans',
                       fontWeight: FontWeight.w600,
                       fontSize: 14,
-                      color: Color(0xFF161616)
+                      color:Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                   ),
                 ),
                 const SizedBox(height: 9,),

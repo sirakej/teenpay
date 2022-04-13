@@ -142,6 +142,7 @@ class _OthersState extends State<Others> {
               const SizedBox(height: 10),
               SizedBox(
                 width: SizeConfig.screenWidth,
+                height: 50,
                 child: TextFormField(
                     keyboardType:TextInputType.text,
                     controller: _othersRequestTitleController,
@@ -191,6 +192,7 @@ class _OthersState extends State<Others> {
               const SizedBox(height: 10),
               SizedBox(
                 width: SizeConfig.screenWidth,
+                height: 50,
                 child: TextFormField(
                     keyboardType:TextInputType.number,
                     controller: _othersAmountController,
@@ -240,6 +242,7 @@ class _OthersState extends State<Others> {
               const SizedBox(height: 10),
               SizedBox(
                 width: SizeConfig.screenWidth,
+                height: 50,
                 child: TextFormField(
                     controller: _othersDescriptionController,
                     keyboardType: TextInputType.multiline,

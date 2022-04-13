@@ -151,6 +151,7 @@ class _AutomatedPaymentState extends State<AutomatedPayment> {
               const SizedBox(height: 10),
               SizedBox(
                 width: SizeConfig.screenWidth,
+                height: 50,
                 child: TextFormField(
                     controller: _amountController,
                     keyboardType: TextInputType.name,

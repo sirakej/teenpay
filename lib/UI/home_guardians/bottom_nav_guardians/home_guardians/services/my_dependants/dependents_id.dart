@@ -41,7 +41,6 @@ class _DependantsIdState extends State<DependantsId> {
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w700,
                         color: Color(0xFF161616)
-
                     ),
                   ),
                 ),

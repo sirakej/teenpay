@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/settings_guardian/profile/id_document.dart';
+import 'package:stripling_wallet/utils/constants.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
 
 
@@ -29,20 +31,20 @@ class _UpgradeAccountState extends State<UpgradeAccount> {
                   onPressed: (){
                     Navigator.pop(context);
                   },
-                  icon: const Icon(
+                  icon:  Icon(
                     Icons.chevron_left,
-                    color: Color(0xFF161616),
+                    color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                     size: 39,
                   )
               ),
               const SizedBox(height: 5,),
-              const Padding(
-                padding: EdgeInsets.only(left: 16,right: 16),
+             Padding(
+                padding: const EdgeInsets.only(left: 16,right: 16),
                 child: Text(
                   'Upgrade Account',
                   style:
                   TextStyle(
-                      color: Color(0xFF161616),
+                      color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w700,
                       fontSize: 24
@@ -107,11 +109,11 @@ class _UpgradeAccountState extends State<UpgradeAccount> {
                 Text(
                   name,
                   style:
-                  const TextStyle(
+                   TextStyle(
                       fontFamily: 'Public Sans',
                       fontWeight: FontWeight.w600,
                       fontSize: 14,
-                      color: Color(0xFF161616)
+                      color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                   ),
                 ),
                 const SizedBox(height: 9,),
@@ -122,7 +124,7 @@ class _UpgradeAccountState extends State<UpgradeAccount> {
                       color: const Color(0xFF18873D).withOpacity(0.5),
                       borderRadius: const BorderRadius.all(Radius.circular(8))
                   ),
-                  child: const Center(
+                  child:  Center(
                     child: Text(
                       "Done",
                       style:
@@ -130,7 +132,7 @@ class _UpgradeAccountState extends State<UpgradeAccount> {
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w600,
                           fontSize: 10,
-                          color: Color(0xFF161616)
+                          color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                       ),
                     ),
                   ),
@@ -170,7 +172,7 @@ class _UpgradeAccountState extends State<UpgradeAccount> {
                     height: 6,
                     width: 100,
                     decoration: BoxDecoration(
-                      color: const Color(0xFF000000).withOpacity(0.62),
+                      color: Get.isDarkMode?AppColors.darkTextWhite:const Color(0xFF000000).withOpacity(0.62),
                       borderRadius: const BorderRadius.all(Radius.circular(20)),
                     ),
                   ),
@@ -191,20 +193,20 @@ class _UpgradeAccountState extends State<UpgradeAccount> {
                     child: Column(
                       children: [
                         const SizedBox(height: 2.73,),
-                        const Text(
+                       Text(
                           'ID Document requirements',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 18,
                             fontFamily: 'Public Sans',
                             fontWeight: FontWeight.w600,
-                            color: Color(0xFF161616),
+                            color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                           ),
                         ),
                         const SizedBox(height:45,),
                         modalContainer("images/document.png", "Have your documents ready", "Before you proceed, get the documents you need ready\nsuch as Driver’s Licence International passport, NIN slip,\nVoter’s Card"),
                         const SizedBox(height:24),
-                        modalContainer("images/light.png", "Stay in  a well light environment", "To take a very good real time picture of yourself, you need to\nbe somewhere with good illumination so that it captures\nyour face well"),
+                        modalContainer("images/light.png", "Stay in  a well light environment", "To take a very good real time picture of yourself,\nyou need to be somewhere with good illumination so\nthat it captures your face well"),
                         const SizedBox(height:40),
                         MaterialButton(
                           onPressed: () {
@@ -250,39 +252,42 @@ class _UpgradeAccountState extends State<UpgradeAccount> {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Image.asset(image,width: 39,height: 39,fit: BoxFit.contain,),
-            const SizedBox(width: 13,),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  name,
-                  style:
-                  const TextStyle(
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w600,
-                      fontSize: 14,
-                      color: Color(0xFF161616)
+        Expanded(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Image.asset(image,width: 39,height: 39,fit: BoxFit.contain,),
+              const SizedBox(width: 13,),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    name,
+                    style:
+                    TextStyle(
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w600,
+                        fontSize: 14,
+                        color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 4,),
-                Text(
-                  explain,
-                  style:
-                  TextStyle(
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w400,
-                      fontSize: 10,
-                      color: const Color(0xFF161616).withOpacity(0.5)
+                  const SizedBox(height: 4,),
+                  Text(
+                    explain,
+                    overflow: TextOverflow.ellipsis,
+                    style:
+                    TextStyle(
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w400,
+                        fontSize: 10,
+                        color: const Color(0xFF161616).withOpacity(0.5)
+                    ),
                   ),
-                ),
-              ],
-            ),
-          ],
+                ],
+              ),
+            ],
+          ),
         ),
       ],
     );

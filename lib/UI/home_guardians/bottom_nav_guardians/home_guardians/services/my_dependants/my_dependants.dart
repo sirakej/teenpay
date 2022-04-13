@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/home_guardians/services/my_dependants/dependants_details.dart';
 import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/manage_activities/manage_activities.dart';
 import 'package:stripling_wallet/UI/home_guardians/index_guardian.dart';
+import 'package:stripling_wallet/utils/constants.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
 import '../transactions.dart';
 import 'add_dependent.dart';
@@ -36,51 +38,23 @@ class _MyDependantsState extends State<MyDependants> {
                   onPressed: (){
                     Navigator.pushNamed(context, IndexGuardian.id);
                   },
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.chevron_left,
-                    color: Color(0xFF161616),
+                    color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                     size: 39,
                   )
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children:[
-                  const Padding(
-                    padding: EdgeInsets.only(left: 16),
-                    child: Text(
-                      'Dependants',
-                      style: TextStyle(
-                          fontSize: 24,
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w700,
-                          color: Color(0xFF161616)
-                      ),
-                    ),
+              Padding(
+                padding: EdgeInsets.only(left: 16),
+                child: Text(
+                  'Dependants',
+                  style: TextStyle(
+                      fontSize: 24,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w700,
+                      color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                   ),
-                  PopupMenuButton(
-                      itemBuilder:(context) => [
-                        const PopupMenuItem(
-                          child: Text("Manage Activities"),
-                          value: 1,
-                        ),
-                        const PopupMenuItem(
-                          child: Text("Transactions"),
-                          value: 2,
-                        )
-                      ],
-                    onSelected: (value) {
-                        if(value == 1){
-                          Navigator.push(context, MaterialPageRoute(builder:(context) {
-                            return const ManageActivities();}));
-                        }else{
-                          Navigator.push(context, MaterialPageRoute(builder:(context) {
-                            return const Transactions();}));
-                        }
-                    },
-
-                  ),
-
-                ],
+                ),
               ),
               widget.collect == true? const SizedBox(height: 10,):SizedBox(height: SizeConfig.screenHeight!/5,),
               widget.collect == true?
@@ -148,14 +122,14 @@ class _MyDependantsState extends State<MyDependants> {
                       ),
                     ),
                     const SizedBox(height: 8,),
-                    const Text(
+                    Text(
                       'Kindly click on the button below to add your dependant\nor children',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: 12,
                           fontFamily: 'Public Sans',
                           fontWeight: FontWeight.w400,
-                          color: Color(0xFF161616)
+                          color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                       ),
                     ),
                   ],

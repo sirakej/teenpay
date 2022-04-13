@@ -87,11 +87,56 @@ class _PhysicalCardState extends State<PhysicalCard> {
                               ),
                             ),
                             const SizedBox(height: 39,),
-                            buttonContainer("Online Payments", "Enable online payments with cards", onlinePayment),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                buttonContainer("Online Payments", "Enable online payments with cards"),
+                                CupertinoSwitch(
+                                  value: onlinePayment,
+                                  activeColor: const Color(0xFF3068A4),
+                                  onChanged: (v){
+                                    onlinePayment = v;
+                                    setState(() {
+
+                                    });
+                                  },
+                                )
+                              ],
+                            ),
                             const SizedBox(height: 33,),
-                            buttonContainer("ATM Withdrawals", "Enable ATM  withdrawal with cards", atmWithdrawals),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                buttonContainer("ATM Withdrawals", "Enable ATM  withdrawal with cards"),
+                                CupertinoSwitch(
+                                  value:  atmWithdrawals,
+                                  activeColor: const Color(0xFF3068A4),
+                                  onChanged: (v){
+                                    atmWithdrawals = v;
+                                    setState(() {
+
+                                    });
+                                  },
+                                )
+                              ],
+                            ),
                             const SizedBox(height: 33,),
-                            buttonContainer("Lock  Card", "Lock card temporarily", lockAccount),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                buttonContainer("Lock  Card", "Lock card temporarily" ),
+                                CupertinoSwitch(
+                                  value:  lockAccount,
+                                  activeColor: const Color(0xFF3068A4),
+                                  onChanged: (v){
+                                    lockAccount = v;
+                                    setState(() {
+
+                                    });
+                                  },
+                                )
+                              ],
+                            ),
                             const SizedBox(height: 33,),
                             activitiesContainer("Reset PIN", "Reset your card PIN")
                           ],
@@ -105,52 +150,36 @@ class _PhysicalCardState extends State<PhysicalCard> {
       ),
     );
   }
-  buttonContainer(String name, String explain, bool choose){
+  buttonContainer(String name, String explain){
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Row(
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  name,
-                  style:
-                  const TextStyle(
-                      fontFamily: 'Public Sans',
-                      fontWeight: FontWeight.w600,
-                      fontSize: 14,
-                      color: Color(0xFF161616)
-                  ),
-                ),
-                const SizedBox(height: 9,),
-                Text(
-                  explain,
-                  style:
-                  TextStyle(
-                      fontFamily: 'Public Sans',
-                      fontWeight: FontWeight.w400,
-                      fontSize: 10,
-                      color: const Color(0xFF161616).withOpacity(0.5)
-                  ),
-                ),
-
-              ],
+            Text(
+              name,
+              style:
+              const TextStyle(
+                  fontFamily: 'Public Sans',
+                  fontWeight: FontWeight.w600,
+                  fontSize: 14,
+                  color: Color(0xFF161616)
+              ),
             ),
+            const SizedBox(height: 9,),
+            Text(
+              explain,
+              style:
+              TextStyle(
+                  fontFamily: 'Public Sans',
+                  fontWeight: FontWeight.w400,
+                  fontSize: 10,
+                  color: const Color(0xFF161616).withOpacity(0.5)
+              ),
+            ),
+
           ],
         ),
-        // ignore: avoid_unnecessary_containers
-        CupertinoSwitch(
-          value: choose,
-          activeColor: const Color(0xFF3068A4),
-          onChanged: (v){
-            choose = v;
-            setState(() {
-
-            });
-          },
-        )
       ],
     );
   }

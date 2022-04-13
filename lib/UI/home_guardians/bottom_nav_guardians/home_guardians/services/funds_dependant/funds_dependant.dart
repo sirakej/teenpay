@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/home_guardians/services/funds_dependant/automated_payment.dart';
 import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/home_guardians/services/funds_dependant/one_time_payment.dart';
 import 'package:stripling_wallet/UI/home_guardians/index_guardian.dart';
+import 'package:stripling_wallet/utils/constants.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
 
 
@@ -30,20 +32,20 @@ class _FundsDependantState extends State<FundsDependant> {
                   onPressed: (){
                     Navigator.pushNamed(context, IndexGuardian.id);
                   },
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.chevron_left,
-                    color: Color(0xFF161616),
+                    color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                     size: 39,
                   )
               ),
               const SizedBox(height: 5,),
-              const Padding(
-                padding: EdgeInsets.only(left: 16,right: 16),
+              Padding(
+                padding: const EdgeInsets.only(left: 16,right: 16),
                 child: Text(
                   'Fund Dependants',
                   style:
                   TextStyle(
-                      color: Color(0xFF161616),
+                      color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                       fontFamily: 'Public sans',
                       fontWeight: FontWeight.w600,
                       fontSize: 24
@@ -97,11 +99,11 @@ class _FundsDependantState extends State<FundsDependant> {
                 Text(
                   name,
                   style:
-                  const TextStyle(
+                TextStyle(
                       fontFamily: 'Public Sans',
                       fontWeight: FontWeight.w600,
                       fontSize: 14,
-                      color: Color(0xFF161616)
+                      color:Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                   ),
                 ),
                 const SizedBox(height: 9,),

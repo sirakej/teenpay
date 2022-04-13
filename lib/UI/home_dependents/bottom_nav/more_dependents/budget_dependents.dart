@@ -132,9 +132,17 @@ class _BudgetDependentsState extends State<BudgetDependents> {
       child: Container(
         width: SizeConfig.screenWidth,
         height: 164,
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.all(Radius.circular(10))
+            borderRadius: const BorderRadius.all(Radius.circular(10)),
+            boxShadow: [
+              BoxShadow(
+                  spreadRadius: 4,
+                  blurRadius: 20,
+                  offset: const Offset(0,8),
+                  color: const Color(0xFFAFAFAF).withOpacity(0.1)
+              )
+            ]
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

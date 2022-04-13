@@ -157,6 +157,7 @@ class _SendMoneyState extends State<SendMoney> {
               const SizedBox(height: 10),
               SizedBox(
                 width: SizeConfig.screenWidth,
+                height: 50,
                 child: TextFormField(
                     keyboardType:TextInputType.number,
                     controller: _amountController,
@@ -274,6 +275,7 @@ class _SendMoneyState extends State<SendMoney> {
               const SizedBox(height: 10),
               SizedBox(
                 width: SizeConfig.screenWidth,
+                height: 50,
                 child: TextFormField(
                     keyboardType:TextInputType.number,
                     controller: _accountNumberController,
@@ -323,6 +325,7 @@ class _SendMoneyState extends State<SendMoney> {
               const SizedBox(height: 10),
               SizedBox(
                 width: SizeConfig.screenWidth,
+                height: 50,
                 child: TextFormField(
                     controller: _amountController,
                     keyboardType: TextInputType.multiline,

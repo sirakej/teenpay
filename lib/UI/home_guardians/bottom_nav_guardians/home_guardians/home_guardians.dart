@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/home_guardians/services/dependants_request.dart';
+import 'package:stripling_wallet/utils/constants.dart';
 import 'notifications.dart';
 import 'services/funds_dependant/funds_dependant.dart';
 import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/home_guardians/services/transactions.dart';
@@ -20,7 +22,7 @@ class _HomeGuardiansState extends State<HomeGuardians> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Get.isDarkMode?AppColors.darkBackground:AppColors.lightBackground,
       body: SafeArea(
         child: SizedBox(
           width: SizeConfig.screenWidth,
@@ -47,14 +49,14 @@ class _HomeGuardiansState extends State<HomeGuardians> {
                                   fontFamily: 'Poppins',
                                   fontWeight: FontWeight.w400,
                                   fontSize: 12,
-                                  color: const Color(0xFF444444).withOpacity(0.8)
+                                  color:Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack
                               ),
                             ),
-                            const Text(
+                            Text(
                               'Jane Adebola',
                               style:
                               TextStyle(
-                                  color: Color(0xFF161616),
+                                  color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                                   fontFamily: 'Poppins',
                                   fontWeight: FontWeight.w600,
                                   fontSize: 18
@@ -68,7 +70,7 @@ class _HomeGuardiansState extends State<HomeGuardians> {
                       onPressed: () {
                         Navigator.pushNamed(context, Notifications.id);
                         },
-                      child: Image.asset("images/notification.png",width:20,height:21.5,fit: BoxFit.contain,),
+                      child: Image.asset("images/notification.png",width:20,height:21.5,fit: BoxFit.contain,color:Get.isDarkMode?AppColors.darkTextWhite:null),
                     )
                   ],
                 ),
@@ -164,14 +166,14 @@ class _HomeGuardiansState extends State<HomeGuardians> {
                         ),
                       ),
                       const SizedBox(height: 24,),
-                      const Text(
+                       Text(
                         'Services',
                         style:
                         TextStyle(
                             fontFamily: 'Poppins',
                             fontWeight: FontWeight.w600,
                             fontSize: 18,
-                            color: Color(0xFF161616)
+                            color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                         ),
                       ),
                       const SizedBox(height:4),
@@ -213,14 +215,14 @@ class _HomeGuardiansState extends State<HomeGuardians> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children:[
-                          const Text(
+                         Text(
                             'Transactions',
                             style:
                             TextStyle(
                                 fontFamily: 'Poppins',
                                 fontWeight: FontWeight.w600,
                                 fontSize: 18,
-                                color: Color(0xFF161616)
+                                color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                             ),
                           ),
                            TextButton(
@@ -258,9 +260,9 @@ class _HomeGuardiansState extends State<HomeGuardians> {
     return Container(
       padding: const EdgeInsets.only(left: 24.91,top: 31,right: 27),
       height: 158,
-      width: 158,
+      width: 153,
       decoration: BoxDecoration(
-        color: color,
+        color: Get.isDarkMode?const Color(0xFF211F32):color,
         borderRadius: const BorderRadius.all(Radius.circular(4))
       ),
       child: Column(
@@ -271,11 +273,11 @@ class _HomeGuardiansState extends State<HomeGuardians> {
           Text(
             name,
             style:
-            const TextStyle(
+            TextStyle(
                 fontFamily: 'Poppins',
                 fontWeight: FontWeight.w600,
                 fontSize: 14,
-                color: Color(0xFF161616)
+                color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
             ),
           ),
           const SizedBox(height: 10,),
@@ -331,11 +333,11 @@ class _HomeGuardiansState extends State<HomeGuardians> {
                 Text(
                   name,
                   style:
-                  const TextStyle(
+                  TextStyle(
                       fontFamily: 'Public Sans',
                       fontWeight: FontWeight.w600,
                       fontSize: 12,
-                      color: Color(0xFF161616)
+                      color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                   ),
                 ),
                 const SizedBox(height: 9,),
@@ -362,11 +364,11 @@ class _HomeGuardiansState extends State<HomeGuardians> {
               Text(
                 money,
                 style:
-                const TextStyle(
+                TextStyle(
                     fontFamily: 'Public Sans',
                     fontWeight: FontWeight.w600,
                     fontSize: 12,
-                    color: Color(0xFF161616)
+                    color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                 ),
               ),
               const SizedBox(height: 9,),

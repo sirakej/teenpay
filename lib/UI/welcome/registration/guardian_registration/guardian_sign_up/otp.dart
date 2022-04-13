@@ -91,29 +91,29 @@ class _OTPState extends State<OTP> {
                           ),
                         ),
                         const SizedBox(height: 80),
-                        SizedBox(
-                          width: 302,
-                          height: 50,
-                          child: DecoratedBox(
-                            decoration: BoxDecoration(
-                              borderRadius: MyConstants.primaryBorderRadius,
-                              gradient: MyColors.primaryLinearGradient,
-                            ),
-                            child: ElevatedButton(
-                              onPressed: () {
-                                  Navigator.pushNamed(context, CreatePin.id);
-                              },
-                              child: const Text(
-                                'Verify & Proceed',
-                                style:
-                                TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                  fontFamily: 'Public Sans',
-                                  fontSize: 14
+                        MaterialButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, CreatePin.id);
+                          },
+                          child: Container(
+                            width: 302,
+                            height: 50,
+                            decoration:BoxDecoration(
+                                gradient:LinearGradient(
+                                  begin: Alignment.topRight,
+                                  end: Alignment.bottomLeft,
+                                  colors: [
+                                    const Color(0XFF1F8BB6).withOpacity(1),
+                                    const Color(0xFF335491).withOpacity(1),
+                                  ],
                                 ),
+                                borderRadius: const BorderRadius.all(Radius.circular(8))
+                            ),
+                            child: const Center(
+                              child: Text(
+                                'Verify & Proceed',
+                                style: TextStyle(fontWeight: FontWeight.w600,color: Colors.white),
                               ),
-                              style: ElevatedButton.styleFrom(
-                                  primary: Colors.transparent, elevation: 10),
                             ),
                           ),
                         ),

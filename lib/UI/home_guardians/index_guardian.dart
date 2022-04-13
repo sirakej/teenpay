@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/manage_activities/manage_activities.dart';
+import 'package:stripling_wallet/utils/constants.dart';
 import 'bottom_nav_guardians/more.dart';
 import 'bottom_nav_guardians/settings_guardian/settings_guardian.dart';
 import 'bottom_nav_guardians/wallet_guardian/wallet_guardians.dart';
@@ -24,7 +26,7 @@ class _IndexGuardianState extends State<IndexGuardian> {
   getPage(int index) {
     switch (index){
       case 0:
-        return const HomeGuardians();
+        return  const HomeGuardians();
         break;
       case 1:
         return  const WalletGuardians();
@@ -33,13 +35,13 @@ class _IndexGuardianState extends State<IndexGuardian> {
         return  Container();
         break;
       case 3:
-        return  const SettingsGuardians();
+        return SettingsGuardians();
         break;
       case 4:
         return const More();
         break;
       default:
-        return const HomeGuardians();
+        return  const HomeGuardians();
         break;
     }
   }
@@ -47,27 +49,24 @@ class _IndexGuardianState extends State<IndexGuardian> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: getPage(currentIndex),
-      bottomNavigationBar: Theme(
-        data: ThemeData(
-          splashColor: Colors.transparent,
-          highlightColor: Colors.transparent,
-        ),
-        child: BottomNavigationBar(
-          backgroundColor: Colors.white,
+      bottomNavigationBar: BottomNavigationBar(
+
+          backgroundColor: Get.isDarkMode?AppColors.darkBackground:AppColors.lightBackground,
           elevation: 10,
           type: BottomNavigationBarType.fixed,
           currentIndex: currentIndex,
-          selectedLabelStyle: const TextStyle(
+          showSelectedLabels: false,
+          //showUnselectedLabels: true,
+          selectedLabelStyle:TextStyle(
               fontFamily: 'Poppins',
-              color: Color(0xFF3068A4),
               fontSize: 10,
+              color: Color(0xFF3675B8),
+              //backgroundColor: Color(0xFF3675B8),
               fontWeight: FontWeight.w400
           ),
-          unselectedLabelStyle:TextStyle(
+          unselectedLabelStyle:const TextStyle(
               fontFamily: 'Poppins',
-              color: const Color(0xFF151920).withOpacity(0.8  ),
               fontSize: 10,
               fontWeight: FontWeight.w400
           ),
@@ -81,7 +80,6 @@ class _IndexGuardianState extends State<IndexGuardian> {
 
           ],
         ),
-      ),
     );
   }
 
@@ -104,6 +102,7 @@ class _IndexGuardianState extends State<IndexGuardian> {
           width: 24,
           height: 24,
           fit: BoxFit.contain,
+          color: Get.isDarkMode?AppColors.darkIndexUnselected:null,
         ),
       ),
       activeIcon: Padding(

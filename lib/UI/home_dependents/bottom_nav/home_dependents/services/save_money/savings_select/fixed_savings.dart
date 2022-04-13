@@ -199,6 +199,7 @@ class _FixedSavingsState extends State<FixedSavings> {
               const SizedBox(height: 4,),
               SizedBox(
                 width: SizeConfig.screenWidth,
+                height: 50,
                 child: TextFormField(
                     controller: _amountToLockController,
                     textInputAction: TextInputAction.next,

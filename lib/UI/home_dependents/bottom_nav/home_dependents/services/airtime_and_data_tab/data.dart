@@ -124,6 +124,7 @@ class _DataDependentsState extends State<DataDependents> {
               const SizedBox(height: 10),
               SizedBox(
                 width: SizeConfig.screenWidth,
+                height: 50,
                 child: TextFormField(
                     controller: _amountController,
                     keyboardType: TextInputType.number,
@@ -241,6 +242,7 @@ class _DataDependentsState extends State<DataDependents> {
               const SizedBox(height: 10),
               SizedBox(
                 width: SizeConfig.screenWidth,
+                height: 50,
                 child: TextFormField(
                     controller: _phoneNumberController,
                     keyboardType: TextInputType.phone,

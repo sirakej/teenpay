@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/wallet_guardian/add_wallet/add_ussd.dart';
 import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/wallet_guardian/debit_card.dart';
+import 'package:stripling_wallet/utils/constants.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
 
 import 'add_wallet/add_bank_transfer.dart';
@@ -35,13 +37,13 @@ class _FundsWalletState extends State<FundsWallet> {
                   )
               ),
               const SizedBox(height: 5,),
-              const Padding(
-                padding: EdgeInsets.only(left: 16,right: 16),
+              Padding(
+                padding: const EdgeInsets.only(left: 16,right: 16),
                 child: Text(
                   'Fund Wallet',
                   style:
                   TextStyle(
-                      color: Color(0xFF161616),
+                      color:Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                       fontFamily: 'Public sans',
                       fontWeight: FontWeight.w600,
                       fontSize: 24
@@ -98,11 +100,11 @@ class _FundsWalletState extends State<FundsWallet> {
                 Text(
                   name,
                   style:
-                  const TextStyle(
+                  TextStyle(
                       fontFamily: 'Public Sans',
                       fontWeight: FontWeight.w600,
                       fontSize: 14,
-                      color: Color(0xFF161616)
+                      color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                   ),
                 ),
                 const SizedBox(height: 9,),
@@ -172,14 +174,14 @@ class _FundsWalletState extends State<FundsWallet> {
                     child: Column(
                       children: [
                         const SizedBox(height: 2.73,),
-                        const Text(
+                        Text(
                           'Debit Cards',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 18,
                             fontFamily: 'Public Sans',
                             fontWeight: FontWeight.w600,
-                            color: Color(0xFF161616),
+                            color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                           ),
                         ),
                         const SizedBox(height:45,),
@@ -207,7 +209,7 @@ class _FundsWalletState extends State<FundsWallet> {
                         const SizedBox(height: 38,),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: const [
+                          children: [
                             Text(
                               'Naira Card',
                               textAlign: TextAlign.center,
@@ -215,7 +217,7 @@ class _FundsWalletState extends State<FundsWallet> {
                                 fontSize: 14,
                                 fontFamily: 'Poppins',
                                 fontWeight: FontWeight.w400,
-                                color: Color(0xFF161616),
+                                color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                               ),
                             ),
                             Text(
@@ -225,7 +227,7 @@ class _FundsWalletState extends State<FundsWallet> {
                                 fontSize: 14,
                                 fontFamily: 'Poppins',
                                 fontWeight: FontWeight.w400,
-                                color: Color(0xFF161616),
+                                color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                               ),
                             ),
                           ],
@@ -233,7 +235,7 @@ class _FundsWalletState extends State<FundsWallet> {
                         const SizedBox(height: 30,),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: const [
+                          children:[
                             Text(
                               'Foreign Card',
                               textAlign: TextAlign.center,
@@ -241,7 +243,7 @@ class _FundsWalletState extends State<FundsWallet> {
                                 fontSize: 14,
                                 fontFamily: 'Poppins',
                                 fontWeight: FontWeight.w400,
-                                color: Color(0xFF161616),
+                                color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                               ),
                             ),
                             Text(
@@ -251,7 +253,7 @@ class _FundsWalletState extends State<FundsWallet> {
                                 fontSize: 14,
                                 fontFamily: 'Poppins',
                                 fontWeight: FontWeight.w400,
-                                color: Color(0xFF161616),
+                                color:Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                               ),
                             ),
                           ],

@@ -122,6 +122,7 @@ class _AirtimeDependentsState extends State<AirtimeDependents> {
               const SizedBox(height: 10),
               SizedBox(
                 width: SizeConfig.screenWidth,
+                height: 50,
                 child: TextFormField(
                     controller: _amountController,
                     keyboardType: TextInputType.number,
@@ -239,6 +240,7 @@ class _AirtimeDependentsState extends State<AirtimeDependents> {
               const SizedBox(height: 10),
               SizedBox(
                 width: SizeConfig.screenWidth,
+                height: 50,
                 child: TextFormField(
                     controller: _phoneNumberController,
                     keyboardType: TextInputType.phone,

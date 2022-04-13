@@ -10,27 +10,30 @@ class NavigatorButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 302,
-      height: 50,
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          borderRadius: MyConstants.primaryBorderRadius,
-          gradient: MyColors.primaryLinearGradient,
+    return MaterialButton(
+      onPressed: () {
+        //Navigator.pushNamed(context, DebitCard.id);
+        Navigator.pushReplacementNamed(context, route);
+      },
+      child: Container(
+        width: 302,
+        height: 50,
+        decoration:BoxDecoration(
+            gradient:LinearGradient(
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft,
+              colors: [
+                const Color(0XFF1F8BB6).withOpacity(1),
+                const Color(0xFF335491).withOpacity(1),
+              ],
+            ),
+            borderRadius: const BorderRadius.all(Radius.circular(8))
         ),
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.pushReplacementNamed(context, route);
-          },
+        child:Center(
           child: Text(
             text,
-            style:const TextStyle(
-              fontFamily: 'Public Sans',
-              fontWeight:   FontWeight.w600,
-              fontSize: 14
-            ),
+            style: const TextStyle(fontWeight: FontWeight.w600,color: Colors.white),
           ),
-          style: ElevatedButton.styleFrom(primary: Colors.transparent),
         ),
       ),
     );

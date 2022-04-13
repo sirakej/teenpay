@@ -4,6 +4,7 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:stripling_wallet/utils/colors.dart';
 import 'package:stripling_wallet/utils/constants.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
@@ -80,21 +81,21 @@ class _AddDependantsContinueState extends State<AddDependantsContinue> with Sing
             children: [
               IconButton(
                   onPressed: (){},
-                  icon: const Icon(
+                  icon:  Icon(
                     Icons.chevron_left,
-                    color: Color(0xFF161616),
+                    color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                     size: 39,
                   )
               ),
-              const Padding(
-                padding: EdgeInsets.only(left: 16),
+              Padding(
+                padding: const EdgeInsets.only(left: 16),
                 child: Text(
                   'Add Dependants',
                   style: TextStyle(
                       fontSize: 24,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w700,
-                      color: Color(0xFF161616)
+                      color:Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                   ),
                 ),
               ),
@@ -107,7 +108,7 @@ class _AddDependantsContinueState extends State<AddDependantsContinue> with Sing
                       fontSize: 14,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w600,
-                      color:const Color(0xFF161616).withOpacity(0.8)
+                      color:Get.isDarkMode?AppColors.darkTextWhite:const Color(0xFF161616).withOpacity(0.8)
                   ),
                 ),
               ),
@@ -159,14 +160,14 @@ class _AddDependantsContinueState extends State<AddDependantsContinue> with Sing
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
+            Text(
               "Birth Certificate",
               textAlign: TextAlign.start,
               style: TextStyle(
                 fontWeight: FontWeight.w600,
                 fontFamily: 'Public Sans',
                 fontSize: 14,
-                color: Color(0xFF161616),
+                color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
               ),
             ),
             const SizedBox(height: 10),
@@ -287,14 +288,14 @@ class _AddDependantsContinueState extends State<AddDependantsContinue> with Sing
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
+            Text(
               "Passport Photograph",
               textAlign: TextAlign.start,
               style: TextStyle(
                 fontWeight: FontWeight.w600,
                 fontFamily: 'Public Sans',
                 fontSize: 14,
-                color: Color(0xFF161616),
+                color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
               ),
             ),
             const SizedBox(height: 10),
@@ -321,7 +322,7 @@ class _AddDependantsContinueState extends State<AddDependantsContinue> with Sing
                         fontSize: 12,
                         fontFamily: 'Public Sans',
                         fontWeight: FontWeight.w500,
-                        color: const Color(0xFF151920).withOpacity(0.8),
+                        color: Get.isDarkMode?AppColors.darkTextWhite:const Color(0xFF151920).withOpacity(0.8),
                       ),
                     ),
                   ),
@@ -441,7 +442,7 @@ class _AddDependantsContinueState extends State<AddDependantsContinue> with Sing
                     height: 6,
                     width: 100,
                     decoration: BoxDecoration(
-                      color: const Color(0xFF000000).withOpacity(0.62),
+                      color:Get.isDarkMode?AppColors.darkTextWhite:const Color(0xFF000000).withOpacity(0.62),
                       borderRadius: const BorderRadius.all(Radius.circular(20)),
                     ),
                   ),
@@ -460,14 +461,14 @@ class _AddDependantsContinueState extends State<AddDependantsContinue> with Sing
                   child: Column(
                     children: [
                       const SizedBox(height: 28,),
-                      const Text(
+                      Text(
                         'Dependant Added',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 18,
                           fontFamily: 'Public Sans',
                           fontWeight: FontWeight.w600,
-                          color: Color(0xFF161616),
+                          color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                         ),
                       ),
                       const SizedBox(height:45,),
@@ -494,7 +495,7 @@ class _AddDependantsContinueState extends State<AddDependantsContinue> with Sing
                           fontSize: 12,
                           fontFamily: 'Public Sans',
                           fontWeight: FontWeight.w600,
-                          color: const Color(0xFF151920).withOpacity(0.8),
+                          color: Get.isDarkMode?AppColors.darkTextWhite:const Color(0xFF151920).withOpacity(0.8),
                         ),
                       ),
                       const SizedBox(height: 38,),

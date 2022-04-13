@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:stripling_wallet/utils/constants.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
 
 
@@ -36,9 +38,9 @@ class _IdDocumentState extends State<IdDocument> {
             children: [
               IconButton(
                   onPressed: (){},
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.chevron_left,
-                    color: Color(0xFF161616),
+                    color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                     size: 39,
                   )
               ),
@@ -49,11 +51,11 @@ class _IdDocumentState extends State<IdDocument> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children:[
-                    const Text(
+                    Text(
                       'ID Documents',
                       style:
                       TextStyle(
-                          color: Color(0xFF161616),
+                          color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w700,
                           fontSize: 24
@@ -84,11 +86,11 @@ class _IdDocumentState extends State<IdDocument> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
+                      Text(
                         'Choose ID Type',
                         style:
                         TextStyle(
-                            color: Color(0xFF161616),
+                            color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                             fontFamily: 'Public Sans',
                             fontWeight: FontWeight.w600,
                             fontSize: 14
@@ -115,8 +117,8 @@ class _IdDocumentState extends State<IdDocument> {
                                 // ignore: unnecessary_null_comparison, prefer_if_null_operators
                                 collect == null? "":collect,
                                 style:
-                                const TextStyle(
-                                    color: Color(0xFF161616),
+                                TextStyle(
+                                    color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                                     fontFamily: 'Poppins',
                                     fontWeight: FontWeight.w700,
                                     fontSize: 16
@@ -186,11 +188,11 @@ class _IdDocumentState extends State<IdDocument> {
                 Text(
                   name,
                   style:
-                  const TextStyle(
+                  TextStyle(
                       fontFamily: 'Public Sans',
                       fontWeight: FontWeight.w600,
                       fontSize: 14,
-                      color: Color(0xFF161616)
+                      color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                   ),
                 ),
                 const SizedBox(height: 9,),
@@ -201,7 +203,7 @@ class _IdDocumentState extends State<IdDocument> {
                       color: const Color(0xFF18873D).withOpacity(0.5),
                       borderRadius: const BorderRadius.all(Radius.circular(8))
                   ),
-                  child: const Center(
+                  child:Center(
                     child: Text(
                       "Done",
                       style:
@@ -209,7 +211,7 @@ class _IdDocumentState extends State<IdDocument> {
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w600,
                           fontSize: 10,
-                          color: Color(0xFF161616)
+                          color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                       ),
                     ),
                   ),
@@ -272,14 +274,14 @@ class _IdDocumentState extends State<IdDocument> {
                         child: Column(
                           children: [
                             const SizedBox(height: 2.73,),
-                            const Text(
+                            Text(
                               'Choose ID',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 18,
                                 fontFamily: 'Public Sans',
                                 fontWeight: FontWeight.w600,
-                                color: Color(0xFF161616),
+                                color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                               ),
                             ),
                             const SizedBox(height: 33,),

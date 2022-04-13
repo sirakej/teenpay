@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:stripling_wallet/utils/constants.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
 
@@ -44,21 +45,21 @@ class _AddDebitCardState extends State<AddDebitCard> {
               children: [
                 IconButton(
                     onPressed: (){},
-                    icon: const Icon(
+                    icon:Icon(
                       Icons.chevron_left,
-                      color: Color(0xFF161616),
+                      color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                       size: 39,
                     )
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(left: 16),
+                Padding(
+                  padding: const EdgeInsets.only(left: 16),
                   child: Text(
                     'Add debit card',
                     style: TextStyle(
                         fontSize: 24,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w700,
-                        color: Color(0xFF161616)
+                        color:Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                     ),
                   ),
                 ),
@@ -133,19 +134,20 @@ class _AddDebitCardState extends State<AddDebitCard> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 "Name on card",
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontFamily: 'Public Sans',
                   fontSize: 14,
-                  color: Color(0xFF161616),
+                  color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                 ),
               ),
               const SizedBox(height: 4),
               SizedBox(
                 width: SizeConfig.screenWidth,
+                height: 50,
                 child: TextFormField(
                     controller: _fullNameController,
                     keyboardType: TextInputType.name,
@@ -172,19 +174,20 @@ class _AddDebitCardState extends State<AddDebitCard> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 "card number",
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontFamily: 'Public Sans',
                   fontSize: 14,
-                  color: Color(0xFF161616),
+                  color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                 ),
               ),
               const SizedBox(height: 4),
               SizedBox(
                 width: SizeConfig.screenWidth,
+                height: 50,
                 child: TextFormField(
                     controller: _emailController,
                     keyboardType: TextInputType.text,
@@ -217,19 +220,20 @@ class _AddDebitCardState extends State<AddDebitCard> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
+                    Text(
                       "Expiry date",
                       textAlign: TextAlign.start,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         fontFamily: 'Public Sans',
                         fontSize: 14,
-                        color: Color(0xFF161616),
+                        color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                       ),
                     ),
                     const SizedBox(height: 4),
                     SizedBox(
                       width: SizeConfig.screenWidth,
+                      height: 50,
                       child: TextFormField(
                           controller: _phoneNumberController,
                           keyboardType: TextInputType.phone,
@@ -257,19 +261,20 @@ class _AddDebitCardState extends State<AddDebitCard> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
+                     Text(
                       "cvv",
                       textAlign: TextAlign.start,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         fontFamily: 'Public Sans',
                         fontSize: 14,
-                        color: Color(0xFF161616),
+                        color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                       ),
                     ),
                     const SizedBox(height: 4),
                     SizedBox(
                       width: SizeConfig.screenWidth,
+                      height: 50,
                       child: TextFormField(
                           controller: _phoneNumberController,
                           keyboardType: TextInputType.phone,
