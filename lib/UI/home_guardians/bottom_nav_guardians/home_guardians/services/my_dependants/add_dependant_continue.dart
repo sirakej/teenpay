@@ -72,7 +72,7 @@ class _AddDependantsContinueState extends State<AddDependantsContinue> with Sing
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Get.isDarkMode?AppColors.darkBackground:AppColors.lightBackground,
       body: SafeArea(
         child: SizedBox(
           width: SizeConfig.screenWidth,
@@ -427,9 +427,9 @@ class _AddDependantsContinueState extends State<AddDependantsContinue> with Sing
         builder: (context){
           return Container(
             width: SizeConfig.screenWidth,
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.only(topLeft: Radius.circular(20),topRight:Radius.circular(20) ),
+            decoration:BoxDecoration(
+              color:  Get.isDarkMode?AppColors.darkBottomSheet:AppColors.lightBackground,
+              borderRadius: const BorderRadius.only(topLeft: Radius.circular(20),topRight:Radius.circular(20) ),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,

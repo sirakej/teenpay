@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:stripling_wallet/utils/constants.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
 
@@ -37,7 +38,7 @@ class _AutomatedPaymentContinueState extends State<AutomatedPaymentContinue> {
     SizeConfig().init(context);
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Get.isDarkMode?AppColors.darkBackground:AppColors.lightBackground,
       body: SafeArea(
         child: SizedBox(
           width: SizeConfig.screenWidth,
@@ -46,13 +47,13 @@ class _AutomatedPaymentContinueState extends State<AutomatedPaymentContinue> {
             children: [
               IconButton(
                   onPressed: (){},
-                  icon: const Icon(
+                  icon:Icon(
                     Icons.chevron_left,
-                    color: Color(0xFF161616),
+                    color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                     size: 39,
                   )
               ),
-              const Padding(
+              Padding(
                 padding: EdgeInsets.only(left: 16),
                 child: Text(
                   'Fund Dependants',
@@ -60,7 +61,7 @@ class _AutomatedPaymentContinueState extends State<AutomatedPaymentContinue> {
                       fontSize: 24,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w700,
-                      color: Color(0xFF161616)
+                      color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                   ),
                 ),
               ),
@@ -73,7 +74,7 @@ class _AutomatedPaymentContinueState extends State<AutomatedPaymentContinue> {
                       fontSize: 14,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w600,
-                      color:const Color(0xFF161616).withOpacity(0.8)
+                      color: Get.isDarkMode?AppColors.darkTextWhite:const Color(0xFF161616).withOpacity(0.8)
                   ),
                 ),
               ),
@@ -132,11 +133,11 @@ class _AutomatedPaymentContinueState extends State<AutomatedPaymentContinue> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 'Day of the week',
                 style:
                 TextStyle(
-                    color: Color(0xFF161616),
+                    color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                     fontFamily: 'Public Sans',
                     fontWeight: FontWeight.w600,
                     fontSize: 14
@@ -188,14 +189,14 @@ class _AutomatedPaymentContinueState extends State<AutomatedPaymentContinue> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 "Description",
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontFamily: 'Public Sans',
                   fontSize: 14,
-                  color: Color(0xFF161616),
+                  color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                 ),
               ),
               const SizedBox(height: 10),
@@ -256,8 +257,8 @@ class _AutomatedPaymentContinueState extends State<AutomatedPaymentContinue> {
             builder: (BuildContext context, StateSetter setState) {
               return Container(
                 width: SizeConfig.screenWidth,
-                decoration: const BoxDecoration(
-                  color: Colors.white,
+                decoration: BoxDecoration(
+                  color: Get.isDarkMode?AppColors.darkBottomSheet:AppColors.lightBackground,
                   borderRadius: BorderRadius.only(topLeft: Radius.circular(20),topRight:Radius.circular(20) ),
                 ),
                 child: Column(
@@ -614,11 +615,11 @@ class _AutomatedPaymentContinueState extends State<AutomatedPaymentContinue> {
             Text(
               name,
               style:
-              const TextStyle(
+              TextStyle(
                   fontFamily: 'Public Sans',
                   fontWeight: FontWeight.w600,
                   fontSize: 14,
-                  color: Color(0xFF161616)
+                  color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
               ),
             ),
             const SizedBox(height: 9,),
@@ -629,7 +630,7 @@ class _AutomatedPaymentContinueState extends State<AutomatedPaymentContinue> {
                   fontFamily: 'Public Sans',
                   fontWeight: FontWeight.w400,
                   fontSize: 10,
-                  color: const Color(0xFF161616).withOpacity(0.5)
+                  color:  Get.isDarkMode?AppColors.darkTextWhite:const Color(0xFF161616).withOpacity(0.5)
               ),
             ),
 

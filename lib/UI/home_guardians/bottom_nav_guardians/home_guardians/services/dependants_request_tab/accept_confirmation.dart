@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:stripling_wallet/UI/home_guardians/index_guardian.dart';
 import 'package:stripling_wallet/utils/colors.dart';
 import 'package:stripling_wallet/utils/constants.dart';
@@ -31,6 +32,7 @@ class _AcceptConfirmationState extends State<AcceptConfirmation> {
         }
       },
       child: Scaffold(
+        backgroundColor: Get.isDarkMode?AppColors.darkBackground:AppColors.lightBackground,
         body: SafeArea(
           child: SizedBox(
             width: SizeConfig.screenWidth,
@@ -221,8 +223,8 @@ class _AcceptConfirmationState extends State<AcceptConfirmation> {
         builder: (context){
           return Container(
             width: SizeConfig.screenWidth,
-            decoration: const BoxDecoration(
-              color: Colors.white,
+            decoration: BoxDecoration(
+              color:Get.isDarkMode?AppColors.darkBottomSheet:AppColors.lightBackground,
               borderRadius: BorderRadius.only(topLeft: Radius.circular(20),topRight:Radius.circular(20) ),
             ),
             child: Column(

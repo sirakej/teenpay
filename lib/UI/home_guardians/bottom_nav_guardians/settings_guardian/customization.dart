@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_rx/src/rx_types/rx_types.dart';
+import 'package:stripling_wallet/UI/home_dependents/index.dart';
 import 'package:stripling_wallet/controller/app_theme.dart';
 import 'package:stripling_wallet/controller/theme_controller.dart';
 import 'package:stripling_wallet/utils/constants.dart';
@@ -16,65 +18,67 @@ class Customization extends GetView<ThemeController>{
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return Scaffold(
-      backgroundColor: Get.isDarkMode?AppColors.darkBackground:AppColors.lightBackground,
-      body: SafeArea(
-        child: SizedBox(
-          width: SizeConfig.screenWidth,
-          child:Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              IconButton(
-                  onPressed: (){},
-                  icon: Icon(
-                    Icons.chevron_left,
-                    color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
-                    size: 39,
-                  )
-              ),
-              const SizedBox(height: 5,),
-              Padding(
-                padding: const EdgeInsets.only(left: 16,right: 16),
-                child: Text(
-                  'Customization',
-                  style:
-                  TextStyle(
+    return WillPopScope(
+      onWillPop: ()async=> false,
+      child: Scaffold(
+        backgroundColor: Get.isDarkMode?AppColors.darkBackground:AppColors.lightBackground,
+        body: SafeArea(
+          child: SizedBox(
+            width: SizeConfig.screenWidth,
+            child:Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                IconButton(
+                    onPressed: (){},
+                    icon: Icon(
+                      Icons.chevron_left,
                       color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
-                      fontFamily: 'Public sans',
-                      fontWeight: FontWeight.w600,
-                      fontSize: 24
+                      size: 39,
+                    )
+                ),
+                const SizedBox(height: 5,),
+                Padding(
+                  padding: const EdgeInsets.only(left: 16,right: 16),
+                  child: Text(
+                    'Customization',
+                    style:
+                    TextStyle(
+                        color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
+                        fontFamily: 'Public sans',
+                        fontWeight: FontWeight.w600,
+                        fontSize: 24
+                    ),
                   ),
                 ),
-              ),
-              Expanded(
-                child: SingleChildScrollView(
-                  padding: const EdgeInsets.only(left: 16,right: 16),
-                  physics: const BouncingScrollPhysics(),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(height: 33,),
-                      InkWell(
-                        onTap: (){
-                          print(Get.isDarkMode);
-                          if (Get.isDarkMode) {
+                Expanded(
+                  child: SingleChildScrollView(
+                    padding: const EdgeInsets.only(left: 16,right: 16),
+                    physics: const BouncingScrollPhysics(),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(height: 33,),
+                        InkWell(
+                          onTap: (){
+                            print(Get.isDarkMode);
+                            if (Get.isDarkMode) {
 
-                              themeController.changeTheme(Themes.lightTheme);
-                              themeController.saveTheme(false);
+                                themeController.changeTheme(Themes.lightTheme);
+                                themeController.saveTheme(false);
 
-                          } else {
+                            } else {
 
-                              themeController.changeTheme(Themes.darkTheme);
-                              themeController.saveTheme(true);
+                                themeController.changeTheme(Themes.darkTheme);
+                                themeController.saveTheme(true);
 
-                          }
-                        },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            buttonContainer("images/dark_mode.png", "Dark Mode", "View, update  your informations",),
-                            // ignore: avoid_unnecessary_containers
+                            }
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              buttonContainer("images/dark_mode.png", "Dark Mode", "View, update  your informations",),
+                              // ignore: avoid_unnecessary_containers
 //                          CupertinoSwitch(
 //                            value: dark,
 //                            activeColor: const Color(0xFF3068A4),
@@ -85,19 +89,20 @@ class Customization extends GetView<ThemeController>{
 //                              });
 //                            },
 //                          )
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                     const SizedBox(height: 30,),
-                      InkWell(
-                          onTap: (){},
-                          child: buttonContainer("images/device_settings.png", "Dark Settings", "View, update  your informations")
-                      ),
-                    ],
+                       const SizedBox(height: 30,),
+                        InkWell(
+                            onTap: (){},
+                            child: buttonContainer("images/device_settings.png", "Dark Settings", "View, update  your informations")
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
@@ -139,4 +144,5 @@ class Customization extends GetView<ThemeController>{
       ],
     );
   }
+
 }

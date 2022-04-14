@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:stripling_wallet/UI/welcome/registration/dependats_registration/dependants_pin.dart';
 import 'package:stripling_wallet/utils/constants.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
@@ -33,7 +34,7 @@ class _DependantsAuthenticationState extends State<DependantsAuthentication> {
         }
       },
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Get.isDarkMode?AppColors.darkBackground:AppColors.lightBackground,
         body: SafeArea(
           child: SizedBox(
             width: SizeConfig.screenWidth,
@@ -43,9 +44,9 @@ class _DependantsAuthenticationState extends State<DependantsAuthentication> {
               children: [
                 IconButton(
                     onPressed: (){},
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.chevron_left,
-                      color: Color(0xFF161616),
+                      color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                       size: 39,
                     )
                 ),
@@ -108,14 +109,14 @@ class _DependantsAuthenticationState extends State<DependantsAuthentication> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const Text(
+                              Text(
                                 "Don’t have an ID?",
                                 textAlign: TextAlign.start,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontFamily: 'Public Sans',
                                   fontSize: 12,
-                                  color: Color(0xFF161616),
+                                  color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                                 ),
                               ),
                               TextButton(
@@ -157,14 +158,14 @@ class _DependantsAuthenticationState extends State<DependantsAuthentication> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 "Enter Child’s ID ",
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontFamily: 'Public Sans',
                   fontSize: 14,
-                  color: Color(0xFF161616),
+                  color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                 ),
               ),
               const SizedBox(height: 10),
@@ -203,14 +204,14 @@ class _DependantsAuthenticationState extends State<DependantsAuthentication> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+             Text(
                 "Phone Number",
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontFamily: 'Public Sans',
                   fontSize: 14,
-                  color: Color(0xFF161616),
+                  color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                 ),
               ),
               const SizedBox(height: 10),

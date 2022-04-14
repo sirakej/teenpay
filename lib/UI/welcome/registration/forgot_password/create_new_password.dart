@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:stripling_wallet/utils/colors.dart';
 import 'package:stripling_wallet/utils/constants.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
@@ -38,6 +39,7 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
         }
       },
       child: Scaffold(
+        backgroundColor: Get.isDarkMode?AppColors.darkBackground:AppColors.lightBackground,
         body: SafeArea(
           child: SizedBox(
             width: SizeConfig.screenWidth,
@@ -47,14 +49,14 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
               children: [
                 IconButton(
                     onPressed: (){},
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.chevron_left,
-                      color: Color(0xFF161616),
+                      color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                       size: 39,
                     )
                 ),
                 const SizedBox(height: 24,),
-                const Padding(
+                Padding(
                   padding: EdgeInsets.only(left: 16,right: 16),
                   child: Text(
                     'Create New Password',
@@ -63,7 +65,7 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                       fontSize: 24,
                       fontFamily: 'Public Sans',
                       fontWeight: FontWeight.w700,
-                      color: Color(0xFF161616),
+                      color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                     ),
                   ),
                 ),
@@ -75,14 +77,14 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                     child: Column(
                       children: [
                         const SizedBox(height: 20),
-                        const Text(
+                        Text(
                           'Kindly choose a new Password different from the\none previously used',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 14,
                             fontFamily: 'Public Sans',
                             fontWeight: FontWeight.w600,
-                            color: Color(0xFF161616),
+                            color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                           ),
                         ),
                         const SizedBox(height: 30),
@@ -133,14 +135,14 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 "Password",
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontFamily: 'Public Sans',
                   fontSize: 14,
-                  color: Color(0xFF161616),
+                  color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                 ),
               ),
               const SizedBox(height: 10),
@@ -196,14 +198,14 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 "Confirm Password",
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontFamily: 'Public Sans',
                   fontSize: 14,
-                  color: Color(0xFF161616),
+                  color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                 ),
               ),
               const SizedBox(height: 10),
@@ -277,9 +279,9 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
         builder: (context){
           return Container(
             width: SizeConfig.screenWidth,
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.only(topLeft: Radius.circular(20),topRight:Radius.circular(20) ),
+            decoration: BoxDecoration(
+              color:Get.isDarkMode?AppColors.darkBottomSheet:AppColors.lightBackground,
+              borderRadius: const BorderRadius.only(topLeft: Radius.circular(20),topRight:Radius.circular(20) ),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,

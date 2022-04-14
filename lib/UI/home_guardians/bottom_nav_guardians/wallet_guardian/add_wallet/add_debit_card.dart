@@ -37,6 +37,7 @@ class _AddDebitCardState extends State<AddDebitCard> {
         }
       },
       child: Scaffold(
+        backgroundColor: Get.isDarkMode?AppColors.darkBackground:AppColors.lightBackground,
         body: SafeArea(
           child: SizedBox(
             width: SizeConfig.screenWidth,

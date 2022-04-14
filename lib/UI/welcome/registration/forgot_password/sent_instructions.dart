@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:stripling_wallet/utils/colors.dart';
 import 'package:stripling_wallet/utils/constants.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
@@ -17,6 +18,7 @@ class _SendInstructionsState extends State<SendInstructions> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
+      backgroundColor: Get.isDarkMode?AppColors.darkBackground:AppColors.lightBackground,
       body: SafeArea(
         child: SizedBox(
           width: SizeConfig.screenWidth,
@@ -26,14 +28,14 @@ class _SendInstructionsState extends State<SendInstructions> {
             children: [
               IconButton(
                   onPressed: (){},
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.chevron_left,
-                    color: Color(0xFF161616),
+                    color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                     size: 39,
                   )
               ),
               const SizedBox(height: 24,),
-              const Padding(
+              Padding(
                 padding: EdgeInsets.only(left: 16,right: 16),
                 child: Text(
                   'Reset Password',
@@ -42,7 +44,7 @@ class _SendInstructionsState extends State<SendInstructions> {
                     fontSize: 24,
                     fontFamily: 'Public Sans',
                     fontWeight: FontWeight.w700,
-                    color: Color(0xFF161616),
+                    color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                   ),
                 ),
               ),
@@ -52,25 +54,25 @@ class _SendInstructionsState extends State<SendInstructions> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Image.asset("images/reset_password.png",width:216,height:195,fit: BoxFit.contain,),
-                    const Text(
+                    Text(
                       'Check Your Mail',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 18,
                         fontFamily: 'Public Sans',
                         fontWeight: FontWeight.w600,
-                        color: Color(0xFF161616),
+                        color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                       ),
                     ),
                     const SizedBox(height: 16,),
-                    const Text(
+                    Text(
                       'Your reset Password instructions have been sent to\nyour Mail.',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 12,
                         fontFamily: 'Public Sans',
                         fontWeight: FontWeight.w600,
-                        color: Color(0xFF161616),
+                        color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                       ),
                     ),
                     const SizedBox(height: 24,),
@@ -102,14 +104,14 @@ class _SendInstructionsState extends State<SendInstructions> {
                       ),
                     ),
                     const SizedBox(height: 32,),
-                    const Text(
+                    Text(
                       'Didn’t get the reset instruction in your mail? check\nthe spam folder or retry ',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 12,
                         fontFamily: 'Public Sans',
                         fontWeight: FontWeight.w600,
-                        color: Color(0xFF161616),
+                        color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                       ),
                     ),
                   ],

@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:stripling_wallet/UI/welcome/registration/login.dart';
 import 'package:stripling_wallet/utils/colors.dart';
 import 'package:stripling_wallet/utils/constants.dart';
@@ -40,6 +41,7 @@ class _GuardianSignUpContinueState extends State<GuardianSignUpContinue> {
         }
       },
       child: Scaffold(
+        backgroundColor: Get.isDarkMode?AppColors.darkBackground:AppColors.lightBackground,
         body: SafeArea(
           child: SizedBox(
             width: SizeConfig.screenWidth,
@@ -49,9 +51,9 @@ class _GuardianSignUpContinueState extends State<GuardianSignUpContinue> {
               children: [
                 IconButton(
                     onPressed: (){},
-                    icon: const Icon(
+                    icon:Icon(
                       Icons.chevron_left,
-                      color: Color(0xFF161616),
+                      color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                       size: 39,
                     )
                 ),
@@ -161,14 +163,14 @@ class _GuardianSignUpContinueState extends State<GuardianSignUpContinue> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+               Text(
                 "Referral Code (optional)",
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontFamily: 'Public Sans',
                   fontSize: 14,
-                  color: Color(0xFF161616),
+                  color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                 ),
               ),
               const SizedBox(height: 10),
@@ -194,14 +196,14 @@ class _GuardianSignUpContinueState extends State<GuardianSignUpContinue> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+             Text(
                 "Bank Verification Number(BVN)",
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontFamily: 'Public Sans',
                   fontSize: 14,
-                  color: Color(0xFF161616),
+                  color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                 ),
               ),
               const SizedBox(height: 10),
@@ -233,14 +235,14 @@ class _GuardianSignUpContinueState extends State<GuardianSignUpContinue> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+             Text(
                 "Date of birth",
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontFamily: 'Public Sans',
                   fontSize: 14,
-                  color: Color(0xFF161616),
+                  color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                 ),
               ),
               const SizedBox(height: 10),

@@ -167,7 +167,7 @@ class SettingsGuardians extends GetView<ThemeController> {
                       fontFamily: 'Public Sans',
                       fontWeight: FontWeight.w400,
                       fontSize: 10,
-                      color: const Color(0xFF161616).withOpacity(0.5)
+                      color: Get.isDarkMode?const Color(0xFFFFFFFF):const Color(0xFF161616).withOpacity(0.5)
                   ),
                 ),
 

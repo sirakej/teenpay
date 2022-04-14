@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:stripling_wallet/utils/colors.dart';
 import 'package:stripling_wallet/utils/constants.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
@@ -44,6 +45,7 @@ class _GuardianSignUpState extends State<GuardianSignUp> {
         }
         },
       child: Scaffold(
+        backgroundColor: Get.isDarkMode?AppColors.darkBackground:AppColors.lightBackground,
         body: SafeArea(
           child: SizedBox(
             width: SizeConfig.screenWidth,
@@ -53,9 +55,9 @@ class _GuardianSignUpState extends State<GuardianSignUp> {
               children: [
                 IconButton(
                     onPressed: (){},
-                    icon: const Icon(
+                    icon:Icon(
                       Icons.chevron_left,
-                      color: Color(0xFF161616),
+                      color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                       size: 39,
                     )
                 ),
@@ -165,14 +167,14 @@ class _GuardianSignUpState extends State<GuardianSignUp> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+             Text(
                 "Full Name",
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontFamily: 'Public Sans',
                   fontSize: 14,
-                  color: Color(0xFF161616),
+                  color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                 ),
               ),
               const SizedBox(height: 10),
@@ -204,14 +206,14 @@ class _GuardianSignUpState extends State<GuardianSignUp> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 "Email",
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontFamily: 'Public Sans',
                   fontSize: 14,
-                  color: Color(0xFF161616),
+                  color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                 ),
               ),
               const SizedBox(height: 10),
@@ -246,14 +248,14 @@ class _GuardianSignUpState extends State<GuardianSignUp> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 "Phone Number",
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontFamily: 'Public Sans',
                   fontSize: 14,
-                  color: Color(0xFF161616),
+                  color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                 ),
               ),
               const SizedBox(height: 10),
@@ -285,14 +287,14 @@ class _GuardianSignUpState extends State<GuardianSignUp> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+               Text(
                 "Password",
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontFamily: 'Public Sans',
                   fontSize: 14,
-                  color: Color(0xFF161616),
+                  color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                 ),
               ),
               const SizedBox(height: 10),

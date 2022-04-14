@@ -13,7 +13,7 @@ class _TransferState extends State<Transfer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Get.isDarkMode?AppColors.darkBackground:AppColors.lightBackground,
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.only(left: 16,right: 16),

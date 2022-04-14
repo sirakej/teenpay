@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/home_guardians/services/my_dependants/my_dependants.dart';
+import 'package:stripling_wallet/utils/constants.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
 
 
@@ -23,7 +25,7 @@ class _DependantsIdState extends State<DependantsId> {
         return false;
       },
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Get.isDarkMode?AppColors.darkBackground:AppColors.lightBackground,
         body: SafeArea(
           child: SizedBox(
             width: SizeConfig.screenWidth,
@@ -32,7 +34,7 @@ class _DependantsIdState extends State<DependantsId> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 30,),
-                const Padding(
+                Padding(
                   padding: EdgeInsets.only(left: 16),
                   child: Text(
                     'Dependants ID',
@@ -40,7 +42,7 @@ class _DependantsIdState extends State<DependantsId> {
                         fontSize: 24,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w700,
-                        color: Color(0xFF161616)
+                        color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                     ),
                   ),
                 ),
@@ -59,12 +61,12 @@ class _DependantsIdState extends State<DependantsId> {
                                 fontSize: 14,
                                 fontFamily: 'Poppins',
                                 fontWeight: FontWeight.w600,
-                                color:const Color(0xFF161616).withOpacity(0.8)
+                                color: Get.isDarkMode?AppColors.darkTextWhite:const Color(0xFF161616).withOpacity(0.8)
                             ),
                           ),
                         ),
                         const SizedBox(height:50),
-                        const Padding(
+                        Padding(
                           padding: EdgeInsets.only(left: 16),
                           child: Text(
                             'Copy ID',
@@ -73,7 +75,7 @@ class _DependantsIdState extends State<DependantsId> {
                                 fontSize: 14,
                                 fontFamily: 'Poppins',
                                 fontWeight: FontWeight.w600,
-                                color:Color(0xFF3068A4)
+                                color: Get.isDarkMode?AppColors.darkTextWhite:const Color(0xFF3068A4)
                             ),
                           ),
                         ),
@@ -91,7 +93,7 @@ class _DependantsIdState extends State<DependantsId> {
                                   borderRadius: const BorderRadius.all(Radius.circular(4)),
                                   color: Colors.transparent,
                                   border: Border.all(
-                                      color: const Color(0xFF151920).withOpacity(0.32)
+                                      color:  Get.isDarkMode?AppColors.darkTextWhite:const Color(0xFF151920).withOpacity(0.32)
                                   )
                               ),
                               child: Row(

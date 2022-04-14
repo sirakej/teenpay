@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:stripling_wallet/utils/constants.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
 
 
@@ -27,7 +29,7 @@ class _PhysicalCardState extends State<PhysicalCard> {
         }
       },
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Get.isDarkMode?AppColors.darkBackground:AppColors.lightBackground,
         body: SafeArea(
           child: SizedBox(
             width: SizeConfig.screenWidth,
@@ -36,21 +38,21 @@ class _PhysicalCardState extends State<PhysicalCard> {
               children: [
                 IconButton(
                     onPressed: (){},
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.chevron_left,
-                      color: Color(0xFF161616),
+                      color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                       size: 39,
                     )
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(left: 16),
+               Padding(
+                  padding: const EdgeInsets.only(left: 16),
                   child: Text(
                     'Physical Card',
                     style: TextStyle(
                         fontSize: 24,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w700,
-                        color: Color(0xFF161616)
+                        color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                     ),
                   ),
                 ),
@@ -195,11 +197,11 @@ class _PhysicalCardState extends State<PhysicalCard> {
                 Text(
                   name,
                   style:
-                  const TextStyle(
+                  TextStyle(
                       fontFamily: 'Public Sans',
                       fontWeight: FontWeight.w600,
                       fontSize: 14,
-                      color: Color(0xFF161616)
+                      color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                   ),
                 ),
                 const SizedBox(height: 9,),
@@ -210,7 +212,7 @@ class _PhysicalCardState extends State<PhysicalCard> {
                       fontFamily: 'Public Sans',
                       fontWeight: FontWeight.w400,
                       fontSize: 10,
-                      color: const Color(0xFF161616).withOpacity(0.5)
+                      color:  Get.isDarkMode?AppColors.darkTextWhite:const Color(0xFF161616).withOpacity(0.5)
                   ),
                 ),
 

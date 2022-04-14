@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:stripling_wallet/utils/constants.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
 
@@ -32,7 +33,7 @@ class _SpendLimitState extends State<SpendLimit> {
         }
       },
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Get.isDarkMode?AppColors.darkBackground:AppColors.lightBackground,
         body: SafeArea(
           child: SizedBox(
             width: SizeConfig.screenWidth,
@@ -41,21 +42,21 @@ class _SpendLimitState extends State<SpendLimit> {
               children: [
                 IconButton(
                     onPressed: (){},
-                    icon: const Icon(
+                    icon:Icon(
                       Icons.chevron_left,
-                      color: Color(0xFF161616),
+                      color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                       size: 39,
                     )
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(left: 16),
+               Padding(
+                  padding: const EdgeInsets.only(left: 16),
                   child: Text(
                     'Spend Limit',
                     style: TextStyle(
                         fontSize: 24,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w700,
-                        color: Color(0xFF161616)
+                        color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                     ),
                   ),
                 ),
@@ -115,19 +116,19 @@ class _SpendLimitState extends State<SpendLimit> {
       key: _formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
+        children:[
           // full name
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 "Daily Limit",
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontFamily: 'Public Sans',
                   fontSize: 14,
-                  color: Color(0xFF161616),
+                  color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                 ),
               ),
               const SizedBox(height: 4),
@@ -155,19 +156,19 @@ class _SpendLimitState extends State<SpendLimit> {
               ),
             ],
           ),
-          const SizedBox(height: 40),
+          const SizedBox(height: 24),
           //Account Number
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 "Monthly Limit",
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontFamily: 'Public Sans',
                   fontSize: 14,
-                  color: Color(0xFF161616),
+                  color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                 ),
               ),
               const SizedBox(height: 4),

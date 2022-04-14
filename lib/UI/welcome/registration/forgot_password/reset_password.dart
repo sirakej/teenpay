@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:stripling_wallet/UI/welcome/registration/forgot_password/sent_instructions.dart';
 import 'package:stripling_wallet/utils/colors.dart';
 import 'package:stripling_wallet/utils/constants.dart';
@@ -33,6 +34,7 @@ class _ResetPasswordState extends State<ResetPassword> {
         }
       },
       child: Scaffold(
+        backgroundColor: Get.isDarkMode?AppColors.darkBackground:AppColors.lightBackground,
         body: SafeArea(
           child: SizedBox(
             width: SizeConfig.screenWidth,
@@ -42,14 +44,14 @@ class _ResetPasswordState extends State<ResetPassword> {
               children: [
                 IconButton(
                     onPressed: (){},
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.chevron_left,
-                      color: Color(0xFF161616),
+                      color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                       size: 39,
                     )
                 ),
                 const SizedBox(height: 24,),
-                const Padding(
+               Padding(
                   padding: EdgeInsets.only(left: 16,right: 16),
                   child: Text(
                     'Reset Password',
@@ -58,7 +60,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                       fontSize: 24,
                       fontFamily: 'Public Sans',
                       fontWeight: FontWeight.w700,
-                      color: Color(0xFF161616),
+                      color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                     ),
                   ),
                 ),
@@ -70,14 +72,14 @@ class _ResetPasswordState extends State<ResetPassword> {
                     child: Column(
                       children: [
                         const SizedBox(height: 20),
-                        const Text(
+                       Text(
                           'Kindly enter the email associated with this\naccount as instruction on your Password reset\nwill be sent to the mail',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 14,
                             fontFamily: 'Public Sans',
                             fontWeight: FontWeight.w600,
-                            color: Color(0xFF161616),
+                            color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                           ),
                         ),
                         const SizedBox(height: 50),
@@ -131,14 +133,14 @@ class _ResetPasswordState extends State<ResetPassword> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 "Email",
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontFamily: 'Public Sans',
                   fontSize: 14,
-                  color: Color(0xFF161616),
+                  color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                 ),
               ),
               const SizedBox(height: 10),

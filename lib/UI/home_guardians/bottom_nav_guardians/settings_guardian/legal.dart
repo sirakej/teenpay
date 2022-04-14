@@ -19,7 +19,7 @@ class _LegalState extends State<Legal> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Get.isDarkMode?AppColors.darkBackground:AppColors.lightBackground,
       body: SafeArea(
         child: SizedBox(
           width: SizeConfig.screenWidth,

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:stripling_wallet/utils/constants.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
 
@@ -43,7 +44,7 @@ class _AutomatedPaymentState extends State<AutomatedPayment> {
     SizeConfig().init(context);
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Get.isDarkMode?AppColors.darkBackground:AppColors.lightBackground,
       body: SafeArea(
         child: SizedBox(
           width: SizeConfig.screenWidth,
@@ -52,13 +53,13 @@ class _AutomatedPaymentState extends State<AutomatedPayment> {
             children: [
               IconButton(
                   onPressed: (){},
-                  icon: const Icon(
+                  icon:Icon(
                     Icons.chevron_left,
-                    color: Color(0xFF161616),
+                    color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                     size: 39,
                   )
               ),
-              const Padding(
+              Padding(
                 padding: EdgeInsets.only(left: 16),
                 child: Text(
                   'Fund Dependants',
@@ -66,7 +67,7 @@ class _AutomatedPaymentState extends State<AutomatedPayment> {
                       fontSize: 24,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w700,
-                      color: Color(0xFF161616)
+                      color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                   ),
                 ),
               ),
@@ -79,7 +80,7 @@ class _AutomatedPaymentState extends State<AutomatedPayment> {
                       fontSize: 14,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w600,
-                      color:const Color(0xFF161616).withOpacity(0.8)
+                      color: Get.isDarkMode?AppColors.darkTextWhite:const Color(0xFF161616).withOpacity(0.8),
                   ),
                 ),
               ),
@@ -138,14 +139,14 @@ class _AutomatedPaymentState extends State<AutomatedPayment> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 "Amount",
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontFamily: 'Public Sans',
                   fontSize: 14,
-                  color: Color(0xFF161616),
+                  color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                 ),
               ),
               const SizedBox(height: 10),
@@ -189,11 +190,11 @@ class _AutomatedPaymentState extends State<AutomatedPayment> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 'Frequency',
                 style:
                 TextStyle(
-                    color: Color(0xFF161616),
+                    color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                     fontFamily: 'Public Sans',
                     fontWeight: FontWeight.w600,
                     fontSize: 14
@@ -246,11 +247,11 @@ class _AutomatedPaymentState extends State<AutomatedPayment> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 'Select Dependant(s)',
                 style:
                 TextStyle(
-                    color: Color(0xFF161616),
+                    color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                     fontFamily: 'Public Sans',
                     fontWeight: FontWeight.w600,
                     fontSize: 14
@@ -337,7 +338,7 @@ class _AutomatedPaymentState extends State<AutomatedPayment> {
                         height: 6,
                         width: 100,
                         decoration: BoxDecoration(
-                          color: const Color(0xFF000000).withOpacity(0.62),
+                          color:  Get.isDarkMode?AppColors.darkTextWhite:const Color(0xFF000000).withOpacity(0.62),
                           borderRadius: const BorderRadius.all(Radius.circular(20)),
                         ),
                       ),
@@ -349,7 +350,7 @@ class _AutomatedPaymentState extends State<AutomatedPayment> {
                           onTap: (){
                             Navigator.pop(context);
                           },
-                          child: Image.asset("images/X.png",width:24 ,height: 24,fit: BoxFit.contain,)
+                          child: Image.asset("images/X.png",width:24 ,height: 24,fit: BoxFit.contain,color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,)
                       ),
                     ),
                     Padding(
@@ -358,14 +359,14 @@ class _AutomatedPaymentState extends State<AutomatedPayment> {
                         child: Column(
                           children: [
                             const SizedBox(height: 2.73,),
-                            const Text(
+                             Text(
                               'Frequency of Payment',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 18,
                                 fontFamily: 'Public Sans',
                                 fontWeight: FontWeight.w600,
-                                color: Color(0xFF161616),
+                                color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                               ),
                             ),
                             const SizedBox(height: 33,),

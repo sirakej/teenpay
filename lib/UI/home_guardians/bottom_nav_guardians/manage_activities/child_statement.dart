@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:stripling_wallet/utils/constants.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
 
@@ -32,7 +33,7 @@ class _ChildStatementState extends State<ChildStatement> {
         }
       },
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Get.isDarkMode?AppColors.darkBackground:AppColors.lightBackground,
         body: SafeArea(
           child: SizedBox(
             width: SizeConfig.screenWidth,
@@ -41,13 +42,13 @@ class _ChildStatementState extends State<ChildStatement> {
               children: [
                 IconButton(
                     onPressed: (){},
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.chevron_left,
-                      color: Color(0xFF161616),
+                      color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                       size: 39,
                     )
                 ),
-                const Padding(
+              Padding(
                   padding: EdgeInsets.only(left: 16),
                   child: Text(
                     'Request Child Statment',
@@ -55,7 +56,7 @@ class _ChildStatementState extends State<ChildStatement> {
                         fontSize: 24,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w700,
-                        color: Color(0xFF161616)
+                        color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                     ),
                   ),
                 ),
@@ -119,14 +120,14 @@ class _ChildStatementState extends State<ChildStatement> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 "Start Date",
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontFamily: 'Public Sans',
                   fontSize: 14,
-                  color: Color(0xFF161616),
+                  color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                 ),
               ),
               const SizedBox(height: 4),
@@ -159,14 +160,14 @@ class _ChildStatementState extends State<ChildStatement> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+             Text(
                 "End Date",
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontFamily: 'Public Sans',
                   fontSize: 14,
-                  color: Color(0xFF161616),
+                  color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                 ),
               ),
               const SizedBox(height: 4),

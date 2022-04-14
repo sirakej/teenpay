@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/settings_guardian/profile/upgrade_account.dart';
 import 'package:stripling_wallet/utils/constants.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
@@ -36,7 +37,7 @@ class _AccountLimitState extends State<AccountLimit> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      backgroundColor: Colors.white,
+        backgroundColor: Get.isDarkMode?AppColors.darkBackground:AppColors.lightBackground,
       body: SafeArea(
         child: SizedBox(
           width: SizeConfig.screenWidth,
@@ -48,20 +49,20 @@ class _AccountLimitState extends State<AccountLimit> {
                   onPressed: (){
                     Navigator.pop(context);
                   },
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.chevron_left,
-                    color: Color(0xFF161616),
+                    color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                     size: 39,
                   )
               ),
               const SizedBox(height: 5,),
-              const Padding(
+             Padding(
                 padding: EdgeInsets.only(left: 16,right: 16),
                 child: Text(
                   'Profile',
                   style:
                   TextStyle(
-                      color: Color(0xFF161616),
+                      color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                       fontFamily: 'Public sans',
                       fontWeight: FontWeight.w600,
                       fontSize: 24
@@ -118,22 +119,22 @@ class _AccountLimitState extends State<AccountLimit> {
                     child:  Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children:[
-                        const Text(
+                        Text(
                           'Account Number:',
                           style:
                           TextStyle(
-                              color: Color(0xFF161616),
+                              color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                               fontFamily: 'Public sans',
                               fontWeight: FontWeight.w400,
                               fontSize: 12
                           ),
                         ),
                         const SizedBox(width: 1,),
-                        const Text(
+                        Text(
                           '253736292',
                           style:
                           TextStyle(
-                              color: Color(0xFF161616),
+                              color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                               fontFamily: 'Public sans',
                               fontWeight: FontWeight.w400,
                               fontSize: 12
@@ -145,11 +146,11 @@ class _AccountLimitState extends State<AccountLimit> {
                     ),
                   ),
                   const SizedBox(height: 15,),
-                  const Text(
+                   Text(
                     'Account Number:',
                     style:
                     TextStyle(
-                        color: Color(0xFF161616),
+                        color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                         fontFamily: 'Public sans',
                         fontWeight: FontWeight.w400,
                         fontSize: 12
@@ -160,7 +161,7 @@ class _AccountLimitState extends State<AccountLimit> {
                     textAlign: TextAlign.center,
                     style:
                     TextStyle(
-                        color: const Color(0xFF151920).withOpacity(0.32),
+                        color:  Get.isDarkMode?AppColors.darkTextWhite:const Color(0xFF151920).withOpacity(0.32),
                         fontFamily: 'Public sans',
                         fontWeight: FontWeight.w400,
                         fontSize: 12
@@ -243,14 +244,14 @@ class _AccountLimitState extends State<AccountLimit> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+            Text(
                 "User ID",
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontFamily: 'Public Sans',
                   fontSize: 14,
-                  color: Color(0xFF161616),
+                  color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                 ),
               ),
               const SizedBox(height: 10),
@@ -292,14 +293,14 @@ class _AccountLimitState extends State<AccountLimit> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 "Full Name",
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontFamily: 'Public Sans',
                   fontSize: 14,
-                  color: Color(0xFF161616),
+                  color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                 ),
               ),
               const SizedBox(height: 10),
@@ -341,14 +342,14 @@ class _AccountLimitState extends State<AccountLimit> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 "Phone Number",
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontFamily: 'Public Sans',
                   fontSize: 14,
-                  color: Color(0xFF161616),
+                  color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                 ),
               ),
               const SizedBox(height: 10),
@@ -390,14 +391,14 @@ class _AccountLimitState extends State<AccountLimit> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 "Email Address",
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontFamily: 'Public Sans',
                   fontSize: 14,
-                  color: Color(0xFF161616),
+                  color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                 ),
               ),
               const SizedBox(height: 10),
@@ -439,14 +440,14 @@ class _AccountLimitState extends State<AccountLimit> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 "Date of Birth",
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontFamily: 'Public Sans',
                   fontSize: 14,
-                  color: Color(0xFF161616),
+                  color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                 ),
               ),
               const SizedBox(height: 10),

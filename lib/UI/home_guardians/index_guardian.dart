@@ -22,6 +22,7 @@ class _IndexGuardianState extends State<IndexGuardian> {
 
   /// Current index of the bottom navigation
   int currentIndex = 0;
+  late DateTime _lastQuitTime;
 
   getPage(int index) {
     switch (index){
@@ -48,38 +49,50 @@ class _IndexGuardianState extends State<IndexGuardian> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: getPage(currentIndex),
-      bottomNavigationBar: BottomNavigationBar(
+    return WillPopScope(
+      onWillPop: () async {
+        if (_lastQuitTime == null ||
+            DateTime.now().difference(_lastQuitTime).inSeconds > 1) {
+          print('press the back button again to exit');
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content:Text('press the back button again to exit')));
+              _lastQuitTime = DateTime.now();
+          return false;
+        } else {
+          print('exit ');
+          Navigator.of(context).pop(true);
+          return true;
+        }
+      },
+      child: Scaffold(
+        body: getPage(currentIndex),
+        bottomNavigationBar: BottomNavigationBar(
+              backgroundColor: Get.isDarkMode?AppColors.darkBackground:AppColors.lightBackground,
+              elevation: 10,
+              type: BottomNavigationBarType.fixed,
+              currentIndex: currentIndex,
+            selectedLabelStyle:TextStyle(
+                  fontFamily: 'Poppins',
+                  fontSize: 10,
+                  color: Color(0xFF3675B8),
+                  //backgroundColor: Color(0xFF3675B8),
+                  fontWeight: FontWeight.w400
+              ),
+              unselectedLabelStyle:const TextStyle(
+                  fontFamily: 'Poppins',
+                  fontSize: 10,
+                  fontWeight: FontWeight.w400
+              ),
+              onTap: onTabTapped,
+              items: [
+                _barItem("home_inactive", "Home","home_icon"),
+                _barItem("wallet_inactive", "Wallet","wallet_active"),
+                _barItem("analytics_inactive", "Analytics","analytics_active"),
+                _barItem("settings_inactive", "Settings","settings_active"),
+                _barItem("more", "More","more"),
 
-          backgroundColor: Get.isDarkMode?AppColors.darkBackground:AppColors.lightBackground,
-          elevation: 10,
-          type: BottomNavigationBarType.fixed,
-          currentIndex: currentIndex,
-          showSelectedLabels: false,
-          //showUnselectedLabels: true,
-          selectedLabelStyle:TextStyle(
-              fontFamily: 'Poppins',
-              fontSize: 10,
-              color: Color(0xFF3675B8),
-              //backgroundColor: Color(0xFF3675B8),
-              fontWeight: FontWeight.w400
-          ),
-          unselectedLabelStyle:const TextStyle(
-              fontFamily: 'Poppins',
-              fontSize: 10,
-              fontWeight: FontWeight.w400
-          ),
-          onTap: onTabTapped,
-          items: [
-            _barItem("home_inactive", "Home","home_icon"),
-            _barItem("wallet_inactive", "Wallet","wallet_active"),
-            _barItem("analytics_inactive", "Analytics","analytics_active"),
-            _barItem("settings_inactive", "Settings","settings_active"),
-            _barItem("more", "More","more"),
-
-          ],
-        ),
+              ],
+            ),
+      ),
     );
   }
 

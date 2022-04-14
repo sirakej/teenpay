@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/home_guardians/services/dependants_request_tab/accept_confirmation.dart';
 
 import 'package:stripling_wallet/utils/constants.dart';
@@ -67,14 +68,14 @@ class _PendingState extends State<Pending> {
                     color: Color(0xFF3068A4)),
               ),
               Text(
-                        reason,
-                        style: const TextStyle(
-                            fontSize: 14,
-                            fontFamily: 'Public Sans',
-                            fontWeight: FontWeight.w900,
-                            color: Color(0xFF161616)
-                        ),
-                      ),
+                reason,
+                style:TextStyle(
+                  fontSize: 14,
+                  fontFamily: 'Public Sans',
+                  fontWeight: FontWeight.w900,
+                  color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
+                ),
+              ),
               const SizedBox(height: 7,),
               Text(
                 '30 mins ago',
@@ -151,7 +152,7 @@ class _PendingState extends State<Pending> {
                     height: 6,
                     width: 100,
                     decoration: BoxDecoration(
-                      color: const Color(0xFF000000).withOpacity(0.62),
+                      color:  Get.isDarkMode?AppColors.darkTextWhite:const Color(0xFF000000).withOpacity(0.62),
                       borderRadius: const BorderRadius.all(Radius.circular(20)),
                     ),
                   ),
@@ -170,14 +171,14 @@ class _PendingState extends State<Pending> {
                   child: Column(
                     children: [
                       const SizedBox(height: 28,),
-                      const Text(
+                      Text(
                         'Creation Completed',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 18,
                           fontFamily: 'Public Sans',
                           fontWeight: FontWeight.w600,
-                          color: Color(0xFF161616),
+                          color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                         ),
                       ),
                       const SizedBox(height:45,),
@@ -190,7 +191,7 @@ class _PendingState extends State<Pending> {
                           fontSize: 12,
                           fontFamily: 'Public Sans',
                           fontWeight: FontWeight.w600,
-                          color: const Color(0xFF151920).withOpacity(0.8),
+                          color:  Get.isDarkMode?AppColors.darkTextWhite:const Color(0xFF151920).withOpacity(0.8),
                         ),
                       ),
                       const SizedBox(height: 31,),
@@ -201,14 +202,14 @@ class _PendingState extends State<Pending> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const Text(
+                              Text(
                                 "Reasons(Optional)",
                                 textAlign: TextAlign.start,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontFamily: 'Public Sans',
                                   fontSize: 14,
-                                  color: Color(0xFF161616),
+                                  color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                                 ),
                               ),
                               const SizedBox(height: 10),
@@ -299,7 +300,7 @@ class _PendingState extends State<Pending> {
                     height: 6,
                     width: 100,
                     decoration: BoxDecoration(
-                      color: const Color(0xFF000000).withOpacity(0.62),
+                      color:  Get.isDarkMode?AppColors.darkTextWhite:const Color(0xFF000000).withOpacity(0.62),
                       borderRadius: const BorderRadius.all(Radius.circular(20)),
                     ),
                   ),
@@ -317,14 +318,14 @@ class _PendingState extends State<Pending> {
                 Center(
                   child: Column(
                     children: [
-                      const Text(
+                      Text(
                         'Request Confirmation',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 18,
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w600,
-                          color: Color(0xFF161616),
+                          color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                         ),
                       ),
                       const SizedBox(height:45,),
@@ -342,17 +343,17 @@ class _PendingState extends State<Pending> {
                                     fontSize: 16,
                                     fontFamily: 'Poppins',
                                     fontWeight: FontWeight.w600,
-                                    color: const Color(0xFF151920).withOpacity(0.32),
+                                    color:  Get.isDarkMode?AppColors.darkTextWhite:const Color(0xFF151920).withOpacity(0.32),
                                   ),
                                 ),
-                                const Text(
+                               Text(
                                   '+2349055380387',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontSize: 16,
                                     fontFamily: 'Poppins',
                                     fontWeight: FontWeight.w600,
-                                    color: Color(0xFF161616),
+                                    color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                                   ),
                                 ),
                               ],
@@ -361,7 +362,7 @@ class _PendingState extends State<Pending> {
                             Container(
                               height: 1,
                               width:SizeConfig.screenWidth,
-                              color: const Color(0xFF161616).withOpacity(0.08),
+                              color:  Get.isDarkMode?AppColors.darkTextWhite:const Color(0xFF161616).withOpacity(0.08),
                             ),
                             const SizedBox(height: 16,),
                             Row(
@@ -374,17 +375,17 @@ class _PendingState extends State<Pending> {
                                     fontSize: 16,
                                     fontFamily: 'Poppins',
                                     fontWeight: FontWeight.w600,
-                                    color: const Color(0xFF151920).withOpacity(0.32),
+                                    color:  Get.isDarkMode?AppColors.darkTextWhite:const Color(0xFF151920).withOpacity(0.32),
                                   ),
                                 ),
-                                const Text(
+                                Text(
                                   'N75,000',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontSize: 16,
                                     fontFamily: 'Poppins',
                                     fontWeight: FontWeight.w600,
-                                    color: Color(0xFF161616),
+                                    color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                                   ),
                                 ),
                               ],
@@ -393,7 +394,7 @@ class _PendingState extends State<Pending> {
                             Container(
                               height: 1,
                               width: SizeConfig.screenWidth,
-                              color: const Color(0xFF161616).withOpacity(0.08),
+                              color: Get.isDarkMode?AppColors.darkTextWhite:const Color(0xFF161616).withOpacity(0.08),
                             ),
                             const SizedBox(height: 16,),
                             Row(
@@ -406,17 +407,17 @@ class _PendingState extends State<Pending> {
                                     fontSize: 16,
                                     fontFamily: 'Poppins',
                                     fontWeight: FontWeight.w600,
-                                    color: const Color(0xFF151920).withOpacity(0.32),
+                                    color:  Get.isDarkMode?AppColors.darkTextWhite:const Color(0xFF151920).withOpacity(0.32),
                                   ),
                                 ),
-                                const Text(
+                                Text(
                                   'Flex Money for Christmas',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontSize: 16,
                                     fontFamily: 'Poppins',
                                     fontWeight: FontWeight.w600,
-                                    color: Color(0xFF161616),
+                                    color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                                   ),
                                 ),
                               ],
@@ -425,7 +426,7 @@ class _PendingState extends State<Pending> {
                             Container(
                               height: 1,
                               width: SizeConfig.screenWidth,
-                              color: const Color(0xFF161616).withOpacity(0.08),
+                              color:  Get.isDarkMode?AppColors.darkTextWhite:const Color(0xFF161616).withOpacity(0.08),
                             ),
                           ],
                         ),

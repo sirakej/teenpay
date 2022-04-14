@@ -28,7 +28,7 @@ class _IdDocumentState extends State<IdDocument> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Get.isDarkMode?AppColors.darkBackground:AppColors.lightBackground,
       body: SafeArea(
         child: SizedBox(
           width: SizeConfig.screenWidth,
@@ -238,8 +238,8 @@ class _IdDocumentState extends State<IdDocument> {
             builder: (BuildContext context, StateSetter setState) {
               return Container(
                 width: SizeConfig.screenWidth,
-                decoration: const BoxDecoration(
-                  color: Colors.white,
+                decoration: BoxDecoration(
+                  color:Get.isDarkMode?AppColors.darkBottomSheet:AppColors.lightBackground,
                   borderRadius: BorderRadius.only(topLeft: Radius.circular(20),topRight:Radius.circular(20) ),
                 ),
                 child: Column(
@@ -253,7 +253,7 @@ class _IdDocumentState extends State<IdDocument> {
                         height: 6,
                         width: 100,
                         decoration: BoxDecoration(
-                          color: const Color(0xFF000000).withOpacity(0.62),
+                          color:Get.isDarkMode?AppColors.darkBackground:const Color(0xFF000000).withOpacity(0.62),
                           borderRadius: const BorderRadius.all(Radius.circular(20)),
                         ),
                       ),

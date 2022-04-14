@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:stripling_wallet/utils/constants.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
 
@@ -36,7 +37,7 @@ class _OneTimePaymentState extends State<OneTimePayment> {
     SizeConfig().init(context);
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Get.isDarkMode?AppColors.darkBackground:AppColors.lightBackground,
       body: SafeArea(
         child: SizedBox(
           width: SizeConfig.screenWidth,
@@ -45,21 +46,21 @@ class _OneTimePaymentState extends State<OneTimePayment> {
             children: [
               IconButton(
                   onPressed: (){},
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.chevron_left,
-                    color: Color(0xFF161616),
+                    color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                     size: 39,
                   )
               ),
-              const Padding(
-                padding: EdgeInsets.only(left: 16),
+               Padding(
+                padding: const EdgeInsets.only(left: 16),
                 child: Text(
                   'Fund Dependants',
                   style: TextStyle(
                       fontSize: 24,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w700,
-                      color: Color(0xFF161616)
+                      color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                   ),
                 ),
               ),
@@ -72,7 +73,7 @@ class _OneTimePaymentState extends State<OneTimePayment> {
                       fontSize: 14,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w600,
-                      color:const Color(0xFF161616).withOpacity(0.8)
+                      color: Get.isDarkMode?AppColors.darkTextWhite:const Color(0xFF161616).withOpacity(0.8)
                   ),
                 ),
               ),
@@ -130,14 +131,14 @@ class _OneTimePaymentState extends State<OneTimePayment> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 "Name",
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontFamily: 'Public Sans',
                   fontSize: 14,
-                  color: Color(0xFF161616),
+                  color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                 ),
               ),
               const SizedBox(height: 10),
@@ -171,7 +172,7 @@ class _OneTimePaymentState extends State<OneTimePayment> {
                   fontWeight: FontWeight.w400,
                   fontFamily: 'Poppins',
                   fontSize: 10,
-                  color: const Color(0xFF161616).withOpacity(0.6),
+                  color:  Get.isDarkMode?AppColors.darkTextWhite:const Color(0xFF161616).withOpacity(0.6),
                 ),
               ),
             ],
@@ -180,14 +181,14 @@ class _OneTimePaymentState extends State<OneTimePayment> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 "Amount",
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontFamily: 'Public Sans',
                   fontSize: 14,
-                  color: Color(0xFF161616),
+                  color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                 ),
               ),
               const SizedBox(height: 10),
@@ -221,7 +222,7 @@ class _OneTimePaymentState extends State<OneTimePayment> {
                   fontWeight: FontWeight.w400,
                   fontFamily: 'Poppins',
                   fontSize: 10,
-                  color: const Color(0xFF161616).withOpacity(0.6),
+                  color:  Get.isDarkMode?AppColors.darkTextWhite:const Color(0xFF161616).withOpacity(0.6),
                 ),
               ),
             ],
@@ -231,11 +232,11 @@ class _OneTimePaymentState extends State<OneTimePayment> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 'Select Child(ren)',
                 style:
                 TextStyle(
-                    color: Color(0xFF161616),
+                    color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                     fontFamily: 'Public Sans',
                     fontWeight: FontWeight.w600,
                     fontSize: 14
@@ -289,7 +290,7 @@ class _OneTimePaymentState extends State<OneTimePayment> {
                   fontWeight: FontWeight.w400,
                   fontFamily: 'Poppins',
                   fontSize: 10,
-                  color: const Color(0xFF161616).withOpacity(0.6),
+                  color:  Get.isDarkMode?AppColors.darkTextWhite:const Color(0xFF161616).withOpacity(0.6),
                 ),
               ),
             ],
@@ -298,14 +299,14 @@ class _OneTimePaymentState extends State<OneTimePayment> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 "Description",
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontFamily: 'Public Sans',
                   fontSize: 14,
-                  color: Color(0xFF161616),
+                  color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                 ),
               ),
               const SizedBox(height: 10),
@@ -342,7 +343,7 @@ class _OneTimePaymentState extends State<OneTimePayment> {
                   fontWeight: FontWeight.w400,
                   fontFamily: 'Poppins',
                   fontSize: 10,
-                  color: const Color(0xFF161616).withOpacity(0.6),
+                  color:  Get.isDarkMode?AppColors.darkTextWhite:const Color(0xFF161616).withOpacity(0.6),
                 ),
               ),
             ],
@@ -364,8 +365,8 @@ class _OneTimePaymentState extends State<OneTimePayment> {
             builder: (BuildContext context, StateSetter setState) {
               return Container(
                 width: SizeConfig.screenWidth,
-                decoration: const BoxDecoration(
-                  color: Colors.white,
+                decoration: BoxDecoration(
+                  color:Get.isDarkMode?AppColors.darkBottomSheet:AppColors.lightBackground,
                   borderRadius: BorderRadius.only(topLeft: Radius.circular(20),topRight:Radius.circular(20) ),
                 ),
                 child: Column(
@@ -379,7 +380,7 @@ class _OneTimePaymentState extends State<OneTimePayment> {
                         height: 6,
                         width: 100,
                         decoration: BoxDecoration(
-                          color: const Color(0xFF000000).withOpacity(0.62),
+                          color:  Get.isDarkMode?AppColors.darkTextWhite:const Color(0xFF000000).withOpacity(0.62),
                           borderRadius: const BorderRadius.all(Radius.circular(20)),
                         ),
                       ),
@@ -400,14 +401,14 @@ class _OneTimePaymentState extends State<OneTimePayment> {
                         child: Column(
                           children: [
                             const SizedBox(height: 2.73,),
-                            const Text(
+                            Text(
                               'Frequency of Payment',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 18,
                                 fontFamily: 'Public Sans',
                                 fontWeight: FontWeight.w600,
-                                color: Color(0xFF161616),
+                                color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                               ),
                             ),
                             const SizedBox(height: 33,),

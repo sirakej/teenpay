@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:stripling_wallet/UI/home_guardians/index_guardian.dart';
+import 'package:stripling_wallet/utils/constants.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
 
 class Notifications extends StatefulWidget {
@@ -20,7 +22,7 @@ class _NotificationsState extends State<Notifications> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Get.isDarkMode?AppColors.darkBackground:AppColors.lightBackground,
       body: SafeArea(
         child: SizedBox(
           width: SizeConfig.screenWidth,
@@ -31,21 +33,21 @@ class _NotificationsState extends State<Notifications> {
                   onPressed: (){
                     Navigator.pushNamed(context, IndexGuardian.id);
                   },
-                  icon: const Icon(
+                  icon:  Icon(
                     Icons.chevron_left,
-                    color: Color(0xFF161616),
+                    color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                     size: 39,
                   )
               ),
-              const Padding(
-                padding: EdgeInsets.only(left: 16),
+              Padding(
+                padding: const EdgeInsets.only(left: 16),
                 child: Text(
                   'Notification',
                   style: TextStyle(
                       fontSize: 24,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w700,
-                      color: Color(0xFF161616)
+                      color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                   ),
                 ),
               ),

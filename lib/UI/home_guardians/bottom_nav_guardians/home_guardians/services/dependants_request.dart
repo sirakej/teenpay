@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/home_guardians/services/dependants_request_tab/pending.dart';
+import 'package:stripling_wallet/utils/constants.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
 
 import 'dependants_request_tab/accepted.dart';
@@ -26,7 +28,7 @@ class _DependantsRequestState extends State<DependantsRequest> with SingleTicker
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Get.isDarkMode?AppColors.darkBackground:AppColors.lightBackground,
       body: SafeArea(
         child: SizedBox(
           width: SizeConfig.screenWidth,
@@ -35,14 +37,14 @@ class _DependantsRequestState extends State<DependantsRequest> with SingleTicker
             children: [
               IconButton(
                   onPressed: (){},
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.chevron_left,
-                    color: Color(0xFF161616),
+                    color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                     size: 39,
                   )
               ),
               const SizedBox(height: 20,),
-              const Padding(
+              Padding(
                 padding: EdgeInsets.only(left: 16),
                 child: Text(
                   'Request',
@@ -50,7 +52,7 @@ class _DependantsRequestState extends State<DependantsRequest> with SingleTicker
                       fontSize: 24,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w700,
-                      color: Color(0xFF161616)
+                      color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                   ),
                 ),
               ),
@@ -70,7 +72,7 @@ class _DependantsRequestState extends State<DependantsRequest> with SingleTicker
                     fontFamily: 'Poppins',
                     fontSize: 14,
                   ),
-                  unselectedLabelColor: const Color(0xFF151920).withOpacity(0.32),
+                  unselectedLabelColor:  Get.isDarkMode?AppColors.darkTextWhite:const Color(0xFF151920).withOpacity(0.32),
                   tabs:const [
                     Tab(
                       text: 'All',

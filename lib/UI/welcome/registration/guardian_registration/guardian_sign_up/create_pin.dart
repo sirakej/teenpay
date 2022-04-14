@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:stripling_wallet/UI/welcome/registration/login.dart';
 import 'package:stripling_wallet/utils/colors.dart';
 import 'package:stripling_wallet/utils/constants.dart';
@@ -39,6 +40,7 @@ class _CreatePinState extends State<CreatePin> {
         }
       },
       child: Scaffold(
+        backgroundColor: Get.isDarkMode?AppColors.darkBackground:AppColors.lightBackground,
         body: SafeArea(
           child: SizedBox(
             width: SizeConfig.screenWidth,
@@ -48,14 +50,14 @@ class _CreatePinState extends State<CreatePin> {
               children: [
                 IconButton(
                     onPressed: (){},
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.chevron_left,
-                      color: Color(0xFF161616),
+                      color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                       size: 39,
                     )
                 ),
                 const SizedBox(height: 24,),
-                const Padding(
+                Padding(
                   padding: EdgeInsets.only(left: 16,right: 16),
                   child: Text(
                     'Create Transactional PIN',
@@ -64,7 +66,7 @@ class _CreatePinState extends State<CreatePin> {
                       fontSize: 24,
                       fontFamily: 'Public Sans',
                       fontWeight: FontWeight.w700,
-                      color: Color(0xFF161616),
+                      color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                     ),
                   ),
                 ),
@@ -76,14 +78,14 @@ class _CreatePinState extends State<CreatePin> {
                     child: Column(
                       children: [
                         const SizedBox(height: 20),
-                        const Text(
+                       Text(
                           'This would serve as your transactional PIN, do not\nreveal it to anyone',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 14,
                             fontFamily: 'Public Sans',
                             fontWeight: FontWeight.w600,
-                            color: Color(0xFF161616),
+                            color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                           ),
                         ),
                         const SizedBox(height: 30),
@@ -135,14 +137,14 @@ class _CreatePinState extends State<CreatePin> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+               Text(
                 "Pin",
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontFamily: 'Public Sans',
                   fontSize: 14,
-                  color: Color(0xFF161616),
+                  color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                 ),
               ),
               const SizedBox(height: 10),
@@ -198,14 +200,14 @@ class _CreatePinState extends State<CreatePin> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 "Confirm Pin",
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontFamily: 'Public Sans',
                   fontSize: 14,
-                  color: Color(0xFF161616),
+                  color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                 ),
               ),
               const SizedBox(height: 10),
@@ -279,9 +281,9 @@ class _CreatePinState extends State<CreatePin> {
       builder: (context){
         return Container(
           width: SizeConfig.screenWidth,
-          decoration: const BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(topLeft: Radius.circular(20),topRight:Radius.circular(20) ),
+          decoration: BoxDecoration(
+            color: Get.isDarkMode?AppColors.darkBottomSheet:AppColors.lightBackground,
+            borderRadius: const BorderRadius.only(topLeft: Radius.circular(20),topRight:Radius.circular(20) ),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -294,7 +296,7 @@ class _CreatePinState extends State<CreatePin> {
                   height: 6,
                   width: 100,
                   decoration: BoxDecoration(
-                    color: const Color(0xFF000000).withOpacity(0.62),
+                    color:  Get.isDarkMode?AppColors.darkTextWhite:const Color(0xFF000000).withOpacity(0.62),
                     borderRadius: const BorderRadius.all(Radius.circular(20)),
                   ),
                 ),
@@ -313,14 +315,14 @@ class _CreatePinState extends State<CreatePin> {
                 child: Column(
                   children: [
                     const SizedBox(height: 28,),
-                    const Text(
+                    Text(
                       'Creation Completed',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 18,
                         fontFamily: 'Public Sans',
                         fontWeight: FontWeight.w600,
-                        color: Color(0xFF161616),
+                        color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                       ),
                     ),
                     const SizedBox(height:45,),
@@ -347,7 +349,7 @@ class _CreatePinState extends State<CreatePin> {
                         fontSize: 12,
                         fontFamily: 'Public Sans',
                         fontWeight: FontWeight.w600,
-                        color: const Color(0xFF151920).withOpacity(0.8),
+                        color:  Get.isDarkMode?AppColors.darkTextWhite:const Color(0xFF151920).withOpacity(0.8),
                       ),
                     ),
                     const SizedBox(height: 38,),
