@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:stripling_wallet/UI/home_dependents/index.dart';
+import 'package:stripling_wallet/UI/home_guardians/index_guardian.dart';
 import 'package:stripling_wallet/controller/app_theme.dart';
 import 'package:stripling_wallet/controller/theme_controller.dart';
 import 'package:stripling_wallet/utils/constants.dart';
@@ -30,7 +31,9 @@ class Customization extends GetView<ThemeController>{
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 IconButton(
-                    onPressed: (){},
+                    onPressed: (){
+                      Navigator.pushNamedAndRemoveUntil(context,IndexGuardian.id, (route) => false);
+                    },
                     icon: Icon(
                       Icons.chevron_left,
                       color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,

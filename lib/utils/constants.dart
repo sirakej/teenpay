@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-
-import 'colors.dart';
+import 'package:get/get.dart';
 
 class MyConstants {
   static BorderRadius primaryBorderRadius =
@@ -10,19 +9,33 @@ class MyConstants {
   static BorderRadius cardBorderRadius =
   const BorderRadius.all(Radius.circular(10.0));
 
-  static InputDecoration formInputDecoration =  InputDecoration(
-    border:const OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(4.0)),
+  static InputDecoration formInputDecoration =  Get.isDarkMode?const InputDecoration(
+    fillColor: Color(0xFF211F32),
+    filled: true,
+    border:OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(16.0)),
     ),
     enabledBorder: OutlineInputBorder(
-      borderSide: BorderSide(
-        color: const Color(0xFF151920).withOpacity(0.32 ),width: 1,style: BorderStyle.solid),
-      borderRadius: const BorderRadius.all(Radius.circular(4.0)),
+        borderRadius: BorderRadius.all(Radius.circular(16.0)),
+        borderSide: BorderSide(color: Colors.transparent)
     ),
     focusedBorder:OutlineInputBorder(
-      borderSide: BorderSide(
-        color: const Color(0xFF151920).withOpacity(0.32 ),width: 1,style: BorderStyle.solid ),
-      borderRadius: const BorderRadius.all(Radius.circular(4.0)),
+        borderRadius: BorderRadius.all(Radius.circular(16.0)),
+        borderSide: BorderSide(color: Colors.transparent)
+    ),
+  ):const InputDecoration(
+    fillColor: Color(0xFFF3F5FC),
+    filled: true,
+    border:OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(16.0)),
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(16.0)),
+      borderSide: BorderSide(color: Colors.transparent)
+    ),
+    focusedBorder:OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(16.0)),
+        borderSide: BorderSide(color: Colors.transparent)
     ),
   );
 
@@ -46,7 +59,7 @@ class MyConstants {
 }
 
 class AppColors {
-  AppColors._();
+  AppColors._(); //this is to prevent anyone from instantiating this object
 
   // Dark Theme colors
   static const Color darkBackground = Color(0xFF15141F);

@@ -1,36 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:stripling_wallet/UI/home_guardians/index_guardian.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:stripling_wallet/UI/welcome/registration/forgot_password/reset_password.dart';
+import 'package:stripling_wallet/controller/log_in_controller.dart';
 import 'package:stripling_wallet/utils/constants.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
 
-class Login extends StatefulWidget {
+class Login extends StatefulWidget{
   static const String id = 'Login';
-  const Login({Key? key}) : super(key: key);
+
+  Login({Key? key}) : super(key: key);
 
   @override
-  _LoginState createState() => _LoginState();
+  State<Login> createState() => _LoginState();
 }
 
 class _LoginState extends State<Login> {
-  /// A [GlobalKey] to hold the form state of my form widget for form validation
-  final _formKey = GlobalKey<FormState>();
-
-  /// A [TextEditingController] to control the input text for the user's password
-  final TextEditingController _emailController = TextEditingController();
-
-  /// A [TextEditingController] to control the input text for the user's password
-  final TextEditingController _confirmPinController = TextEditingController();
-
   /// A boolean variable to hold whether the password should be shown or hidden
   bool _obscureTextLogin = true;
+
+  bool _showSpinner = false;
 
   String currentText = '';
 
   final formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(LoginController());
     SizeConfig().init(context);
     return GestureDetector(
       onTap: () {
@@ -81,9 +78,11 @@ class _LoginState extends State<Login> {
                         const SizedBox(height: 20),
                         MaterialButton(
                           onPressed:(){
-                            Navigator.pushNamed(context, IndexGuardian.id);
+                            controller.signIn();
                           },
-                          child: Container(
+                          child:Obx(()=>controller.showSpinner.value ?
+                          const CircularProgressIndicator():
+                          Container(
                             width: 302,
                             height: 50,
                             decoration:BoxDecoration(
@@ -104,6 +103,7 @@ class _LoginState extends State<Login> {
                               ),
                             ),
                           ),
+                          )
                         ),
                         const SizedBox(height: 14,),
                         TextButton(
@@ -134,115 +134,114 @@ class _LoginState extends State<Login> {
   }
 
   Widget _buildForm() {
-    return Form(
-      key: _formKey,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-             Text(
-                "Email",
-                textAlign: TextAlign.start,
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontFamily: 'Public Sans',
-                  fontSize: 14,
-                  color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
-                ),
+    final controller = Get.put(LoginController());
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+           Text(
+              "Email",
+              textAlign: TextAlign.start,
+              style: TextStyle(
+                fontWeight: FontWeight.w600,
+                fontFamily: 'Public Sans',
+                fontSize: 14,
+                color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
               ),
-              const SizedBox(height: 10),
-              SizedBox(
-                width: SizeConfig.screenWidth,
-                child: TextFormField(
-                    controller: _emailController,
-                    keyboardType: TextInputType.emailAddress,
-                    textInputAction: TextInputAction.next,
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return 'Enter your email';
-                      }
-                      return null;
-                    },
-                    style: const TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      fontFamily: 'Public Sans',
-                      color: Color(0xFF161616),
-                    ),
-                  decoration: MyConstants.formInputDecoration,
-                ),
+            ),
+            const SizedBox(height: 10),
+            SizedBox(
+              width: SizeConfig.screenWidth,
+              child: TextFormField(
+                  controller: controller.emailController,
+                  keyboardType: TextInputType.emailAddress,
+                  textInputAction: TextInputAction.next,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Enter your email';
+                    }
+                    return null;
+                  },
+                  style: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    fontFamily: 'Public Sans',
+                    color: Color(0xFF161616),
+                  ),
+                decoration: MyConstants.formInputDecoration,
               ),
-            ],
-          ),
-          const SizedBox(height: 40),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Password",
-                textAlign: TextAlign.start,
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontFamily: 'Public Sans',
-                  fontSize: 14,
-                  color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
-                ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 40),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Password",
+              textAlign: TextAlign.start,
+              style: TextStyle(
+                fontWeight: FontWeight.w600,
+                fontFamily: 'Public Sans',
+                fontSize: 14,
+                color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
               ),
-              const SizedBox(height: 10),
-              SizedBox(
-                width: SizeConfig.screenWidth,
-                child: TextFormField(
-                    obscureText: _obscureTextLogin,
-                    controller: _confirmPinController,
-                    keyboardType: TextInputType.visiblePassword,
-                    textInputAction: TextInputAction.next,
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return 'Enter your password';
-                      }
-                      return null;
-                    },
-                    style: const TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      fontFamily: 'Public Sans',
-                      color: Color(0xFF161616),
-                    ),
-                    decoration:MyConstants.formInputDecoration.copyWith(
-                        suffixIcon: TextButton(
-                          onPressed:_toggleLogin,
-                          child:_obscureTextLogin ?
-                          const Text(
-                            "show",
-                            textAlign: TextAlign.start,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontFamily: 'Public Sans',
-                              fontSize: 14,
-                              color: Color(0xFF042538),
-                            ),
-                          ): const Text(
-                            "Hide",
-                            textAlign: TextAlign.start,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontFamily: 'Public Sans',
-                              fontSize: 14,
-                              color: Color(0xFF042538),
-                            ),
+            ),
+            const SizedBox(height: 10),
+            SizedBox(
+              width: SizeConfig.screenWidth,
+              child: TextFormField(
+                  obscureText: _obscureTextLogin,
+                  controller: controller.passwordController,
+                  keyboardType: TextInputType.visiblePassword,
+                  textInputAction: TextInputAction.next,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Enter your password';
+                    }
+                    return null;
+                  },
+                  style: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    fontFamily: 'Public Sans',
+                    color: Color(0xFF161616),
+                  ),
+                  decoration:MyConstants.formInputDecoration.copyWith(
+                      suffixIcon:TextButton(
+                        onPressed:_toggleLogin,
+                        child:_obscureTextLogin ?
+                        const Text(
+                          "show",
+                          textAlign: TextAlign.start,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontFamily: 'Public Sans',
+                            fontSize: 14,
+                            color: Color(0xFF042538),
                           ),
-                        )
-                    )
-                ),
+                        ): const Text(
+                          "Hide",
+                          textAlign: TextAlign.start,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontFamily: 'Public Sans',
+                            fontSize: 14,
+                            color: Color(0xFF042538),
+                          ),
+                        ),
+                      )
+                  )
               ),
-            ],
-          ),
-        ],
-      ),
+            ),
+          ],
+        ),
+      ],
     );
   }
+
   /// A function to toggle if to show the password or not by
   /// changing [_obscureTextLogin] value
   void _toggleLogin() {

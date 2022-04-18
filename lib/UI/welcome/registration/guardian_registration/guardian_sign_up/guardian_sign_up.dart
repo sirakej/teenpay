@@ -61,17 +61,32 @@ class _GuardianSignUpState extends State<GuardianSignUp> {
                       size: 39,
                     )
                 ),
-                Center(child: Image.asset("images/logo.png",width: 59.05,height:55.46 ,fit: BoxFit.contain,)),
-                const SizedBox(height: 24.54),
-                const Center(
-                  child:Text(
-                    'Sign Up to TeenPay',
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w700,
-                      fontFamily: 'Public Sans',
-                      color: Color(0xFF3068A4)
-                    ),
+                const SizedBox(height: 24),
+                Padding (
+                  padding:const EdgeInsets.only(left: 16,right: 16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Getting Started',
+                        style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.w700,
+                            fontFamily: 'Public Sans',
+                            color:Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
+                        ),
+                      ),
+                      const SizedBox(height: 4,),
+                      Text(
+                        'Create an account to continue!',
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: 'Public Sans',
+                            color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 const SizedBox(height: 10,),

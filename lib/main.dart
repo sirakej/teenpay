@@ -103,7 +103,7 @@ class MyApp extends StatelessWidget {
         NewBoarding.id:(context)=> const NewBoarding(),
         DependantsAuthentication.id:(context)=> const DependantsAuthentication(),
         '/identification': (context) => const Identification(),
-        Login.id:(context) => const Login(),
+        Login.id:(context) => Login(),
         GuardianSignUp.id:(context) => const GuardianSignUp(),
         GuardianSignUpContinue.id:(context) => const GuardianSignUpContinue(),
         OTP.id:(context) => const OTP(),

@@ -46,6 +46,8 @@ dependencies:
   carousel_slider: ^4.0.0
   get: ^4.6.1
   get_storage: ^2.0.3
+  http: ^0.13.4
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:
@@ -90,30 +92,16 @@ flutter:
   fonts:
     - family: Graphik
       fonts:
-        - asset: fonts/Graphik-Font-Family/GraphikRegular.otf
-        - asset: fonts/Graphik-Font-Family/GraphikRegularItalic.otf
-          style: italic
-        - asset: fonts/Graphik-Font-Family/GraphikBold.otf
-          weight: 700
+        - asset: fonts/Rubik/Rubik-Regular.ttf
+
     - family: Poppins
       fonts:
-        - asset: fonts/Poppins/Poppins-Regular.ttf
-        - asset: fonts/Poppins/Poppins-SemiBold.ttf
-          weight: 600
-        - asset: fonts/Poppins/Poppins-SemiBoldItalic.ttf
-          style: italic
-          weight: 600
-        - asset: fonts/Poppins/Poppins-Bold.ttf
-          weight: 700
-        - asset: fonts/Poppins/Poppins-BoldItalic.ttf
-          style: italic
-          weight: 700
+        - asset: fonts/Rubik/Rubik-Regular.ttf
 
     - family: Public Sans
       fonts:
-        - asset: fonts/public_sans/PublicSans-Regular.ttf
-        - asset: fonts/public_sans/PublicSans-SemiBold.ttf
-        - asset: fonts/public_sans/PublicSans-Bold.ttf
+        - asset: fonts/Rubik/Rubik-Regular.ttf
+
 
 
 
