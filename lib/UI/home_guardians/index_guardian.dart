@@ -51,18 +51,9 @@ class _IndexGuardianState extends State<IndexGuardian> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        if (_lastQuitTime == null ||
-            DateTime.now().difference(_lastQuitTime).inSeconds > 1) {
-          print('press the back button again to exit');
-          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content:Text('press the back button again to exit')));
-              _lastQuitTime = DateTime.now();
-          return false;
-        } else {
-          print('exit ');
           Navigator.of(context).pop(true);
           return true;
-        }
-      },
+        },
       child: Scaffold(
         body: getPage(currentIndex),
         bottomNavigationBar: BottomNavigationBar(

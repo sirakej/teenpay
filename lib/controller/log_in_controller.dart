@@ -1,7 +1,9 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:stripling_wallet/UI/home_guardians/index_guardian.dart';
 import 'package:stripling_wallet/core/network/auth.dart';
+import 'package:stripling_wallet/core/network/error_handler.dart';
 
 class LoginController extends GetxController {
 
@@ -20,13 +22,16 @@ class LoginController extends GetxController {
       'username': emailController.text.trim().toLowerCase(),
       'password': passwordController.text
     };
-    showSpinner = true.obs;
+    showSpinner.value = true;
     await AuthServices().login(body).then((value) async {
-      showSpinner = false.obs;
+      showSpinner.value = false;
+      Get.toNamed(IndexGuardian.id);
+
       //print(value);
     }).catchError((e){
-      showSpinner = false.obs;
-
+      showSpinner.value = false;
+      ErrorHandler().handleError(e);
+      //log(e);
     });
   }
 

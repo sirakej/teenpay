@@ -3,6 +3,10 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class MyConstants {
+  final String firstName = '';
+  final String lastName = '';
+
+
   static BorderRadius primaryBorderRadius =
   const BorderRadius.all(Radius.circular(4.0));
 
@@ -56,6 +60,8 @@ class MyConstants {
       borderRadius: const BorderRadius.all(Radius.circular(4.0)),
     ),
   );
+
+
 }
 
 class AppColors {

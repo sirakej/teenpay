@@ -53,18 +53,22 @@ class NetworkUtil{
     }
     try {
       headers!['Content-Type'] = 'application/json';
+
       return http
           .post(Uri.parse(url), body: json.encode(body), headers: headers)
           .then((http.Response response) {
         final String res = response.body;
        if(kDebugMode) log(res.toString());
         final int statusCode = response.statusCode;
-        print(response.statusCode);
-        var result = _decoder.convert(json.encode(res));
-        if (statusCode < 200 || statusCode > 400) throw result;
-        return result;
+        log(response.statusCode.toString());
+        var result = _decoder.convert(json.encoder.convert(res));
+        if (statusCode == 400) throw ('Unauthorized');
+        if (statusCode < 200 || statusCode > 200 || statusCode >= 400) {
+          throw result;
+        }
+          return result;
       });
-    } catch (e) {
+    }catch(e) {
       rethrow;
     }
   }

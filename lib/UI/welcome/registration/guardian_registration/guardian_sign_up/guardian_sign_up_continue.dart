@@ -2,32 +2,22 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stripling_wallet/UI/welcome/registration/login.dart';
-import 'package:stripling_wallet/utils/colors.dart';
+import 'package:stripling_wallet/controller/on_board_controller.dart';
 import 'package:stripling_wallet/utils/constants.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
-import 'otp.dart';
 
 
 class GuardianSignUpContinue extends StatefulWidget {
   static const String id = 'GuardianSignUpContinue';
-  const GuardianSignUpContinue({Key? key}) : super(key: key);
+  GuardianSignUpContinue({Key? key}) : super(key: key);
+  final controller = Get.put(OnBoardController());
+
 
   @override
   _GuardianSignUpContinueState createState() => _GuardianSignUpContinueState();
 }
 
 class _GuardianSignUpContinueState extends State<GuardianSignUpContinue> {
-  /// A [GlobalKey] to hold the form state of my form widget for form validation
-  final _formKey = GlobalKey<FormState>();
-
-  /// A [TextEditingController] to control the input text for the user's email
-  final TextEditingController _referralController = TextEditingController();
-
-  /// A [TextEditingController] to control the input text for the user's email
-  final TextEditingController _bankVerificationNumberController = TextEditingController();
-
-  /// A [TextEditingController] to control the input text for the user's password
-  final TextEditingController _dateOfBirthController = TextEditingController();
 
   bool _terms = false;
   @override
@@ -84,11 +74,13 @@ class _GuardianSignUpContinueState extends State<GuardianSignUpContinue> {
                             const SizedBox(height: 46,),
                             MaterialButton(
                               onPressed: () {
-                                if (_formKey.currentState!.validate()) {
-                                  Navigator.pushNamed(context, OTP.id);
+                                if (widget.controller.formKeyTwo.currentState!.validate()) {
+                                  widget.controller.signUp();
                                 }
                               },
-                              child: Container(
+                              child: Obx(()=>widget.controller.showSpinner.value ?
+                              const CircularProgressIndicator():
+                              Container(
                                 width: 302,
                                 height: 50,
                                 decoration:BoxDecoration(
@@ -104,11 +96,12 @@ class _GuardianSignUpContinueState extends State<GuardianSignUpContinue> {
                                 ),
                                 child: const Center(
                                   child: Text(
-                                    'Continue',
+                                    'Login',
                                     style: TextStyle(fontWeight: FontWeight.w600,color: Colors.white),
                                   ),
                                 ),
                               ),
+                              )
                             ),
                             const SizedBox(height: 24,),
                             Row(
@@ -155,7 +148,7 @@ class _GuardianSignUpContinueState extends State<GuardianSignUpContinue> {
 
   Widget _buildSignIn() {
     return Form(
-      key: _formKey,
+      key: widget.controller.formKeyTwo,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -177,7 +170,7 @@ class _GuardianSignUpContinueState extends State<GuardianSignUpContinue> {
               SizedBox(
                 width: SizeConfig.screenWidth,
                 child: TextFormField(
-                    controller: _referralController,
+                    controller: widget.controller.referralController,
                     keyboardType: TextInputType.number,
                     textInputAction: TextInputAction.next,
                     style: const TextStyle(
@@ -210,7 +203,7 @@ class _GuardianSignUpContinueState extends State<GuardianSignUpContinue> {
               SizedBox(
                 width: SizeConfig.screenWidth,
                 child: TextFormField(
-                    controller: _bankVerificationNumberController,
+                    controller: widget.controller.bankVerificationNumberController,
                     keyboardType: TextInputType.number,
                     textInputAction: TextInputAction.next,
                     validator: (value) {
@@ -249,7 +242,7 @@ class _GuardianSignUpContinueState extends State<GuardianSignUpContinue> {
               SizedBox(
                 width: SizeConfig.screenWidth,
                 child: TextFormField(
-                    controller: _dateOfBirthController,
+                    controller: widget.controller.dateOfBirthController,
                     keyboardType: TextInputType.number,
                     textInputAction: TextInputAction.next,
                     validator: (value) {

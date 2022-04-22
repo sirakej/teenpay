@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:stripling_wallet/core/models/createUser.dart';
 
 import 'endpoint.dart';
@@ -11,7 +13,7 @@ class AuthServices{
   /// Instantiating the class [NetworkHelper]
   var netUtil = NetworkUtil();
 
-  Future<CreateUser> createUser(Map<String, dynamic> body) async{
+  Future<dynamic> createUser(Map<String, dynamic> body) async{
     return netUtil.post(SIGN_UP,body: body, headers: {})
         .then((value) {
           return CreateUser.fromJson(value);
@@ -26,7 +28,7 @@ class AuthServices{
         .then((value) {
       return value;
     }).catchError((e){
-     errorHandler.handleError(e.toString());
+     errorHandler.handleError(e);
     });
   }
 }

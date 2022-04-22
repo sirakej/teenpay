@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:stripling_wallet/controller/on_board_controller.dart';
 import 'package:stripling_wallet/utils/colors.dart';
 import 'package:stripling_wallet/utils/constants.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
@@ -10,32 +11,20 @@ import 'guardian_sign_up_continue.dart';
 
 class GuardianSignUp extends StatefulWidget {
   static const String id = 'GuardianSignUp';
-  const GuardianSignUp({Key? key}) : super(key: key);
+  GuardianSignUp({Key? key}) : super(key: key);
+  final controller = Get.put(OnBoardController());
 
   @override
   _GuardianSignUpState createState() => _GuardianSignUpState();
 }
 
 class _GuardianSignUpState extends State<GuardianSignUp> {
-  /// A [GlobalKey] to hold the form state of my form widget for form validation
-  final _formKey = GlobalKey<FormState>();
-
-  /// A [TextEditingController] to control the input text for the user's email
-  final TextEditingController _fullNameController = TextEditingController();
-
-  /// A [TextEditingController] to control the input text for the user's email
-  final TextEditingController _emailController = TextEditingController();
-
-  /// A [TextEditingController] to control the input text for the user's email
-  final TextEditingController _phoneNumberController = TextEditingController();
-
-  /// A [TextEditingController] to control the input text for the user's password
-  final TextEditingController _passwordController = TextEditingController();
 
   /// A boolean variable to hold whether the password should be shown or hidden
   bool _obscureTextLogin = true;
   @override
   Widget build(BuildContext context) {
+
     SizeConfig().init(context);
     return GestureDetector(
       onTap: () {
@@ -103,7 +92,7 @@ class _GuardianSignUpState extends State<GuardianSignUp> {
                           const SizedBox(height: 46,),
                           MaterialButton(
                             onPressed: () {
-                              if (_formKey.currentState!.validate()) {
+                              if (widget.controller.formKey.currentState!.validate()) {
                                 Navigator.pushNamed(context, GuardianSignUpContinue.id);
                               }
                             },
@@ -174,7 +163,7 @@ class _GuardianSignUpState extends State<GuardianSignUp> {
 
   Widget _buildSignIn() {
     return Form(
-      key: _formKey,
+      key: widget.controller.formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -196,7 +185,7 @@ class _GuardianSignUpState extends State<GuardianSignUp> {
               SizedBox(
                 width: SizeConfig.screenWidth,
                 child: TextFormField(
-                  controller: _fullNameController,
+                  controller: widget.controller.fullNameController,
                   keyboardType: TextInputType.name,
                   textInputAction: TextInputAction.next,
                   validator: (value) {
@@ -235,7 +224,7 @@ class _GuardianSignUpState extends State<GuardianSignUp> {
               SizedBox(
                 width: SizeConfig.screenWidth,
                 child: TextFormField(
-                    controller: _emailController,
+                    controller: widget.controller.emailController,
                     keyboardType: TextInputType.text,
                     textInputAction: TextInputAction.next,
                     validator: (value) {
@@ -277,7 +266,7 @@ class _GuardianSignUpState extends State<GuardianSignUp> {
               SizedBox(
                 width: SizeConfig.screenWidth,
                 child: TextFormField(
-                    controller: _phoneNumberController,
+                    controller:widget.controller.phoneNumberController,
                     keyboardType: TextInputType.phone,
                     textInputAction: TextInputAction.next,
                     validator: (value) {
@@ -317,7 +306,7 @@ class _GuardianSignUpState extends State<GuardianSignUp> {
                 width: SizeConfig.screenWidth,
                 child: TextFormField(
                     obscureText: _obscureTextLogin,
-                    controller: _passwordController,
+                    controller: widget.controller.passwordController,
                     keyboardType: TextInputType.visiblePassword,
                     textInputAction: TextInputAction.next,
                     validator: (value) {
@@ -333,29 +322,16 @@ class _GuardianSignUpState extends State<GuardianSignUp> {
                       color: Color(0xFF161616),
                     ),
                     decoration:MyConstants.formInputDecoration.copyWith(
-                        suffixIcon: TextButton(
-                          onPressed:_toggleLogin,
-                          child:_obscureTextLogin ?
-                          const Text(
-                            "show",
-                            textAlign: TextAlign.start,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontFamily: 'Public Sans',
-                              fontSize: 14,
-                              color: Color(0xFF042538),
-                            ),
-                          ): const Text(
-                            "Hide",
-                            textAlign: TextAlign.start,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontFamily: 'Public Sans',
-                              fontSize: 14,
-                              color: Color(0xFF042538),
-                            ),
-                          ),
-                        )
+                        suffixIcon: InkWell(
+                            onTap: (){
+                              if(!mounted)return;
+                              setState(() => _obscureTextLogin = !_obscureTextLogin);
+                            },
+                            child: Icon(
+                                _obscureTextLogin ? Icons.visibility_off : Icons.visibility,
+                                color:  Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack
+                            )
+                        ),
                     )
                 ),
               ),
@@ -365,12 +341,6 @@ class _GuardianSignUpState extends State<GuardianSignUp> {
       ),
     );
   }
-  /// A function to toggle if to show the password or not by
-  /// changing [_obscureTextLogin] value
-  void _toggleLogin() {
-    setState(() {
-      _obscureTextLogin = !_obscureTextLogin;
-    });
-  }
+
 
 }
