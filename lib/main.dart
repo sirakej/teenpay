@@ -99,11 +99,13 @@ class MyApp extends StatelessWidget {
       // home: const SplashScreen(),
       initialRoute: '/',
       routes: {
+        //On Boarding interface
         '/': (context) => const SplashScreen(),
         NewBoarding.id:(context)=> const NewBoarding(),
         DependantsAuthentication.id:(context)=> const DependantsAuthentication(),
         '/identification': (context) => const Identification(),
         Login.id:(context) => Login(),
+        LogInPin.id:(context)=> const LogInPin(),
         GuardianSignUp.id:(context) => GuardianSignUp(),
         GuardianSignUpContinue.id:(context) => GuardianSignUpContinue(),
         OTP.id:(context) => const OTP(),
@@ -111,7 +113,7 @@ class MyApp extends StatelessWidget {
         ResetPassword.id:(context) => const ResetPassword(),
         SendInstructions.id:(context) => const SendInstructions(),
         CreateNewPassword.id:(context) => const CreateNewPassword(),
-        //ParentInterface
+        //Parent Interface
         IndexGuardian.id:(context) => const IndexGuardian(),
         FundsWallet.id:(context)=> const FundsWallet(), //
         MyDependants.id:(context)=> const MyDependants(collect: false,),
@@ -141,7 +143,7 @@ class MyApp extends StatelessWidget {
         Notifications.id:(context)=> const Notifications(),
         AcceptConfirmation.id:(context)=> const AcceptConfirmation(),
 
-        //ChildInterface
+        //Child Interface
         Index.id:(context) => const Index(),
         AirtimeAndData.id:(context)=> const AirtimeAndData(),
         SaveMoney.id:(context)=> const SaveMoney(populate: false,),
@@ -169,7 +171,6 @@ class MyApp extends StatelessWidget {
         BudgetMoneyContainer.id:(context)=> const BudgetMoneyContainer(),
         AddTransaction.id:(context)=> const AddTransaction(),
         DependantsPin.id:(context)=> const DependantsPin(),
-        LogInPin.id:(context)=> const LogInPin(),
       },
     );
   }
