@@ -27,7 +27,7 @@ class _IndexGuardianState extends State<IndexGuardian> {
   getPage(int index) {
     switch (index){
       case 0:
-        return  const HomeGuardians();
+        return const HomeGuardians();
         break;
       case 1:
         return  const WalletGuardians();
@@ -42,7 +42,7 @@ class _IndexGuardianState extends State<IndexGuardian> {
         return const More();
         break;
       default:
-        return  const HomeGuardians();
+        return const HomeGuardians();
         break;
     }
   }

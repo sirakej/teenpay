@@ -97,7 +97,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Stripling Wallet',
       // home: const SplashScreen(),
-      initialRoute: '/',
+      initialRoute: GuardianSignUp.id,
       routes: {
         //On Boarding interface
         '/': (context) => const SplashScreen(),

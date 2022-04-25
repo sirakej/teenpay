@@ -12,6 +12,9 @@ class Login extends StatefulWidget{
 
   Login({Key? key}) : super(key: key);
 
+  //initializing all of [LoginController] method and assigning it to the controller variable
+  final controller = Get.put(LoginController());
+
   @override
   State<Login> createState() => _LoginState();
 }
@@ -24,7 +27,6 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(LoginController());
     SizeConfig().init(context);
     return GestureDetector(
       onTap: () {
@@ -99,10 +101,10 @@ class _LoginState extends State<Login> {
                           duration: const Duration(milliseconds: 1000),
                           child: MaterialButton(
                             onPressed:(){
-                              print(controller.showSpinner);
-                              controller.signIn();
+                              print(widget.controller.showSpinner);
+                              widget.controller.signIn();
                             },
-                            child:Obx(()=>controller.showSpinner.value ?
+                            child:Obx(()=>widget.controller.showSpinner.value ?
                             const CircularProgressIndicator():
                             Container(
                               width: 302,
@@ -161,7 +163,6 @@ class _LoginState extends State<Login> {
   }
 
   Widget _buildForm() {
-    final controller = Get.put(LoginController());
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -189,7 +190,7 @@ class _LoginState extends State<Login> {
               child:SizedBox(
                 width: SizeConfig.screenWidth,
                 child: TextFormField(
-                  controller: controller.emailController,
+                  controller: widget.controller.emailController,
                   keyboardType: TextInputType.emailAddress,
                   textInputAction: TextInputAction.next,
                   validator: (value) {
@@ -236,7 +237,7 @@ class _LoginState extends State<Login> {
                 width: SizeConfig.screenWidth,
                 child: TextFormField(
                     obscureText: _obscureTextLogin,
-                    controller: controller.passwordController,
+                    controller: widget.controller.passwordController,
                     keyboardType: TextInputType.visiblePassword,
                     textInputAction: TextInputAction.next,
                     inputFormatters: [

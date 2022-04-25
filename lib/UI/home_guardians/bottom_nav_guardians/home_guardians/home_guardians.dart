@@ -1,7 +1,12 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/home_guardians/services/dependants_request.dart';
+import 'package:stripling_wallet/controller/home_controller.dart';
 import 'package:stripling_wallet/utils/constants.dart';
+import '../../../../core/database/user_db_helper.dart';
+import '../../../../core/models/user_details.dart';
 import 'notifications.dart';
 import 'services/funds_dependant/funds_dependant.dart';
 import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/home_guardians/services/transactions.dart';
@@ -10,14 +15,36 @@ import 'package:stripling_wallet/utils/size_config.dart';
 
 class HomeGuardians extends StatefulWidget {
   const HomeGuardians({Key? key}) : super(key: key);
+  //initializing all of [LoginController] method and assigning it to the controller variable
 
   @override
   _HomeGuardiansState createState() => _HomeGuardiansState();
 }
 
 class _HomeGuardiansState extends State<HomeGuardians> {
+  final controller = Get.put(HomeGuardianController());
   bool see = false;
   String balance = "500,000.00";
+
+  dynamic user = UserDetails();
+
+  void getCurrentUser() async {
+    await DatabaseHelper().getUser().then((value) {
+      print("this is real");
+      print(value);
+      user= value;
+      //userLoaded.value = true;
+    }).catchError((e) {
+      log(e);
+    });
+  }
+
+  @override
+  void initState() {
+    getCurrentUser();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -53,7 +80,7 @@ class _HomeGuardiansState extends State<HomeGuardians> {
                               ),
                             ),
                             Text(
-                              'Jane Adebola',
+                              '${controller.user.value.firstname}',
                               style:
                               TextStyle(
                                   color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,

@@ -35,7 +35,7 @@ class NetworkUtil{
           if(kDebugMode) log(res.toString());
           final int statusCode = response.statusCode;
           var result = _decoder.convert(res);
-          if (statusCode < 200 || statusCode > 400) {
+          if (statusCode < 200 || statusCode > 200 || statusCode >= 400) {
             throw result['msg'] ?? 'Error occurred, please try again';
           }
           return result;

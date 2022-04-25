@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:stripling_wallet/controller/on_board_controller.dart';
 import 'package:stripling_wallet/utils/colors.dart';
@@ -87,7 +88,7 @@ class _GuardianSignUpState extends State<GuardianSignUp> {
                           Container(height: 30,),
                           Padding(
                             padding:const EdgeInsets.only(left: 16,right: 16),
-                            child: _buildSignIn(),
+                            child: _buildSignUp(),
                           ),
                           const SizedBox(height: 46,),
                           MaterialButton(
@@ -161,7 +162,7 @@ class _GuardianSignUpState extends State<GuardianSignUp> {
       );
   }
 
-  Widget _buildSignIn() {
+  Widget _buildSignUp() {
     return Form(
       key: widget.controller.formKey,
       child: Column(
@@ -269,6 +270,9 @@ class _GuardianSignUpState extends State<GuardianSignUp> {
                     controller:widget.controller.phoneNumberController,
                     keyboardType: TextInputType.phone,
                     textInputAction: TextInputAction.next,
+                    inputFormatters: [
+                      FilteringTextInputFormatter.allow(RegExp('[0-9+]')),
+                    ],
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Enter your phone number';

@@ -12,27 +12,28 @@ class OnBoardController extends GetxController {
 
   final formKeyTwo = GlobalKey<FormState>();
 
-  /// A [TextEditingController] to control the input text for the user's email
+  /// A [TextEditingController] to control the input text for the user's fullname
   final TextEditingController fullNameController = TextEditingController();
 
   /// A [TextEditingController] to control the input text for the user's email
   final TextEditingController emailController = TextEditingController();
 
-  /// A [TextEditingController] to control the input text for the user's email
+  /// A [TextEditingController] to control the input text for the user's phone_number
   final TextEditingController phoneNumberController = TextEditingController();
 
   /// A [TextEditingController] to control the input text for the user's password
   final TextEditingController passwordController = TextEditingController();
 
-  /// A [TextEditingController] to control the input text for the user's email
+  /// A [TextEditingController] to control the input text for the user's referral
   final TextEditingController referralController = TextEditingController();
 
-  /// A [TextEditingController] to control the input text for the user's email
+  /// A [TextEditingController] to control the input text for the user's bank_verification
   final TextEditingController bankVerificationNumberController = TextEditingController();
 
-  /// A [TextEditingController] to control the input text for the user's password
+  /// A [TextEditingController] to control the input text for the user's date_of_birth
   final TextEditingController dateOfBirthController = TextEditingController();
 
+  //boolean value to check if the button should be in loading state
   RxBool showSpinner = false.obs;
 
   RxString firstName = ''.obs;
@@ -70,6 +71,7 @@ class OnBoardController extends GetxController {
     });
   }
 
+  //Algorithm for spliting the user fullname into first name and last name
   fullNameSplit(){
     if(fullNameController.text.split("\\w+").isNotEmpty){
       lastName.value = fullNameController.text.substring(fullNameController.text.lastIndexOf(" ")+1);
