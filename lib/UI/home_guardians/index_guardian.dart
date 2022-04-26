@@ -22,7 +22,6 @@ class _IndexGuardianState extends State<IndexGuardian> {
 
   /// Current index of the bottom navigation
   int currentIndex = 0;
-  late DateTime _lastQuitTime;
 
   getPage(int index) {
     switch (index){

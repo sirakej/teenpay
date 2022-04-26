@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/settings_guardian/profile/upgrade_account.dart';
+import 'package:stripling_wallet/controller/profile_controller.dart';
 import 'package:stripling_wallet/utils/constants.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
 
@@ -33,6 +34,8 @@ class _AccountLimitState extends State<AccountLimit> {
 
   /// A [TextEditingController] to control the input text for the user's email
   final TextEditingController _dateOfBirthController = TextEditingController();
+
+  final controller = Get.put(ProfileController());
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -57,7 +60,7 @@ class _AccountLimitState extends State<AccountLimit> {
               ),
               const SizedBox(height: 5,),
              Padding(
-                padding: EdgeInsets.only(left: 16,right: 16),
+                padding: const EdgeInsets.only(left: 16,right: 16),
                 child: Text(
                   'Profile',
                   style:
@@ -268,19 +271,19 @@ class _AccountLimitState extends State<AccountLimit> {
                       }
                       return null;
                     },
-                    style: const TextStyle(
+                    style:TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
                       fontFamily: 'Public Sans',
-                      color: Color(0xFF161616),
+                      color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                     ),
                     decoration:MyConstants.formInputDecoration.copyWith(
-                        hintText: "EUfbufeu123",
+                        hintText: "${controller.dynamicUserDetails.value.account?.userId}",
                         hintStyle: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 14,
                           fontFamily:'Public Sans' ,
-                          color: const Color(0xFF151920).withOpacity(0.8 ),
+                          color: Get.isDarkMode?AppColors.darkTextWhite:const Color(0xFF151920).withOpacity(0.8 ),
 
                         )
                     )
@@ -317,19 +320,19 @@ class _AccountLimitState extends State<AccountLimit> {
                       }
                       return null;
                     },
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
                       fontFamily: 'Public Sans',
-                      color: Color(0xFF161616),
+                      color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                     ),
                     decoration:MyConstants.formInputDecoration.copyWith(
-                        hintText: "Oripeloye Timilehin John",
+                        hintText: "${controller.dynamicUserDetails.value.firstname} ${controller.dynamicUserDetails.value.lastname} ",
                         hintStyle: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 14,
                           fontFamily:'Public Sans' ,
-                          color: const Color(0xFF151920).withOpacity(0.8 ),
+                          color: Get.isDarkMode?AppColors.darkTextWhite:const Color(0xFF151920).withOpacity(0.8 ),
 
                         )
                     )
@@ -366,19 +369,19 @@ class _AccountLimitState extends State<AccountLimit> {
                       }
                       return null;
                     },
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
                       fontFamily: 'Public Sans',
-                      color: Color(0xFF161616),
+                      color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                     ),
                     decoration:MyConstants.formInputDecoration.copyWith(
-                        hintText: "+23490380387",
+                        hintText: "${controller.dynamicUserDetails.value.phonenumber}",
                         hintStyle: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 14,
                           fontFamily:'Public Sans' ,
-                          color: const Color(0xFF151920).withOpacity(0.8 ),
+                          color: Get.isDarkMode?AppColors.darkTextWhite:const Color(0xFF151920).withOpacity(0.8 ),
 
                         )
                     )
@@ -415,19 +418,19 @@ class _AccountLimitState extends State<AccountLimit> {
                       }
                       return null;
                     },
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
                       fontFamily: 'Public Sans',
-                      color: Color(0xFF161616),
+                      color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                     ),
                     decoration:MyConstants.formInputDecoration.copyWith(
-                        hintText: "Timilehinoripeloye@gmail.com",
+                        hintText: "${controller.dynamicUserDetails.value.email}",
                         hintStyle: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 14,
                           fontFamily:'Public Sans' ,
-                          color: const Color(0xFF151920).withOpacity(0.8 ),
+                          color: Get.isDarkMode?AppColors.darkTextWhite:const Color(0xFF151920).withOpacity(0.8 ),
 
                         )
                     )
@@ -464,11 +467,11 @@ class _AccountLimitState extends State<AccountLimit> {
                       }
                       return null;
                     },
-                    style:const TextStyle(
+                    style:TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
                       fontFamily: 'Public Sans',
-                      color: Color(0xFF161616),
+                      color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                     ),
                     decoration:MyConstants.formInputDecoration.copyWith(
                       hintText: "Dec 16, 199x",
@@ -476,7 +479,7 @@ class _AccountLimitState extends State<AccountLimit> {
                         fontWeight: FontWeight.w600,
                         fontSize: 14,
                         fontFamily:'Public Sans' ,
-                        color: const Color(0xFF151920).withOpacity(0.8 ),
+                        color: Get.isDarkMode?AppColors.darkTextWhite:const Color(0xFF151920).withOpacity(0.8 ),
 
                       )
                     )

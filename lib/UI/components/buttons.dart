@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:stripling_wallet/utils/colors.dart';
-import 'package:stripling_wallet/utils/constants.dart';
 
 class NavigatorButton extends StatelessWidget {
   const NavigatorButton({Key? key, required this.route, required this.text})

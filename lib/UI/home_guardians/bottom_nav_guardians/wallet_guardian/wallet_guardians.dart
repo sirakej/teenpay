@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/home_guardians/services/transactions.dart';
 import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/wallet_guardian/fund_wallet.dart';
+import 'package:stripling_wallet/controller/wallet_controller.dart';
 import 'package:stripling_wallet/utils/constants.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
 
@@ -13,7 +14,7 @@ class WalletGuardians extends StatefulWidget {
 }
 
 class _WalletGuardiansState extends State<WalletGuardians> {
-  bool see = false;
+  final controller = Get.put(WalletController());
   String balance = "500,000.00";
   @override
   Widget build(BuildContext context) {
@@ -84,7 +85,7 @@ class _WalletGuardiansState extends State<WalletGuardians> {
                             ),
                             const SizedBox(height: 16,),
                             Text(
-                              see == false?'NGN $balance':"NGN ********",
+                              controller.see.value == false?'NGN ${controller.dynamicUserDetails.value.account?.ledgerBalance}':"NGN ********",
                               style:
                               const TextStyle(
                                   fontFamily: 'Poppins',
@@ -107,9 +108,11 @@ class _WalletGuardiansState extends State<WalletGuardians> {
                         children: [
                           InkWell(
                             onTap: () {
+                              controller.see.value =!controller.see.value;
                               setState(() {
-                                see=!see;
-                              });},
+
+                              });
+                              },
                             child: Container(
                               height: 27,
                               width: 36,
@@ -117,7 +120,7 @@ class _WalletGuardiansState extends State<WalletGuardians> {
                                   color: Colors.transparent,
                                   image: DecorationImage(image:AssetImage("images/ellipse.png") )
                               ),
-                              child: see==false?const Icon(Icons.visibility_off_outlined,color: Colors.white,):
+                              child: controller.see.value==false?const Icon(Icons.visibility_off_outlined,color: Colors.white,):
                               const Icon(Icons.visibility_outlined,color: Colors.white,),
                             ),
                           ),

@@ -10,12 +10,22 @@ import 'package:stripling_wallet/utils/constants.dart';
 import 'package:stripling_wallet/utils/size_config.dart';
 
 
-class Customization extends GetView<ThemeController>{
+class Customization extends StatefulWidget{
   static const String id = 'Customization';
 
+  const Customization({Key? key}) : super(key: key);
+
+  @override
+  State<Customization> createState() => _CustomizationState();
+}
+
+class _CustomizationState extends State<Customization> {
   final themeController = Get.find<ThemeController>();
+
    bool dark = false;
+
    bool deviceSettings = false;
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -64,18 +74,17 @@ class Customization extends GetView<ThemeController>{
                         const SizedBox(height: 33,),
                         InkWell(
                           onTap: (){
-                            print(Get.isDarkMode);
+                            //print(Get.isDarkMode);
                             if (Get.isDarkMode) {
-
                                 themeController.changeTheme(Themes.lightTheme);
                                 themeController.saveTheme(false);
 
                             } else {
-
                                 themeController.changeTheme(Themes.darkTheme);
                                 themeController.saveTheme(true);
 
                             }
+                            setState((){});
                           },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -111,6 +120,7 @@ class Customization extends GetView<ThemeController>{
       ),
     );
   }
+
   // ignore: non_constant_identifier_names
   buttonContainer(String image, String name, String explain,){
     return Row(
@@ -147,5 +157,4 @@ class Customization extends GetView<ThemeController>{
       ],
     );
   }
-
 }

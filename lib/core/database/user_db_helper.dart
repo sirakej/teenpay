@@ -14,7 +14,7 @@ class DatabaseHelper {
   static Database? _db;
   /// A string value to hold the name of the table in the database
   // ignore: non_constant_identifier_names
-  final String USER_TABLET = 'Far';
+  final String USER_TABLET = 'yet';
   /// A function to get the database [_db] if it exists or wait to initialize
   /// a new database by calling [initDb()] and return [_db]
   Future<Database> get db async {
@@ -27,7 +27,7 @@ class DatabaseHelper {
   /// [_onCreate()] function to create its table and fields
   initDb() async {
     io.Directory documentsDirectory = await getApplicationDocumentsDirectory();
-    String path = join(documentsDirectory.path, 'Far.db');
+    String path = join(documentsDirectory.path, 'yet.db');
     var theDb = await openDatabase(path, version:4, onCreate: _onCreate,);
     return theDb;
   }
@@ -48,15 +48,13 @@ class DatabaseHelper {
         'email TEXT NOT NULL,'
         'userStatus TEXT NOT NULL,'
         'userType TEXT NOT NULL,'
-        'phonenumber TEXT NULL,'
-        'verified TEXT NOT NULL,'
-        'dependantCode TEXT NOT NULL,'
-        'dependants TEXT NOT NULL,'
-        'guardians TEXT NOT NULL,'
-        'id TEXT NOT NULL,'
+        'phonenumber TEXT ,'
+        'verified INT NOT NULL,'
+        'dependantCode TEXT ,'
+        'id INT NOT NULL,'
         'uniqueId TEXT NOT NULL,'
-        'dateCreated TEXT NOT NULL,'
-        'dateModified TEXT NOT NULL)'
+        'dateCreated TEXT ,'
+        'dateModified TEXT )'
     );
     log('Created tables');
   }

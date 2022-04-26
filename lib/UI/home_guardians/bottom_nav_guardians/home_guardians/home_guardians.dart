@@ -1,5 +1,5 @@
 import 'dart:developer';
-
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stripling_wallet/UI/home_guardians/bottom_nav_guardians/home_guardians/services/dependants_request.dart';
@@ -23,264 +23,255 @@ class HomeGuardians extends StatefulWidget {
 
 class _HomeGuardiansState extends State<HomeGuardians> {
   final controller = Get.put(HomeGuardianController());
-  bool see = false;
   String balance = "500,000.00";
-
-  dynamic user = UserDetails();
-
-  void getCurrentUser() async {
-    await DatabaseHelper().getUser().then((value) {
-      print("this is real");
-      print(value);
-      user= value;
-      //userLoaded.value = true;
-    }).catchError((e) {
-      log(e);
-    });
-  }
-
-  @override
-  void initState() {
-    getCurrentUser();
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return Scaffold(
-      backgroundColor: Get.isDarkMode?AppColors.darkBackground:AppColors.lightBackground,
-      body: SafeArea(
-        child: SizedBox(
-          width: SizeConfig.screenWidth,
-          child:Column(
-            children: [
-              const SizedBox(height: 5,),
-              Padding(
-                padding: const EdgeInsets.only(left: 16),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
+    return Obx(()=>
+        Scaffold(
+          backgroundColor: Get.isDarkMode?AppColors.darkBackground:AppColors.lightBackground,
+          body: SafeArea(
+            child: SizedBox(
+              width: SizeConfig.screenWidth,
+              child:Column(
+                children: [
+                  const SizedBox(height: 5,),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 16),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Image.asset("images/profile_image.png",width:29,height:29 ,fit: BoxFit.contain,),
-                        const SizedBox(width: 8,),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children:[
-                            Text(
-                              'Welcome',
-                              style:
-                              TextStyle(
-                                  fontFamily: 'Poppins',
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 12,
-                                  color:Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack
-                              ),
-                            ),
-                            Text(
-                              '${controller.user.value.firstname}',
-                              style:
-                              TextStyle(
-                                  color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
-                                  fontFamily: 'Poppins',
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 18
-                              ),
+                        Row(
+                          children: [
+                            Image.asset("images/profile_image.png",width:29,height:29 ,fit: BoxFit.contain,),
+                            const SizedBox(width: 8,),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children:[
+                                Text(
+                                  'Welcome',
+                                  style:
+                                  TextStyle(
+                                      fontFamily: 'Poppins',
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 12,
+                                      color:Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack
+                                  ),
+                                ),
+                                Text(
+                                  '${controller.user.value.lastname}',
+                                  style:
+                                  TextStyle(
+                                      color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
+                                      fontFamily: 'Poppins',
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 18
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
                         ),
-                    ],
+                        MaterialButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, Notifications.id);
+                          },
+                          child: Image.asset("images/notification.png",width:20,height:21.5,fit: BoxFit.contain,color:Get.isDarkMode?AppColors.darkTextWhite:null),
+                        )
+                      ],
                     ),
-                    MaterialButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, Notifications.id);
-                        },
-                      child: Image.asset("images/notification.png",width:20,height:21.5,fit: BoxFit.contain,color:Get.isDarkMode?AppColors.darkTextWhite:null),
-                    )
-                  ],
-                ),
-              ),
-              const SizedBox(height: 24,),
-              Expanded(
-                child: SingleChildScrollView(
-                  physics: const BouncingScrollPhysics(),
-                  padding: const EdgeInsets.only(left: 16,right: 16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        height: 128,
-                        width: SizeConfig.screenWidth,
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          color: Color(0xFF3068A4)
-                        ),
-                        child: Stack(
-                          children: [
-                            Positioned(
-                              left: 20,
-                              bottom: -10,
-                              child: Image.asset("images/side.png",width: 52.95,height: 80.32,fit: BoxFit.contain,),
-                            ),
-                            Positioned(
-                              left: 130,
-                              bottom: -30,
-                              child: Image.asset("images/bottom.png",width: 52.95,height: 80.32,fit: BoxFit.contain,),
-                            ),
-                            Container(
+                  ),
+                  const SizedBox(height: 24,),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      physics: const BouncingScrollPhysics(),
+                      padding: const EdgeInsets.only(left: 16,right: 16),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          FadeInLeft(
+                            duration: const Duration(milliseconds: 1500),
+                            child: Container(
+                              height: 128,
                               width: SizeConfig.screenWidth,
-                              height: SizeConfig.screenHeight,
-                              padding: const EdgeInsets.only(top:29,bottom: 29),
-                              child: Center(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children:[
-                                    const Text(
-                                      'Available Balance',
-                                      style:
-                                      TextStyle(
-                                          fontFamily: 'Poppins',
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 12,
-                                          color: Color(0xFFFFFFFF)
-                                      ),
-                                    ),
-                                    const SizedBox(height: 16,),
-                                    Text(
-                                      see == false?'NGN $balance':"NGN ********",
-                                      style:
-                                      const TextStyle(
-                                          fontFamily: 'Poppins',
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 24,
-                                          color: Color(0xFFFFFFFF)
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                              decoration: const BoxDecoration(
+                                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                                  color: Color(0xFF3068A4)
                               ),
-                            ),
-                            Container(
-                              height: SizeConfig.screenHeight,
-                              width: SizeConfig.screenWidth,
-                              padding: const EdgeInsets.only(top: 25,right: 27),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.end,
+                              child: Stack(
                                 children: [
-                                  InkWell(
-                                    onTap: () {
-                                      setState(() {
-                                        see=!see;
-                                      });},
-                                    child: Container(
-                                      height: 27,
-                                      width: 36,
-                                      decoration: const BoxDecoration(
-                                        color: Colors.transparent,
-                                        image: DecorationImage(image:AssetImage("images/ellipse.png") )
+                                  Positioned(
+                                    left: 20,
+                                    bottom: -10,
+                                    child: Image.asset("images/side.png",width: 52.95,height: 80.32,fit: BoxFit.contain,),
+                                  ),
+                                  Positioned(
+                                    left: 130,
+                                    bottom: -30,
+                                    child: Image.asset("images/bottom.png",width: 52.95,height: 80.32,fit: BoxFit.contain,),
+                                  ),
+                                  Container(
+                                    width: SizeConfig.screenWidth,
+                                    height: SizeConfig.screenHeight,
+                                    padding: const EdgeInsets.only(top:29,bottom: 29),
+                                    child: Center(
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        children:[
+                                          const Text(
+                                            'Available Balance',
+                                            style:
+                                            TextStyle(
+                                                fontFamily: 'Poppins',
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 12,
+                                                color: Color(0xFFFFFFFF)
+                                            ),
+                                          ),
+                                          const SizedBox(height: 16,),
+                                          Text(
+                                            controller.see.value == false?'NGN ${controller.dynamicDetails.value.account?.ledgerBalance}':"NGN ********",
+                                            style:
+                                            const TextStyle(
+                                                fontFamily: 'Poppins',
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 24,
+                                                color: Color(0xFFFFFFFF)
+                                            ),
+                                          ),
+                                        ],
                                       ),
-                                      child: see==false?const Icon(Icons.visibility_off_outlined,color: Colors.white,):
-                                      const Icon(Icons.visibility_outlined,color: Colors.white,),
                                     ),
                                   ),
+                                  Container(
+                                    height: SizeConfig.screenHeight,
+                                    width: SizeConfig.screenWidth,
+                                    padding: const EdgeInsets.only(top: 25,right: 27),
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.end,
+                                      children: [
+                                        InkWell(
+                                          onTap: () {
+                                            controller.see.value =! controller.see.value;
+                                           },
+                                          child: Container(
+                                            height: 27,
+                                            width: 36,
+                                            decoration: const BoxDecoration(
+                                                color: Colors.transparent,
+                                                image: DecorationImage(image:AssetImage("images/ellipse.png") )
+                                            ),
+                                            child: controller.see.value==false?const Icon(Icons.visibility_off_outlined,color: Colors.white,):
+                                            const Icon(Icons.visibility_outlined,color: Colors.white,),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  )
                                 ],
                               ),
-                            )
-                          ],
-                        ),
-                      ),
-                      const SizedBox(height: 24,),
-                       Text(
-                        'Services',
-                        style:
-                        TextStyle(
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w600,
-                            fontSize: 18,
-                            color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
-                        ),
-                      ),
-                      const SizedBox(height:4),
-                      Row(
-                        children: [
-                          Expanded(
-                              child: InkWell(
-                                onTap: (){
-                                  Navigator.pushNamed(context, MyDependants.id);
-                                },
-                                child: homeContainer(const Color(0xFFFEEAEA), "images/dependant.png","My\nDependants",false),
-                              )
-                          ),
-                          const SizedBox(width: 32,),
-                          Expanded(child: InkWell(
-                            onTap: (){
-                              Navigator.pushNamed(context, FundsDependant.id);
-                            },
-                            child: homeContainer(const Color(0xFFE4EDFF), "images/funds.png","Fund\nDependants",false),
-                          ))
-                        ],
-                      ),
-                      const SizedBox(height: 24,),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: InkWell(
-                              onTap: (){
-                                Navigator.pushNamed(context, DependantsRequest.id);
-                              },
-                              child: homeContainer(const Color(0xFFE3FFEE), "images/request.png","Dependants\nRequests",false),
                             ),
                           ),
-                          const SizedBox(width: 32,),
-                          Expanded(child: homeContainer(const Color(0xFFEDE4FE), "images/investments.png","Savings&\nInvestments",true))
-                        ],
-                      ),
-                      const SizedBox(height: 24,),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children:[
-                         Text(
-                            'Transactions',
+                          const SizedBox(height: 24,),
+                          Text(
+                            'Services',
                             style:
                             TextStyle(
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w600,
-                                fontSize: 18,
-                                color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18,
+                              color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
                             ),
                           ),
-                           TextButton(
-                               onPressed: (){
-                                 Navigator.pushNamed(context, Transactions.id);
-                               },
-                               child: const Text(
-                                 'View all',
-                                 style:
-                                 TextStyle(
-                                     fontFamily: 'Poppins',
-                                     fontWeight: FontWeight.w600,
-                                     fontSize: 12,
-                                     color: Color(0xFF3068A4)
-                                 ),
-                               ),
-                           )
+                          const SizedBox(height:4),
+                          FadeInLeft(
+                            duration: const Duration(milliseconds: 1500),
+                            delay: const Duration(milliseconds: 1000),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                    child: InkWell(
+                                      onTap: (){
+                                        Navigator.pushNamed(context, MyDependants.id);
+                                      },
+                                      child: homeContainer(const Color(0xFFFEEAEA), "images/dependant.png","My\nDependants",false),
+                                    )
+                                ),
+                                const SizedBox(width: 32,),
+                                Expanded(child: InkWell(
+                                  onTap: (){
+                                    Navigator.pushNamed(context, FundsDependant.id);
+                                  },
+                                  child: homeContainer(const Color(0xFFE4EDFF), "images/funds.png","Fund\nDependants",false),
+                                ))
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: 24,),
+                          FadeInLeft(
+                            duration: const Duration(milliseconds: 1500),
+                            delay: const Duration(milliseconds: 2000),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: InkWell(
+                                    onTap: (){
+                                      Navigator.pushNamed(context, DependantsRequest.id);
+                                    },
+                                    child: homeContainer(const Color(0xFFE3FFEE), "images/request.png","Dependants\nRequests",false),
+                                  ),
+                                ),
+                                const SizedBox(width: 32,),
+                                Expanded(child: homeContainer(const Color(0xFFEDE4FE), "images/investments.png","Savings&\nInvestments",true))
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: 24,),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children:[
+                              Text(
+                                'Transactions',
+                                style:
+                                TextStyle(
+                                  fontFamily: 'Poppins',
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 18,
+                                  color: Get.isDarkMode?AppColors.darkTextWhite:AppColors.lightTextBlack,
+                                ),
+                              ),
+                              TextButton(
+                                onPressed: (){
+                                  Navigator.pushNamed(context, Transactions.id);
+                                },
+                                child: const Text(
+                                  'View all',
+                                  style:
+                                  TextStyle(
+                                      fontFamily: 'Poppins',
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 12,
+                                      color: Color(0xFF3068A4)
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                          const SizedBox(height: 24,),
+                          transactionContainer("Pending","Adekunle Jacobs", "09:45 AM","Today", "N50,000.00"),
+                          const SizedBox(height: 24,),
+                          transactionContainer("Successful","Kolade Awaye", "09:45 AM","Today", "N50,000.00"),
                         ],
                       ),
-                      const SizedBox(height: 24,),
-                      transactionContainer("Pending","Adekunle Jacobs", "09:45 AM","Today", "N50,000.00"),
-                      const SizedBox(height: 24,),
-                      transactionContainer("Successful","Kolade Awaye", "09:45 AM","Today", "N50,000.00"),
-                    ],
+                    ),
                   ),
-                ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
-      ),
+        )
     );
   }
   homeContainer(Color color, String image, String name,bool comingSoon){
