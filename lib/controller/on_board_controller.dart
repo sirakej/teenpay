@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:stripling_wallet/UI/welcome/registration/guardian_registration/guardian_sign_up/otp.dart';
 import 'package:stripling_wallet/core/network/auth.dart';
 import 'package:stripling_wallet/core/network/error_handler.dart';
@@ -42,6 +43,8 @@ class OnBoardController extends GetxController {
 
   RxBool terms = false.obs;
 
+  RxString collectDateValue = ''.obs;
+
   Future<void> signUp() async {
     fullNameSplit();
     log(firstName.value);
@@ -49,6 +52,10 @@ class OnBoardController extends GetxController {
     log(emailController.text);
     log(phoneNumberController.text);
     log(passwordController.text);
+    log(DateTime.parse(collectDateValue.value).year.toString());
+    log(DateTime.parse(collectDateValue.value).month.toString());
+    log(DateTime.parse(collectDateValue.value).day.toString());
+    log(DateFormat('EEEE').format(DateTime(0, DateTime.parse(collectDateValue.value).day)));
     Map<String, dynamic> body = {
       'username': emailController.text.trim().toLowerCase(),
       'firstname': firstName.trim().toLowerCase(),
@@ -58,7 +65,8 @@ class OnBoardController extends GetxController {
       "userType": 'Guardian',
       'phonenumber':phoneNumberController.text,
       'password': passwordController.text,
-      'guardianId': 0
+      'guardianId': 0,
+      "dateOfBirth": collectDateValue.value
     };
     showSpinner.value = true;
     await AuthServices().createUser(body).then((value) async {

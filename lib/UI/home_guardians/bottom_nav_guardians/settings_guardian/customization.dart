@@ -78,11 +78,10 @@ class _CustomizationState extends State<Customization> {
                             if (Get.isDarkMode) {
                                 themeController.changeTheme(Themes.lightTheme);
                                 themeController.saveTheme(false);
-
-                            } else {
+                            }
+                            else {
                                 themeController.changeTheme(Themes.darkTheme);
                                 themeController.saveTheme(true);
-
                             }
                             setState((){});
                           },

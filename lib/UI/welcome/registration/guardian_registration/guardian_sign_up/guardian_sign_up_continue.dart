@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:stripling_wallet/UI/welcome/registration/login.dart';
 import 'package:stripling_wallet/controller/on_board_controller.dart';
 import 'package:stripling_wallet/utils/constants.dart';
@@ -20,6 +22,8 @@ class GuardianSignUpContinue extends StatefulWidget {
 class _GuardianSignUpContinueState extends State<GuardianSignUpContinue> {
 
   bool _terms = false;
+  DateTime? _chosenDateTime;
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -70,6 +74,75 @@ class _GuardianSignUpContinueState extends State<GuardianSignUpContinue> {
                             Padding(
                               padding:const EdgeInsets.only(left: 16,right: 16),
                               child: _buildSignIn(),
+                            ),
+                            MaterialButton(
+                              onPressed: (){
+                                _showDatePicker(context);
+                                print(widget.controller.collectDateValue);
+                              },
+                              child: Container(
+                                width:SizeConfig.screenWidth,
+                                height: 50,
+                                decoration: const BoxDecoration(
+                                  borderRadius: BorderRadius.all(Radius.circular(16)),
+                                  color:Color(0xFFF3F5FC)
+                                ),
+                                child:Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Text(
+                                    _chosenDateTime==null?"":_chosenDateTime.toString()
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                IconButton(
+                                    icon: _terms == false
+                                        ? const Icon(
+                                      Icons.check_box_outline_blank_outlined,
+                                      size: 25,
+                                      color:  Color(0xFF9097A5),
+                                    )
+                                        : const Icon(
+                                      Icons.check_box,
+                                      size: 25,
+                                      color:  Color(0xFF3068A4),
+                                    ),
+                                    onPressed: (){
+                                      setState(() {
+                                        _terms =! _terms;
+                                      });
+                                    }
+                                ),
+                                RichText(
+                                  text:TextSpan(
+                                      text: "I agree to the ",
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontFamily: 'Public Sans',
+                                        fontSize: 14,
+                                        color: Color(0xFF161616),
+                                      ),
+                                      children: [
+                                        TextSpan(
+                                          text: "Terms and Condition",
+                                          style: const TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            fontFamily: 'Public Sans',
+                                            fontSize: 12,
+                                            color: Color(0xFF3068A4),
+                                          ),
+                                          recognizer: TapGestureRecognizer()..onTap = (){
+                                            // Navigator.pushNamed(context, Terms.id);
+                                          },
+                                        ),
+                                      ]
+                                  ),
+                                  textAlign: TextAlign.start,
+                                )
+                              ],
                             ),
                             const SizedBox(height: 46,),
                             MaterialButton(
@@ -239,80 +312,41 @@ class _GuardianSignUpContinueState extends State<GuardianSignUpContinue> {
                 ),
               ),
               const SizedBox(height: 10),
-              SizedBox(
-                width: SizeConfig.screenWidth,
-                child: TextFormField(
-                    controller: widget.controller.dateOfBirthController,
-                    keyboardType: TextInputType.number,
-                    textInputAction: TextInputAction.next,
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return 'Enter your date of birth';
-                      }
-                      return null;
-                    },
-                    style: const TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      fontFamily: 'Public Sans',
-                      color: Color(0xFF161616),
-                    ),
-                    decoration:MyConstants.formInputDecoration
-                ),
-              ),
+
             ],
           ),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              IconButton(
-                  icon: _terms == false
-                      ? const Icon(
-                    Icons.check_box_outline_blank_outlined,
-                    size: 25,
-                    color:  Color(0xFF9097A5),
-                  )
-                      : const Icon(
-                    Icons.check_box,
-                    size: 25,
-                    color:  Color(0xFF3068A4),
-                  ),
-                  onPressed: (){
-                    setState(() {
-                      _terms =! _terms;
-                    });
-                  }
-              ),
-              RichText(
-                text:TextSpan(
-                    text: "I agree to the ",
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w400,
-                      fontFamily: 'Public Sans',
-                      fontSize: 14,
-                      color: Color(0xFF161616),
-                    ),
-                    children: [
-                      TextSpan(
-                        text: "Terms and Condition",
-                        style: const TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontFamily: 'Public Sans',
-                          fontSize: 12,
-                          color: Color(0xFF3068A4),
-                        ),
-                        recognizer: TapGestureRecognizer()..onTap = (){
-                         // Navigator.pushNamed(context, Terms.id);
-                        },
-                      ),
-                    ]
-                ),
-                textAlign: TextAlign.start,
-              )
-            ],
-          )
+
         ],
       ),
     );
   }
+
+  // Show the modal that contains the CupertinoDatePicker
+  void _showDatePicker(ctx) {
+    // showCupertinoModalPopup is a built-in function of the cupertino library
+    showCupertinoModalPopup(
+        context: ctx,
+        builder: (_) => Container(
+          height: 250,
+          color: const Color.fromARGB(255, 255, 255, 255),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 200,
+                child: CupertinoDatePicker(
+                    initialDateTime: DateTime.now(),
+                    mode: CupertinoDatePickerMode.date,
+                    maximumYear: DateTime.now().year,
+                    onDateTimeChanged: (val) {
+                      setState(() {
+                        _chosenDateTime = val;
+                        widget.controller.collectDateValue.value = _chosenDateTime.toString();
+                      });
+                    }),
+              ),
+            ],
+          ),
+        ));
+  }
+
 }
